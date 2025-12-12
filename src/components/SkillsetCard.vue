@@ -1,3 +1,3 @@
 <template>
-  <div>Name Card</div>
+  <div>Skillset</div>
 </template>

@@ -1,24 +1,24 @@
 <script setup>
-import NameCard from './components/NameCard.vue'
-import About from './components/About.vue'
-import Projects from './components/Projects.vue'
-import Experience from './components/Experience.vue'
-import Skillset from './components/Skillset.vue'
-import Blogs from './components/Blogs.vue'
+import NameCard from "@/components/NameCard.vue";
+import AboutCard from "@/components/AboutCard.vue";
+import ProjectsCard from "@/components/ProjectsCard.vue";
+import ExperienceCard from "@/components/ExperienceCard.vue";
+import SkillsetCard from "@/components/SkillsetCard.vue";
+import BlogsCard from "@/components/BlogsCard.vue";
 </script>
 
 <template>
-  <main class="h-screen w-screen bg-neutral-950 text-white p-4 md:p-6 overflow-hidden">
-    <div class="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-4 md:gap-6 h-full w-full max-w-7xl mx-auto">
+  <main class="bg-neutral-950 text-white">
+    <div class="grid grid-cols-3 grid-rows-2 gap-4 [grid-auto-rows:200px]">
       <!-- Row 1 -->
       <NameCard />
-      <About />
-      <Projects />
-      
+      <AboutCard />
+      <ProjectsCard />
+
       <!-- Row 2 -->
-      <Experience />
-      <Skillset />
-      <Blogs />
+      <ExperienceCard />
+      <SkillsetCard />
+      <BlogsCard />
     </div>
   </main>
 </template>
