@@ -1,8 +1,8 @@
 <template>
- <div class="w-screen h-screen">
+ <div class="w-screen h-screen hero-theme">
     <div class="w-full h-full flex flex-col items-center justify-center px-5">
       <div class="mb-12">
-        <h1 class="text-9xl">{{ $t('hero.name') }}</h1>
+        <h1>{{ $t('hero.name') }}</h1>
         <p class="text-2xl flex-end">{{ $t('hero.role') }}</p>
       </div>
       <div class="grid grid-cols-3 w-full items-center">
@@ -25,11 +25,18 @@ export default {
 }
 </script>
 
+
 <style scoped>
+  .hero-theme {
+    background-color: #e8e8e2;
+  }
   h1 {
-    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 10rem;
+    font-weight: 1000;
     letter-spacing: -0.02em;
     color: #000;
+    text-shadow: 2px 2px 0 #000;
   }
 
   p {
