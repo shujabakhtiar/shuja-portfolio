@@ -6,14 +6,19 @@
                 <p>{{ $t('projects.description') }}</p>
             </div>
         </div>
+        <div>
+            <ProjectCard/>
+        </div>
     </Section>
 </template>
 <script>
     import Section from "@/components/common/Section.vue";
+    import ProjectCard from "@/components/cards/ProjectCard.vue";
 export default {
     name: "ProjectsSection",
     components: {
-        Section,
+        Section,    
+        ProjectCard,
     },
 }
 </script>
