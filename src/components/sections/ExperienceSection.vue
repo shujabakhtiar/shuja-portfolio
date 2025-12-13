@@ -1,7 +1,5 @@
 <template>
-   <div class="w-screen min-h-screen bg-black text-white about-section">
-    <div class="flex flex-col py-16 px-10 gap-16">
-      <div class="text-8xl font-bold">{{ $t('experience.title') }}</div>
+   <Section :title="$t('experience.title')">
       <div class="flex justify-end">
         <div class="flex flex-row gap-2 max-w-[40%]">
           <p>{{ $t('experience.label') }}</p>
@@ -25,16 +23,17 @@
             </div>
         </div>
       </div>
-    </div>
-  </div>
+   </Section>
 </template>
 <script>
 import ExperienceCard from "@/components/cards/ExperienceCard.vue";
+import Section from "@/components/common/Section.vue";
 
 export default {
     name: "ExperienceSection",
     components: {
         ExperienceCard,
+        Section,
     },
 }
 </script>

@@ -13,7 +13,7 @@
     </nav>
 </template>
 <script>
-import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
+import LanguageSwitcher from "@/components/common/LanguageSwitcher.vue";
 
 export default {
     name: "TopNavBar",

@@ -10,9 +10,10 @@
 </template>
 <script>
 import TopNavBar from "@/components/navigation/TopNavBar.vue";
-import HeroSection from "@/components/HeroSection.vue";
-import AboutSection from "@/components/AboutSection.vue";
-import ExperienceSection from "@/components/ExperienceSection.vue";
+import HeroSection from "@/components/sections/HeroSection.vue";
+import AboutSection from "@/components/sections/AboutSection.vue";
+import ExperienceSection from "@/components/sections/ExperienceSection.vue";
+
 export default {
     name: "HomePage",
     components: {

@@ -1,7 +1,5 @@
 <template>
- <div class="w-screen h-screen bg-black text-white about-section rounded-t-3xl">
-    <div class="flex flex-col py-16 px-10 gap-16">
-      <div class="text-8xl font-bold">{{ $t('about.title') }}</div>
+  <Section :title="$t('about.title')" :border-radius-on-top="true">
       <div class="flex justify-end">
         <div class="flex flex-row gap-2 max-w-[40%]">
           <p>{{ $t('about.services') }}</p>
@@ -20,19 +18,18 @@
          :description="skillSet.description" 
          :skills="skillSet.skills"/>
       </div>
-    </div>
-  </div>
-
+  </Section>
 </template>
 <script>
   import SkillSetCard from "@/components/cards/SkillSetCard.vue";
+  import Section from "@/components/common/Section.vue";
 
 export default {
     name: "AboutSection",
     components: {
       SkillSetCard,
+      Section,
     },
 }
 </script>
-
 
