@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "skills": "Habilidades",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "name": "Shuja Bakhtiar",
+    "role": "Desarrollador Full Stack",
+    "description": "Abierto a oportunidades laborales en todo el mundo. Apasionado por crear experiencias digitales pulidas, intuitivas y reflexivas que dejen huella.",
+    "links": {
+      "linkedin": "Linked in",
+      "github": "GitHub",
+      "twitter": "Twitter"
+    }
+  },
+  "about": {
+    "title": "Un poco sobre mí/",
+    "services": "(Servicios)",
+    "description": "Un desarrollador con talento para crear experiencias de usuario increíbles. Armado con una maestría en Computación en la Nube de la Universidad de Newcastle, prospero tanto en la creación de aplicaciones web receptivas utilizando React.js/Vue.js como en la navegación en la nube con AWS y Azure. Transformar mi creatividad y conocimiento en soluciones digitales cautivadoras y eficientes es mi pasión. Estoy emocionado de continuar este viaje de excelencia digital en este panorama digital en constante evolución.",
+    "skillSet": [
+      {
+        "id": 1,
+        "title": "Desarrollador Full Stack",
+        "description": "Descripción relevante para el trabajo",
+        "skills": [
+          { "id": 1, "name": "Node.js" },
+          { "id": 2, "name": "React.js" },
+          { "id": 3, "name": "MongoDB" }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Desarrollador Frontend",
+        "description": "Desarrollador Frontend",
+        "skills": [
+          { "id": 1, "name": "html" },
+          { "id": 2, "name": "css" },
+          { "id": 3, "name": "javascript" }
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "title": "Experiencia",
+    "label": "(Experiencia)",
+    "description": "Mi trayectoria profesional y las empresas con las que he tenido el privilegio de trabajar.",
+    "list": [
+      {
+        "id": 1,
+        "role": "Desarrollador Full Stack Senior",
+        "company": "Tech Corp",
+        "duration": "2023 - Presente",
+        "description": "Liderando el desarrollo de aplicaciones web escalables utilizando Vue.js y Node.js."
+      },
+      {
+        "id": 2,
+        "role": "Desarrollador Frontend",
+        "company": "Agencia Creativa",
+        "duration": "2021 - 2023",
+        "description": "Construí interfaces de usuario interactivas y receptivas para varios clientes."
+      },
+      {
+        "id": 3,
+        "role": "Desarrollador Junior",
+        "company": "StartUp Inc",
+        "duration": "2020 - 2021",
+        "description": "Ayudé en el desarrollo del producto principal y corregí errores."
+      }
+    ]
+  }
+}

@@ -1,17 +1,25 @@
 <template>
     <nav class="fixed top-0 left-0 z-50 w-screen h-16 p-4 flex items-center justify-end">
-        <ul class="flex flex-row  gap-2">
-            <li>Home</li>
-            <li>Projects</li>
-            <li>Experience</li>
-            <li>Skills</li>
-            <li>Contact</li>
+        <ul class="flex flex-row  gap-2 items-center">
+            <li>{{ $t('nav.home') }}</li>
+            <li>{{ $t('nav.projects') }}</li>
+            <li>{{ $t('nav.experience') }}</li>
+            <li>{{ $t('nav.skills') }}</li>
+            <li>{{ $t('nav.contact') }}</li>
+            <li class="!p-0 hover:!bg-transparent">
+                <LanguageSwitcher />
+            </li>
         </ul>
     </nav>
 </template>
 <script>
+import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
+
 export default {
     name: "TopNavBar",
+    components: {
+        LanguageSwitcher
+    }
 }
 </script>
 <style scoped>

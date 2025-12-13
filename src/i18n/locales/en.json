@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "experience": "Experience",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Shuja Bakhtiar",
+    "role": "Full Stack Developer",
+    "description": "Open to job opportunities worldwide. Passionate about building polished, intuitive, and thoughtful digital experiences that leave a mark.",
+    "links": {
+      "linkedin": "Linked in",
+      "github": "GitHub",
+      "twitter": "Twitter"
+    }
+  },
+  "about": {
+    "title": "Bit About me/",
+    "services": "(Services)",
+    "description": "A Developer with a knack for creating awesome user experiences. Armed with a master's in Cloud Computing from Newcastle University, I thrive in both building responsive web apps using React.js/Vue.js and navigating the cloud with AWS and Azure. Transforming my creativity and knowledge into captivating and efficient digital solutions is my passion. I am excited to continue this journey of digital excellence in this ever-evolving digital landscape.",
+    "skillSet": [
+      {
+        "id": 1,
+        "title": "Full stack developer",
+        "description": "Description thats relevant to the job",
+        "skills": [
+          { "id": 1, "name": "Node.js" },
+          { "id": 2, "name": "React.js" },
+          { "id": 3, "name": "MongoDB" }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Frontend developer",
+        "description": "Frontend developer",
+        "skills": [
+          { "id": 1, "name": "html" },
+          { "id": 2, "name": "css" },
+          { "id": 3, "name": "javascript" }
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "title": "Experience",
+    "label": "(Experience)",
+    "description": "My professional journey and the companies I've had the privilege to work with.",
+    "list": [
+      {
+        "id": 1,
+        "role": "Senior Full Stack Developer",
+        "company": "Tech Corp",
+        "duration": "2023 - Present",
+        "description": "Leading the development of scalable web applications using Vue.js and Node.js."
+      },
+      {
+        "id": 2,
+        "role": "Frontend Developer",
+        "company": "Creative Agency",
+        "duration": "2021 - 2023",
+        "description": "Built interactive and responsive user interfaces for various clients."
+      },
+      {
+        "id": 3,
+        "role": "Junior Developer",
+        "company": "StartUp Inc",
+        "duration": "2020 - 2021",
+        "description": "Assisted in the development of the main product and fixed bugs."
+      }
+    ]
+  }
+}
