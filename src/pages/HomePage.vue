@@ -5,6 +5,7 @@
             <HeroSection/>
             <AboutSection/>
             <ExperienceSection/>
+            <ProjectsSection/>
         </div>
     </div>
 </template>
@@ -13,6 +14,7 @@ import TopNavBar from "@/components/navigation/TopNavBar.vue";
 import HeroSection from "@/components/sections/HeroSection.vue";
 import AboutSection from "@/components/sections/AboutSection.vue";
 import ExperienceSection from "@/components/sections/ExperienceSection.vue";
+import ProjectsSection from "@/components/sections/ProjectsSection.vue";
 
 export default {
     name: "HomePage",
@@ -21,6 +23,7 @@ export default {
         HeroSection,
         AboutSection,
         ExperienceSection,
+        ProjectsSection,
     },
 }
 </script>

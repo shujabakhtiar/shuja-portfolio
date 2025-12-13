@@ -70,5 +70,11 @@
         "description": "Ayudé en el desarrollo del producto principal y corregí errores."
       }
     ]
+  },
+  "projects": {
+    "title": "Proyectos",
+    "label": "(Proyectos)",
+    "description": "Algunos de los proyectos en los que he trabajado.",
+    "list": []
   }
 }

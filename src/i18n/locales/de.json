@@ -70,5 +70,11 @@
         "description": "Unterstützung bei der Entwicklung des Hauptprodukts und Fehlerbehebung."
       }
     ]
+  },
+  "projects": {
+    "title": "Projekte",
+    "label": "(Projekte)",
+    "description": "Einige der Projekte, an denen ich gearbeitet habe.",
+    "list": []
   }
 }
