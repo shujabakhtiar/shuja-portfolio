@@ -1,5 +1,8 @@
 <template>
-    <nav class="fixed top-0 left-0 z-50 w-screen h-16 p-4 flex items-center justify-end">
+    <nav 
+        class="fixed top-0 left-0 z-50 w-screen h-16 p-4 flex items-center justify-end transition-all duration-700 ease-out delay-[2000ms]"
+        :class="isMounted ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'"
+    >
         <ul class="flex flex-row  gap-2 items-center">
             <li>{{ $t('nav.home') }}</li>
             <li>{{ $t('nav.projects') }}</li>
@@ -19,6 +22,16 @@ export default {
     name: "TopNavBar",
     components: {
         LanguageSwitcher
+    },
+    data() {
+        return {
+            isMounted: false,
+        };
+    },
+    mounted() {
+        setTimeout(() => {
+            this.isMounted = true;
+        }, 100);
     }
 }
 </script>
