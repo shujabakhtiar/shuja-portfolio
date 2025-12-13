@@ -1,3 +1,0 @@
-<template>
-  <div>Name Card</div>
-</template>
