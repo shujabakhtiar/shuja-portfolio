@@ -14,17 +14,15 @@
         </div>
       </div>
       <hr/>
-      <div class="grid grid-cols-2 gap-16">
-        <div>
-          01
+      <div class="grid grid-cols-[40%_60%] gap-12" v-for="skillSet in skillSet">
+        <div class="text-6xl font-bold">
+          ({{ String(skillSet.id).padStart(2, '0') }})
         </div>
-        <div class="flex flex-col gap-3">
-          <SkillSetCard v-for="skillSet in skillSet" 
+          <SkillSetCard  
         :key="skillSet.id"
          :title="skillSet.title" 
          :description="skillSet.description" 
          :skills="skillSet.skills"/>
-        </div>
       </div>
     </div>
   </div>
@@ -32,6 +30,8 @@
 </template>
 <script>
   import SkillSetCard from "@/components/cards/SkillSetCard.vue";
+  import { skillSet } from "@/data/skills.js";
+
 export default {
     name: "AboutSection",
     components: {
@@ -39,44 +39,7 @@ export default {
     },
     data() {
       return {
-        skillSet: [
-          {
-            title: "Full stack developer",
-            description: "Description thats relevant to the job",
-            skills: [
-              {
-                id: 1,
-                name: "Node.js",
-            },
-            {
-              id: 2,
-              name: "React.js",
-            },
-            {
-              id: 3,
-              name: "MongoDB",
-            },
-          ],
-        },
-        {
-          title: "Frontend developer",
-          description: "Frontend developer",
-          skills: [
-            {
-              id: 1,
-              name: "html",
-          },
-          {
-            id: 2,
-            name: "css",
-          },
-          {
-            id: 3,
-            name: "javascript",
-          },
-        ],
-      }
-      ]
+        skillSet: skillSet
       };
     },
 }
