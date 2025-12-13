@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex flex-row justify-between items-center cursor-pointer py-8 h-48"
+        class="relative flex flex-row justify-between items-center cursor-pointer py-8 h-48"
         @mouseenter="isHovered = true"
         @mouseleave="isHovered = false"
     >
@@ -22,10 +22,10 @@
             </Transition>
 
             <Transition
-                enter-active-class="transition duration-500 ease-out"
+                enter-active-class="transition duration-400 ease-out"
                 enter-from-class="opacity-0 translate-y-8 -translate-x-4"
                 enter-to-class="opacity-100 translate-y-0 translate-x-0"
-                leave-active-class="transition duration-250 ease-in"
+                leave-active-class="transition duration-200 ease-in"
                 leave-from-class="opacity-100 translate-y-0 translate-x-0"
                 leave-to-class="opacity-0 translate-y-8 -translate-x-4"
             >
@@ -40,10 +40,10 @@
 
         <div class="flex flex-col gap-2 text-right justify-start">
             <Transition
-                enter-active-class="transition-all duration-500 ease-out delay-100"
+                enter-active-class="transition-all duration-400 ease-out delay-100"
                 enter-from-class="opacity-0 translate-x-10"
                 enter-to-class="opacity-100 translate-x-0"
-                leave-active-class="transition-all duration-200 ease-in"
+                leave-active-class="transition-all duration-150 ease-in"
                 leave-from-class="opacity-100 translate-x-0"
                 leave-to-class="opacity-0 translate-x-10"
             >
@@ -55,10 +55,10 @@
             </Transition>
 
             <Transition
-                enter-active-class="transition-all duration-500 ease-out"
+                enter-active-class="transition-all duration-400 ease-out"
                 enter-from-class="opacity-0 translate-x-10"
                 enter-to-class="opacity-100 translate-x-0"
-                leave-active-class="transition-all duration-200 ease-in"
+                leave-active-class="transition-all duration-150 ease-in"
                 leave-from-class="opacity-100 translate-x-0"
                 leave-to-class="opacity-0 translate-x-10"
             >
@@ -70,10 +70,10 @@
             </Transition>
 
             <Transition
-                enter-active-class="transition-all duration-500 ease-out delay-200"
+                enter-active-class="transition-all duration-400 ease-out delay-200"
                 enter-from-class="opacity-0 translate-x-10"
                 enter-to-class="opacity-100 translate-x-0"
-                leave-active-class="transition-all duration-200 ease-in"
+                leave-active-class="transition-all duration-150 ease-in"
                 leave-from-class="opacity-100 translate-x-0"
                 leave-to-class="opacity-0 translate-x-10"
             >
