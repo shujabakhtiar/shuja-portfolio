@@ -6,7 +6,9 @@
                 <p>{{ $t('projects.description') }}</p>
             </div>
         </div>
-        <div>
+        <div class="flex flex-col">
+            <ProjectCard/>
+            <ProjectCard/>
             <ProjectCard/>
         </div>
     </Section>

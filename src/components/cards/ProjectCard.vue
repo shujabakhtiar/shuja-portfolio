@@ -1,14 +1,41 @@
 <template>
     <div
-        class="flex flex-row justify-between items-center cursor-pointer py-8 perspective-[1000px]"
+        class="flex flex-row justify-between items-center cursor-pointer py-8 h-48"
         @mouseenter="isHovered = true"
         @mouseleave="isHovered = false"
     >
-        <div
-            class="font-bold transition-all duration-500 ease-in-out origin-center"
-            :class="isHovered ? 'text-8xl text-white [transform:rotateX(360deg)]' : 'text-7xl text-gray-500'"
-        >
-            Lumora
+        <div class="grid items-center pl-4">
+            <Transition
+                leave-active-class="transition duration-200 ease-in"
+                leave-from-class="opacity-100"
+                leave-to-class="opacity-0"
+                enter-active-class="transition duration-300 ease-out"
+                enter-from-class="opacity-0 -translate-y-8 translate-x-4"
+                enter-to-class="opacity-100 translate-y-0 translate-x-0"
+            >
+                <div
+                    v-show="!isHovered"
+                    class="font-bold text-7xl text-gray-500 col-start-1 row-start-1"
+                >
+                    Lumora
+                </div>
+            </Transition>
+
+            <Transition
+                enter-active-class="transition duration-500 ease-out"
+                enter-from-class="opacity-0 translate-y-8 -translate-x-4"
+                enter-to-class="opacity-100 translate-y-0 translate-x-0"
+                leave-active-class="transition duration-250 ease-in"
+                leave-from-class="opacity-100 translate-y-0 translate-x-0"
+                leave-to-class="opacity-0 translate-y-8 -translate-x-4"
+            >
+                <div
+                    v-show="isHovered"
+                    class="font-bold text-8xl text-white col-start-1 row-start-1"
+                >
+                    Lumora
+                </div>
+            </Transition>
         </div>
 
         <div class="flex flex-col gap-2 text-right justify-start">
