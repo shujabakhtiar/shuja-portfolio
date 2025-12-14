@@ -42,8 +42,8 @@ export default {
         experienceList: [
            {
             id: 1,
-            role: "Mid-level Software Engineer",
-            company: "Awsales - Nova Lima, Brazil (Hybrid)",
+            role: "Mid-weight Frontend developer",
+            company: "One Utility Bill (Hybrid)",
             duration: "Jul 2025 - Present",
             logo: "https://ui-avatars.com/api/?name=Aw&background=0D8ABC&color=fff", // Placeholder
             description: [
@@ -56,7 +56,7 @@ export default {
            {
             id: 2,
             role: "Software Engineer",
-            company: "Abrasel - Belo Horizonte, Brazil (On-site)",
+            company: "F1 Studioz - (Work from home)",
             duration: "Apr 2024 - Jul 2025",
             logo: "https://ui-avatars.com/api/?name=Ab&background=FF5722&color=fff", // Placeholder
             description: [
@@ -68,8 +68,8 @@ export default {
            },
            {
             id: 3,
-            role: "Software Engineer",
-            company: "Abrasel - Belo Horizonte, Brazil (On-site)",
+            role: "Lead Frontend Engineer",
+            company: "Starwisp Industries - (Work from home)",
             duration: "Apr 2024 - Jul 2025",
             logo: "https://ui-avatars.com/api/?name=Ab&background=FF5722&color=fff", // Placeholder
             description: [
