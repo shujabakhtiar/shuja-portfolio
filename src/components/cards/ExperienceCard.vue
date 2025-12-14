@@ -12,11 +12,14 @@
                 'sticky-header flex w-full items-start gap-4 transition-all duration-700 ease-out',
                 isLeft ? 'flex-row' : 'flex-row-reverse'
             ]"
-            :style="{ top: '20px' }"
+            :style="{ 
+                top: `${(cardIndex * 120)}px`,
+                zIndex: 20 + cardIndex
+            }"
         >
             <!-- Content Header (Role & Company) -->
             <div :class="[
-                'flex flex-col gap-1 flex-1 transition-all duration-700',
+                'flex bg-black flex-col gap-1 flex-1 transition-all duration-700',
                 isLeft ? 'pr-8 items-start text-left' : 'pl-8 items-start text-left'
             ]">
                 <h3 :class="[
@@ -57,15 +60,16 @@
 
         <!-- Collapsible Details Section -->
         <div 
-            :class="[
-                'details-section flex w-full gap-4 transition-all duration-700 overflow-hidden',
-                isLeft ? 'flex-row' : 'flex-row-reverse',
-                isCollapsed ? 'max-h-0 opacity-0 mt-0' : 'max-h-[2000px] opacity-100 mt-8'
-            ]"
+            class="details-section flex w-full gap-4 transition-all duration-700 overflow-visible"
+            :class="[isLeft ? 'flex-row' : 'flex-row-reverse']"
+            :style="{
+                opacity: isCollapsed ? 0 : 1,
+                pointerEvents: isCollapsed ? 'none' : 'auto'
+            }"
         >
             <!-- Description & Tags -->
             <div :class="[
-                'flex flex-col gap-4 pb-48 flex-1',
+                'flex flex-col gap-4 flex-1',
                 isLeft ? 'pr-8 items-start text-left' : 'pl-8 items-start text-left'
             ]">
                 <ul class="list-disc list-outside ml-5 space-y-3 my-4 marker:text-gray-500">
@@ -112,106 +116,27 @@ export default {
         isLast: {
             type: Boolean,
             default: false
+        },
+        cardIndex: {
+            type: Number,
+            default: 0
         }
     },
     data() {
         return {
             isCollapsed: false,
-            observer: null,
-            tagsObserver: null,
-            lastScrollY: 0,
-            scrollDirection: 'down',
-            hasJumpedToNext: false
+            observer: null
         };
     },
     mounted() {
         this.setupIntersectionObserver();
-        this.setupScrollListener();
-        this.setupTagsIntersectionObserver();
     },
     beforeUnmount() {
         if (this.observer) {
             this.observer.disconnect();
         }
-        if (this.tagsObserver) {
-            this.tagsObserver.disconnect();
-        }
-        window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
-        setupScrollListener() {
-            this.lastScrollY = window.scrollY;
-            window.addEventListener('scroll', this.handleScroll);
-        },
-        handleScroll() {
-            const currentScrollY = window.scrollY;
-            this.scrollDirection = currentScrollY > this.lastScrollY ? 'down' : 'up';
-            this.lastScrollY = currentScrollY;
-        },
-        setupTagsIntersectionObserver() {
-            // Don't set up for last card
-            if (this.isLast) {
-                return;
-            }
-
-            // Delay observer setup to prevent immediate triggering after mount
-            setTimeout(() => {
-                // Wait for next tick to ensure refs are available
-                this.$nextTick(() => {
-                    if (!this.$refs.tagsSection) {
-                        return;
-                    }
-
-                    const options = {
-                        root: null,
-                        rootMargin: '0px',
-                        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                    };
-
-                    this.tagsObserver = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (!this.hasJumpedToNext && this.scrollDirection === 'down' && entry.isIntersecting) {
-                                const rect = entry.boundingClientRect;
-                                
-                                // Only jump when tags section top is actually at or above 100px (behind the header)
-                                if (rect.top <= 100) {
-                                    this.hasJumpedToNext = true;
-                                    
-                                    // Disconnect observer immediately
-                                    if (this.tagsObserver) {
-                                        this.tagsObserver.disconnect();
-                                    }
-                                    
-                                    // Jump after a brief delay to ensure smooth transition
-                                    setTimeout(() => {
-                                        this.jumpToNextCard();
-                                    }, 100);
-                                }
-                            }
-                        });
-                    }, options);
-
-                    this.tagsObserver.observe(this.$refs.tagsSection);
-                });
-            }, 1500); // Wait 1.5 seconds before activating observer
-        },
-        jumpToNextCard() {
-            if (!this.$refs.cardContainer) {
-                return;
-            }
-
-            const nextCard = this.$refs.cardContainer.nextElementSibling;
-            
-            if (nextCard) {
-                const nextRect = nextCard.getBoundingClientRect();
-                const targetScrollY = window.scrollY + nextRect.top - 20;
-                
-                window.scrollTo({
-                    top: targetScrollY,
-                    behavior: 'smooth'
-                });
-            }
-        },
         setupIntersectionObserver() {
             // Last card never collapses
             if (this.isLast) {
@@ -221,29 +146,16 @@ export default {
             const options = {
                 root: null,
                 rootMargin: '0px 0px -40% 0px',
-                threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.7, 1]
+                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1]
             };
 
             this.observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    const rect = entry.boundingClientRect;
-                    const viewportHeight = window.innerHeight;
+                    // Only expand when card is well in view (more than 40% visible)
+                    const isWellInView = entry.isIntersecting && entry.intersectionRatio > 0.4;
                     
-                    if (this.scrollDirection === 'down') {
-                        // Only collapse when card is mostly scrolled past (top 10% of viewport)
-                        const isScrolledPast = rect.top < viewportHeight * 0.1;
-                        if (isScrolledPast) {
-                            this.isCollapsed = true;
-                        }
-                    } else {
-                        // Scroll up: expand when card center is visible or when top 50% is in view
-                        const cardCenter = rect.top + (rect.height / 2);
-                        const isCenterVisible = cardCenter > 0 && cardCenter < viewportHeight;
-                        const isTopHalfVisible = rect.top < viewportHeight * 0.5 && rect.bottom > viewportHeight * 0.2;
-                        
-                        if (entry.isIntersecting && (isCenterVisible || isTopHalfVisible)) {
-                            this.isCollapsed = false;
-                        }
+                    if (isWellInView) {
+                        this.isCollapsed = false;
                     }
                 });
             }, options);
@@ -258,7 +170,6 @@ export default {
 
 <style scoped>
 .experience-card-wrapper {
-    min-height: 150vh;
     margin-bottom: 6rem;
 }
 
@@ -270,15 +181,17 @@ export default {
 
 .sticky-header {
     position: sticky;
-    z-index: 10;
+    z-index: 20;
     /* Headers always stay visible, never disappear */
     visibility: visible !important;
     opacity: 1 !important;
+    /* Solid background to hide content scrolling behind */
 }
 
 .details-section {
-    transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                margin-top 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 10;
+    margin-top: 2rem;
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 </style>
