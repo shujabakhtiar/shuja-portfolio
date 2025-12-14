@@ -1,5 +1,5 @@
 <template>
-    <div class="w-screen min-h-screen bg-black text-white about-section"
+    <div class="w-screen min-h-screen section text-white about-section"
     :class="borderRadiusOnTop ? 'rounded-t-3xl' : '', borderRadiusOnBottom ? 'rounded-b-3xl' : ''">
     <div class="flex flex-col py-16 px-10 gap-16">
       <div class="text-8xl font-bold">{{ title }}</div>

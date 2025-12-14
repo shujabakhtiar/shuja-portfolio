@@ -10,8 +10,8 @@
             isLeft ? 'pr-8 items-start text-left' : 'pl-8 items-start text-left'
         ]">
             <div class="flex flex-col items-start gap-1">
-                <h3 class="text-5xl font-bold text-white leading-tight">{{ role }}</h3>
-                <h4 class="text-gray-400 text-xl">{{ company }}</h4>
+                <h3 class="text-5xl font-bold text-primary leading-tight">{{ role }}</h3>
+                <h4 class="text-secondary text-xl">{{ company }}</h4>
             </div>
             
             <ul class="list-disc list-outside ml-5 space-y-3 my-4 marker:text-gray-500">
@@ -21,7 +21,7 @@
             </ul>
 
             <div class="flex flex-wrap gap-3 mt-2">
-                <Tag v-for="tag in skillTags" :key="tag" customClasses="!bg-orange-500 !text-white !border-none !text-sm !px-4 !py-1.5">
+                <Tag v-for="tag in skillTags" :key="tag">
                     {{ tag }}
                 </Tag>
             </div>
@@ -29,9 +29,8 @@
 
         <!-- Timeline Icon -->
         <div class="flex-none flex justify-center relative self-start">
-             <div class="w-12 h-12 rounded-full border-2 border-orange-500 bg-[#0a0a0a] z-10 flex items-center justify-center overflow-hidden">
-                <img v-if="logo && logo.startsWith('http')" :src="logo" class="w-full h-full object-cover" alt="Company Logo" />
-                <span v-else class="text-orange-500 text-sm font-bold">{{ company.substring(0,2).toUpperCase() }}</span>
+             <div class="w-12 h-12 rounded-full border-2 border-subtle bg-gray-400 z-10 flex items-center justify-center overflow-hidden">
+                <span class="border-strong text-sm font-bold">{{ company.substring(0,2).toUpperCase() }}</span>
              </div>
         </div>
 

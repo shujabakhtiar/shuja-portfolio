@@ -3,13 +3,27 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light;
-  color: #000000;
-  background-color: #ffffff;
+  /* Backgrounds */
+  --bg-section: black;
+  --bg-surface: #240010;
+  --bg-card: #2e0015;
+
+  /* Text */
+  --text-primary: #f5e9ed;
+  --text-secondary: #c9aeb6;
+  --text-muted: #8a6f77;
+
+  /* Borders */
+  --border-subtle: #b6b6b6;
+  --border-strong: #5a2431;
+
+  color-scheme: dark;
+  color: var(--text-primary);
+  background-color: #e8e8e2;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,4 +36,20 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
+}
+
+.section {
+  background-color: var(--bg-section);
+}
+.text-primary {
+  color: var(--text-primary);
+}
+.text-secondary {
+  color: var(--text-secondary);
+}
+.border-subtle {
+  border-color: var(--border-subtle);
+}
+.border-strong {
+  border-color: var(--border-strong);
 }
