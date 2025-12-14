@@ -74,7 +74,7 @@
                     </li>
                 </ul>
 
-                <div class="flex flex-wrap gap-3 mt-2">
+                <div ref="tagsSection" class="flex flex-wrap gap-3 mt-2">
                     <Tag v-for="tag in skillTags" :key="tag">
                         {{ tag }}
                     </Tag>
@@ -118,17 +118,23 @@ export default {
         return {
             isCollapsed: false,
             observer: null,
+            tagsObserver: null,
             lastScrollY: 0,
-            scrollDirection: 'down'
+            scrollDirection: 'down',
+            hasJumpedToNext: false
         };
     },
     mounted() {
         this.setupIntersectionObserver();
         this.setupScrollListener();
+        this.setupTagsIntersectionObserver();
     },
     beforeUnmount() {
         if (this.observer) {
             this.observer.disconnect();
+        }
+        if (this.tagsObserver) {
+            this.tagsObserver.disconnect();
         }
         window.removeEventListener('scroll', this.handleScroll);
     },
@@ -141,6 +147,70 @@ export default {
             const currentScrollY = window.scrollY;
             this.scrollDirection = currentScrollY > this.lastScrollY ? 'down' : 'up';
             this.lastScrollY = currentScrollY;
+        },
+        setupTagsIntersectionObserver() {
+            // Don't set up for last card
+            if (this.isLast) {
+                return;
+            }
+
+            // Delay observer setup to prevent immediate triggering after mount
+            setTimeout(() => {
+                // Wait for next tick to ensure refs are available
+                this.$nextTick(() => {
+                    if (!this.$refs.tagsSection) {
+                        return;
+                    }
+
+                    const options = {
+                        root: null,
+                        rootMargin: '0px',
+                        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+                    };
+
+                    this.tagsObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (!this.hasJumpedToNext && this.scrollDirection === 'down' && entry.isIntersecting) {
+                                const rect = entry.boundingClientRect;
+                                
+                                // Only jump when tags section top is actually at or above 100px (behind the header)
+                                if (rect.top <= 100) {
+                                    this.hasJumpedToNext = true;
+                                    
+                                    // Disconnect observer immediately
+                                    if (this.tagsObserver) {
+                                        this.tagsObserver.disconnect();
+                                    }
+                                    
+                                    // Jump after a brief delay to ensure smooth transition
+                                    setTimeout(() => {
+                                        this.jumpToNextCard();
+                                    }, 100);
+                                }
+                            }
+                        });
+                    }, options);
+
+                    this.tagsObserver.observe(this.$refs.tagsSection);
+                });
+            }, 1500); // Wait 1.5 seconds before activating observer
+        },
+        jumpToNextCard() {
+            if (!this.$refs.cardContainer) {
+                return;
+            }
+
+            const nextCard = this.$refs.cardContainer.nextElementSibling;
+            
+            if (nextCard) {
+                const nextRect = nextCard.getBoundingClientRect();
+                const targetScrollY = window.scrollY + nextRect.top - 20;
+                
+                window.scrollTo({
+                    top: targetScrollY,
+                    behavior: 'smooth'
+                });
+            }
         },
         setupIntersectionObserver() {
             // Last card never collapses
