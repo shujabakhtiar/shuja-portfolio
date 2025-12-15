@@ -136,6 +136,16 @@ export default {
         };
     },
     mounted() {
+        // Initialize at center so it originates from center instead of top-left (0,0)
+        const rect = this.$el.getBoundingClientRect();
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        this.mouseX = centerX;
+        this.mouseY = centerY;
+        this.targetX = centerX;
+        this.targetY = centerY;
+
         this.animate();
     },
     beforeUnmount() {
@@ -155,12 +165,6 @@ export default {
             
             this.targetX = centerX + (x - centerX) * dampening;
             this.targetY = centerY + (y - centerY) * dampening;
-
-            // Initialize position on first interaction to prevent jumping
-            if (this.mouseX === 0 && this.mouseY === 0) {
-                this.mouseX = this.targetX;
-                this.mouseY = this.targetY;
-            }
         },
         animate() {
             // Smooth lerp: current = current + (target - current) * factor
