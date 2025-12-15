@@ -140,10 +140,10 @@ export default {
         setupObserver() {
             const options = {
                 root: null,
-                // Adjusted rootMargin for better scroll-up behavior
-                // Top: -20% (triggers expansion earlier when scrolling up)
-                // Bottom: -45% (keeps shrink trigger reasonable when scrolling down)
-                rootMargin: '-20% 0px -45% 0px',
+                // Adjusted rootMargin for precise control
+                // Top: -45% (Delays expansion on scroll up until card is halfway down)
+                // Bottom: -10% (Triggers shrink immediately on scroll down)
+                rootMargin: '-45% 0px -10% 0px',
                 threshold: 0
             };
 
