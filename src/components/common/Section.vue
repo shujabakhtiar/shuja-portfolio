@@ -48,14 +48,16 @@ export default {
     mounted() {
         this.observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
+                // Use isIntersecting with rootMargin for robust detection of tall sections
+                if (entry.isIntersecting) {
                     if (entry.boundingClientRect.top > 0) {
                         this.smoothScrollTo(entry.target);
                     }
                 }
             });
         }, {
-            threshold: 0.4
+            threshold: 0,
+            rootMargin: '0px 0px -40% 0px'
         });
         
         this.observer.observe(this.$el);
