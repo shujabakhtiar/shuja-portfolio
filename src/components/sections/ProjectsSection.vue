@@ -20,8 +20,13 @@
             </div>
 
             <ProjectCard
-                v-for="(n, index) in 3"
+                v-for="(project, index) in projects"
                 :key="index"
+                :title="project.title"
+                :description="project.description"
+                :tags="project.tags"
+                :liveSite="project.liveSite"
+                :imageColor="project.imageColor"
                 @mouseenter="hoveredIndex = index"
             />
         </div>
@@ -39,6 +44,29 @@ export default {
     data() {
         return {
             hoveredIndex: null,
+            projects: [
+                {
+                    title: "Lumora",
+                    description: "",
+                    tags: ["Vue js", "Node js", "MongoDB"],
+                    liveSite: "https://lumora.com",
+                    imageColor: "bg-blue-500",
+                },
+                {
+                    title: "Alexdota",
+                    description: "",
+                    tags: ["React js", "Node js", "MongoDB"],
+                    liveSite: "https://alexdota.com",
+                    imageColor: "bg-red-500",
+                },
+                {
+                    title: "AI Chatbot",
+                    description: "",
+                    tags: ["React js", "Node js", "MongoDB"],
+                    liveSite: "https://ai-chatbot.com",
+                    imageColor: "bg-yellow-500",
+                },
+            ]
         };
     },
 }
