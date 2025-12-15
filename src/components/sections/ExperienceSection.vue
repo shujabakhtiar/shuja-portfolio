@@ -52,6 +52,9 @@
                 />
             </div>
         </template>
+        
+        <!-- End Marker to trigger last card shrink -->
+        <div ref="endMarker" class="h-1 w-full relative z-0 -mt-32"></div>
       </div>
    </Section>
 </template>
@@ -141,18 +144,15 @@ export default {
             this.observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Find the index of the intersecting element
-                        const index = this.bodyRefs.findIndex(ref => ref === entry.target);
-                        if (index !== -1) {
-                            // If multiple cards are visible, we want the one further down to trigger the shrink
-                            // But usually we want to track the "current" reading card.
-                            // If we scroll down to card 2, index 1 becomes active.
-                            // If index 1 is active, index 0 (predecessor) should be compact.
-                            // So activeIndex = index.
-                            
-                            // We only update if the new index is greater than or equal to current?
-                            // No, scrolling up should expand them back.
-                            this.activeIndex = index;
+                        if (entry.target === this.$refs.endMarker) {
+                            // If end marker is visible, shrink all cards (including the last one)
+                            this.activeIndex = this.experienceList.length;
+                        } else {
+                            // Find the index of the intersecting element
+                            const index = this.bodyRefs.findIndex(ref => ref === entry.target);
+                            if (index !== -1) {
+                                this.activeIndex = index;
+                            }
                         }
                     }
                 });
@@ -161,6 +161,10 @@ export default {
             this.bodyRefs.forEach(ref => {
                 if (ref) this.observer.observe(ref);
             });
+            
+            if (this.$refs.endMarker) {
+                this.observer.observe(this.$refs.endMarker);
+            }
         }
     }
 }
