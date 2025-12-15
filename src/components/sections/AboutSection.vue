@@ -1,13 +1,5 @@
 <template>
-  <Section :title="$t('about.title')" :border-radius-on-top="true">
-      <div class="flex justify-end">
-        <div class="flex flex-row gap-2 max-w-[40%]">
-          <p>{{ $t('about.services') }}</p>
-          <div>
-          <p>{{ $t('about.description') }}</p>
-          </div>
-        </div>
-      </div>
+  <Section :title="$t('about.title')" :border-radius-on-top="true" :subtitle="$t('about.services')" :description="$t('about.description')">
       <div v-if="false" class="grid grid-cols-[40%_60%] gap-12" v-for="skillSet in $tm('about.skillSet')">
         <div class="text-6xl font-bold">
           ({{ String(skillSet.id).padStart(2, '0') }})
