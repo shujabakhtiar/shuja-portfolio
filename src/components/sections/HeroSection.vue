@@ -50,7 +50,9 @@
             class="hero-container justify-self-center transition-all duration-700 ease-out delay-700"
             :class="showContent ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-20'"
         >
-            Image
+            <div class="w-[200px] h-[200px] bg-red-500">
+                Image
+            </div>
         </div>
         <div 
             class="hero-container justify-self-end gap-4 transition-all duration-700 ease-out delay-700"
