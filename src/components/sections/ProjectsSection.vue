@@ -57,7 +57,7 @@ export default {
                     description: "",
                     tags: ["React js", "Node js", "MongoDB"],
                     liveSite: "https://alexdota.com",
-                    imageColor: "bg-red-500",
+                    imageColor: "bg-green-500",
                 },
                 {
                     title: "AI Chatbot",
