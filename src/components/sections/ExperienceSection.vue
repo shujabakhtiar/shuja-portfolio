@@ -136,8 +136,10 @@ export default {
         setupObserver() {
             const options = {
                 root: null,
-                // Trigger when the card crosses the middle of the screen
-                rootMargin: '-40% 0px -40% 0px',
+                // Adjusted rootMargin for better scroll-up behavior
+                // Top: -20% (triggers expansion earlier when scrolling up)
+                // Bottom: -45% (keeps shrink trigger reasonable when scrolling down)
+                rootMargin: '-20% 0px -45% 0px',
                 threshold: 0
             };
 
@@ -145,10 +147,8 @@ export default {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         if (entry.target === this.$refs.endMarker) {
-                            // If end marker is visible, shrink all cards (including the last one)
                             this.activeIndex = this.experienceList.length;
                         } else {
-                            // Find the index of the intersecting element
                             const index = this.bodyRefs.findIndex(ref => ref === entry.target);
                             if (index !== -1) {
                                 this.activeIndex = index;
