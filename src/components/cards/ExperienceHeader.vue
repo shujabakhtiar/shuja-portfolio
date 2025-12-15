@@ -12,21 +12,36 @@
         <!-- Content Header (Role & Company) -->
         <div :class="[
             'flex flex-col gap-1 flex-1 transition-all duration-700',
-            isLeft ? 'pr-8 items-start text-left' : 'pl-8 items-end text-right'
+            isLeft ? 'pr-8' : 'pl-8'
         ]">
-            <h3 :class="[
-                'font-bold text-white leading-tight transition-all duration-700',
-                isLeft ? 'origin-left' : 'origin-right',
-                isCompact ? 'text-2xl' : 'text-4xl md:text-5xl'
+            <!-- Flex Container for Spacer + Text -->
+            <div :class="[
+                'flex w-full transition-all duration-700',
+                isLeft ? 'flex-row' : 'flex-row-reverse'
             ]">
-                {{ role }}
-            </h3>
-            <p :class="[
-                'text-gray-400 font-light transition-all duration-700',
-                isCompact ? 'text-sm mt-0' : 'text-xl mt-2'
-            ]">
-                {{ company }}
-            </p>
+                <!-- Spacer (Pushes text to the other side when compact) -->
+                <div :class="[
+                    'transition-all duration-700',
+                    isCompact ? 'flex-[1]' : 'flex-[0] w-0'
+                ]"></div>
+
+                <!-- Text Wrapper -->
+                <div class="flex flex-col w-fit flex-shrink-0">
+                    <h3 :class="[
+                        'font-bold text-white leading-tight transition-all duration-700 whitespace-nowrap',
+                        isLeft ? 'origin-left' : 'origin-right',
+                        isCompact ? 'text-2xl' : 'text-4xl md:text-5xl'
+                    ]">
+                        {{ role }}
+                    </h3>
+                    <p :class="[
+                        'text-gray-400 font-light transition-all duration-700 whitespace-nowrap',
+                        isCompact ? 'text-sm mt-0' : 'text-xl mt-2'
+                    ]">
+                        {{ company }}
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!-- Logo -->
