@@ -47,7 +47,7 @@
         <!-- Logo -->
         <div class="relative flex-shrink-0">
             <div :class="[
-                'rounded-full overflow-hidden border-2 border-orange-500/20 bg-neutral-900 p-1 transition-all duration-700',
+                'rounded-full overflow-hidden border-2 border-strong bg-neutral-900 p-1 transition-all duration-700',
                 isCompact ? 'w-12 h-12' : 'w-16 h-16'
             ]">
                 <img 
@@ -58,10 +58,10 @@
             </div>
             <!-- Connector Line Point -->
             <div 
-                class="absolute top-1/2 w-4 h-4 rounded-full bg-orange-500 transform -translate-y-1/2"
+                class="absolute top-1/2 w-4 h-4 rounded-full bg-border-strong transform -translate-y-1/2"
                 :class="isLeft ? '-right-10' : '-left-10'"
             >
-                <div class="absolute inset-0 rounded-full bg-orange-500 animate-ping opacity-20"></div>
+                <div class="absolute inset-0 rounded-full bg-border-strong animate-ping opacity-20"></div>
             </div>
         </div>
 

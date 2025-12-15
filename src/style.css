@@ -19,7 +19,7 @@
 
   /* Borders */
   --border-subtle: #b6b6b6;
-  --border-strong: #5a2431;
+  --border-strong: #52525b; /* Zinc-600 */
 
   color-scheme: dark;
   color: var(--text-primary);
@@ -52,4 +52,7 @@ body {
 }
 .border-strong {
   border-color: var(--border-strong);
+}
+.bg-border-strong {
+  background-color: var(--border-strong);
 }

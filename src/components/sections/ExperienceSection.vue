@@ -2,7 +2,7 @@
    <Section :title="$t('experience.title')" :subtitle="$t('experience.label')" :description="$t('experience.description')">
       <div class="relative flex flex-col gap-0 items-center">
         <!-- Central Line Background -->
-        <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-orange-500/30"></div>
+        <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-border-strong opacity-30"></div>
 
         <template v-for="(exp, index) in experienceList" :key="exp.id">
             <!-- Sticky Header -->
