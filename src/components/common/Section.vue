@@ -42,15 +42,21 @@ export default {
     },
     data() {
         return {
-            observer: null
+            observer: null,
+            lastScrollY: 0,
+            isScrollingDown: false
         }
     },
     mounted() {
+        window.addEventListener('scroll', this.handleScroll, { passive: true });
+        this.lastScrollY = window.scrollY;
+
         this.observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 // Use isIntersecting with rootMargin for robust detection of tall sections
                 if (entry.isIntersecting) {
-                    if (entry.boundingClientRect.top > 0) {
+                    // Only snap if entering from the bottom AND scrolling down
+                    if (entry.boundingClientRect.top > 0 && this.isScrollingDown) {
                         this.smoothScrollTo(entry.target);
                     }
                 }
@@ -63,11 +69,17 @@ export default {
         this.observer.observe(this.$el);
     },
     beforeUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
         if (this.observer) {
             this.observer.disconnect();
         }
     },
     methods: {
+        handleScroll() {
+            const currentScrollY = window.scrollY;
+            this.isScrollingDown = currentScrollY > this.lastScrollY;
+            this.lastScrollY = currentScrollY;
+        },
         smoothScrollTo(element) {
             const targetPosition = element.getBoundingClientRect().top + window.scrollY;
             const startPosition = window.scrollY;
