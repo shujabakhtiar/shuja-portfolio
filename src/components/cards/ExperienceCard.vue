@@ -6,58 +6,6 @@
             isLeft ? 'flex-row' : 'flex-row-reverse'
         ]"
     >
-        <!-- Sticky Header Section -->
-        <div 
-            :class="[
-                'sticky-header flex w-full items-start gap-4 transition-all duration-700 ease-out',
-                isLeft ? 'flex-row' : 'flex-row-reverse'
-            ]"
-            :style="{ 
-                top: `${(cardIndex * 120)}px`,
-                zIndex: 20 + cardIndex
-            }"
-        >
-            <!-- Content Header (Role & Company) -->
-            <div :class="[
-                'flex bg-black flex-col gap-1 flex-1 transition-all duration-700',
-                isLeft ? 'pr-8 items-start text-left' : 'pl-8 items-start text-left'
-            ]">
-                <h3 :class="[
-                    'font-bold text-white leading-tight transition-all duration-700',
-                    isCollapsed ? 'text-3xl' : 'text-5xl'
-                ]">{{ role }}</h3>
-                <h4 :class="[
-                    'text-gray-400 transition-all duration-700',
-                    isCollapsed ? 'text-base' : 'text-xl'
-                ]">{{ company }}</h4>
-            </div>
-
-            <!-- Timeline Icon -->
-            <div class="flex-none flex justify-center relative self-start">
-                <div :class="[
-                    'rounded-full border-2 border-orange-500 bg-[#0a0a0a] z-10 flex items-center justify-center overflow-hidden transition-all duration-700',
-                    isCollapsed ? 'w-10 h-10' : 'w-12 h-12'
-                ]">
-                    <img v-if="logo && logo.startsWith('http')" :src="logo" class="w-full h-full object-cover" alt="Company Logo" />
-                    <span :class="[
-                        'text-orange-500 font-bold transition-all duration-700',
-                        isCollapsed ? 'text-xs' : 'text-sm'
-                    ]">{{ company.substring(0,2).toUpperCase() }}</span>
-                </div>
-            </div>
-
-            <!-- Date Block -->
-            <div :class="[
-                'flex flex-col pt-2 flex-1 transition-all duration-700',
-                isLeft ? 'pl-8 items-start text-left' : 'pr-8 items-end text-right'
-            ]">
-                <span :class="[
-                    'text-white font-bold transition-all duration-700',
-                    isCollapsed ? 'text-lg' : 'text-2xl'
-                ]">{{ duration }}</span>
-            </div>
-        </div>
-
         <!-- Collapsible Details Section -->
         <div 
             class="details-section flex w-full gap-4 transition-all duration-700 overflow-visible"
@@ -175,7 +123,6 @@ export default {
 
 /* Last card has shorter height for smooth transition to next section */
 .experience-card-wrapper:last-child {
-    min-height: 80vh;
     margin-bottom: 2rem;
 }
 

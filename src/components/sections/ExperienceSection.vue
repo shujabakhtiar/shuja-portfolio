@@ -12,38 +12,71 @@
         <!-- Central Line Background -->
         <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-orange-500/30"></div>
 
-        <ExperienceCard
-            v-for="(exp, index) in experienceList" 
-            :key="exp.id"
-            :role="exp.role"
-            :company="exp.company"
-            :duration="exp.duration"
-            :description="exp.description"
-            :skillTags="exp.skillTags"
-            :logo="exp.logo"
-            :is-left="index % 2 === 0"
-            :is-last="index === experienceList.length - 1"
-        />
+        <template v-for="(exp, index) in experienceList" :key="exp.id">
+            <!-- Sticky Header -->
+            <div 
+                class="sticky w-full"
+                :style="{
+                    top: `${index * 64}px`,
+                    zIndex: 20 + index
+                }"
+            >
+                <ExperienceHeader
+                    :role="exp.role"
+                    :company="exp.company"
+                    :duration="exp.duration"
+                    :logo="exp.logo"
+                    :is-left="index % 2 === 0"
+                    :is-compact="index < activeIndex"
+                />
+            </div>
+
+            <!-- Scrollable Body -->
+            <div 
+                :ref="(el) => setBodyRef(el, index)"
+                class="w-full relative z-10"
+                :style="{
+                    background: 'linear-gradient(90deg, var(--bg-section) calc(50% - 1px), transparent calc(50% - 1px), transparent calc(50% + 1px), var(--bg-section) calc(50% + 1px))'
+                }"
+            >
+                <ExperienceCard
+                    :role="exp.role"
+                    :company="exp.company"
+                    :duration="exp.duration"
+                    :description="exp.description"
+                    :skillTags="exp.skillTags"
+                    :logo="exp.logo"
+                    :is-left="index % 2 === 0"
+                    :is-last="index === experienceList.length - 1"
+                    :card-index="index"
+                />
+            </div>
+        </template>
       </div>
    </Section>
 </template>
 <script>
 import ExperienceCard from "@/components/cards/ExperienceCard.vue";
+import ExperienceHeader from "@/components/cards/ExperienceHeader.vue";
 import Section from "@/components/common/Section.vue";
 
 export default {
     name: "ExperienceSection",
     components: {
         ExperienceCard,
+        ExperienceHeader,
         Section,
     },
     data() {
       return {
+        activeIndex: 0,
+        bodyRefs: [],
+        observer: null,
         experienceList: [
            {
             id: 1,
-            role: "Mid-weight Frontend developer",
-            company: "One Utility Bill (Hybrid)",
+            role: "Mid-level Software Engineer",
+            company: "Awsales - Nova Lima, Brazil (Hybrid)",
             duration: "Jul 2025 - Present",
             logo: "https://ui-avatars.com/api/?name=Aw&background=0D8ABC&color=fff", // Placeholder
             description: [
@@ -56,7 +89,7 @@ export default {
            {
             id: 2,
             role: "Software Engineer",
-            company: "F1 Studioz - (Work from home)",
+            company: "Abrasel - Belo Horizonte, Brazil (On-site)",
             duration: "Apr 2024 - Jul 2025",
             logo: "https://ui-avatars.com/api/?name=Ab&background=FF5722&color=fff", // Placeholder
             description: [
@@ -68,8 +101,8 @@ export default {
            },
            {
             id: 3,
-            role: "Lead Frontend Engineer",
-            company: "Starwisp Industries - (Work from home)",
+            role: "Software Engineer",
+            company: "Abrasel - Belo Horizonte, Brazil (On-site)",
             duration: "Apr 2024 - Jul 2025",
             logo: "https://ui-avatars.com/api/?name=Ab&background=FF5722&color=fff", // Placeholder
             description: [
@@ -81,6 +114,54 @@ export default {
            }
         ]
       }
+    },
+    beforeUpdate() {
+        this.bodyRefs = [];
+    },
+    mounted() {
+        this.setupObserver();
+    },
+    beforeUnmount() {
+        if (this.observer) {
+            this.observer.disconnect();
+        }
+    },
+    methods: {
+        setBodyRef(el, index) {
+            if (el) this.bodyRefs[index] = el;
+        },
+        setupObserver() {
+            const options = {
+                root: null,
+                // Trigger when the card crosses the middle of the screen
+                rootMargin: '-40% 0px -40% 0px',
+                threshold: 0
+            };
+
+            this.observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Find the index of the intersecting element
+                        const index = this.bodyRefs.findIndex(ref => ref === entry.target);
+                        if (index !== -1) {
+                            // If multiple cards are visible, we want the one further down to trigger the shrink
+                            // But usually we want to track the "current" reading card.
+                            // If we scroll down to card 2, index 1 becomes active.
+                            // If index 1 is active, index 0 (predecessor) should be compact.
+                            // So activeIndex = index.
+                            
+                            // We only update if the new index is greater than or equal to current?
+                            // No, scrolling up should expand them back.
+                            this.activeIndex = index;
+                        }
+                    }
+                });
+            }, options);
+
+            this.bodyRefs.forEach(ref => {
+                if (ref) this.observer.observe(ref);
+            });
+        }
     }
 }
 </script>
