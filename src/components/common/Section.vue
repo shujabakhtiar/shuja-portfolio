@@ -39,6 +39,59 @@ export default {
             type: String,
             required: true
         }
+    },
+    data() {
+        return {
+            observer: null
+        }
+    },
+    mounted() {
+        this.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
+                    if (entry.boundingClientRect.top > 0) {
+                        this.smoothScrollTo(entry.target);
+                    }
+                }
+            });
+        }, {
+            threshold: 0.4
+        });
+        
+        this.observer.observe(this.$el);
+    },
+    beforeUnmount() {
+        if (this.observer) {
+            this.observer.disconnect();
+        }
+    },
+    methods: {
+        smoothScrollTo(element) {
+            const targetPosition = element.getBoundingClientRect().top + window.scrollY;
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            const duration = 1000; // 1000ms for a natural, premium feel
+            let start = null;
+
+            const step = (timestamp) => {
+                if (!start) start = timestamp;
+                const progress = timestamp - start;
+                // Ease Out Quart: 1 - (1 - t)^4
+                // Starts fast, slows down very gently
+                const ease = (t) => 1 - Math.pow(1 - t, 4);
+                
+                const currentProgress = Math.min(progress / duration, 1);
+                const easedProgress = ease(currentProgress);
+
+                window.scrollTo(0, startPosition + distance * easedProgress);
+
+                if (progress < duration) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+
+            window.requestAnimationFrame(step);
+        }
     }
 }
 </script>   
