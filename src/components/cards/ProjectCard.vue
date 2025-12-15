@@ -3,8 +3,7 @@
         class="relative flex flex-row justify-between items-center cursor-pointer py-8 h-48"
         @mouseenter="isHovered = true"
         @mouseleave="isHovered = false"
-        @mousemove="handleMouseMove"
-    >
+        @mousemove="handleMouseMove">
         <div class="grid items-center pl-4">
             <Transition
                 leave-active-class="transition duration-300 ease-in"
@@ -12,12 +11,10 @@
                 leave-to-class="opacity-0"
                 enter-active-class="transition duration-500 ease-out delay-300"
                 enter-from-class="opacity-0 -translate-y-8 translate-x-4"
-                enter-to-class="opacity-100 translate-y-0 translate-x-0"
-            >
+                enter-to-class="opacity-100 translate-y-0 translate-x-0">
                 <div
                     v-show="!isHovered"
-                    class="font-bold text-7xl text-gray-500 col-start-1 row-start-1"
-                >
+                    class="font-bold text-7xl text-gray-500 col-start-1 row-start-1">
                     {{ title }}
                 </div>
             </Transition>
@@ -28,12 +25,10 @@
                 enter-to-class="opacity-100 translate-y-0 translate-x-0"
                 leave-active-class="transition duration-300 ease-in"
                 leave-from-class="opacity-100 translate-y-0 translate-x-0"
-                leave-to-class="opacity-0 translate-y-8 -translate-x-4"
-            >
+                leave-to-class="opacity-0 translate-y-8 -translate-x-4">
                 <div
                     v-show="isHovered"
-                    class="font-bold text-8xl text-white col-start-1 row-start-1"
-                >
+                    class="font-bold text-8xl text-white col-start-1 row-start-1">
                     {{ title }}
                 </div>
             </Transition>
@@ -46,20 +41,17 @@
             enter-to-class="opacity-100 scale-100"
             leave-active-class="transition-all duration-200 ease-in"
             leave-from-class="opacity-100 scale-100"
-            leave-to-class="opacity-0 scale-50"
-        >
+            leave-to-class="opacity-0 scale-50">
             <div 
                 v-show="isHovered"
-                class="cursor-follower w-[400px] h-[250px] absolute pointer-events-none rounded-lg"
+                class="cursor-follower w-[400px] aspect-video absolute pointer-events-none rounded-lg shadow-2xl"
                 :class="imageColor"
                 :style="{
                     left: `${mouseX}px`,
                     top: `${mouseY}px`,
-                    transform: 'translate(-50%, -50%)',
-                    transition: 'left 0.2s ease-out, top 0.2s ease-out'
+                    transform: 'translate(-50%, -50%)'
                 }"
-            >
-            </div>
+            ></div>
         </Transition>
 
         <div class="flex flex-col gap-2 text-right justify-start">
@@ -111,13 +103,6 @@ export default {
     components: {
         Tag,
     },
-    data() {
-        return {
-            isHovered: false,
-            mouseX: 0,
-            mouseY: 0,
-        };
-    },
     props: {
         title: {
             type: String,
@@ -140,12 +125,52 @@ export default {
             required: true,
         }
     },
+    data() {
+        return {
+            isHovered: false,
+            mouseX: 0,
+            mouseY: 0,
+            targetX: 0,
+            targetY: 0,
+            rafId: null
+        };
+    },
+    mounted() {
+        this.animate();
+    },
+    beforeUnmount() {
+        if (this.rafId) cancelAnimationFrame(this.rafId);
+    },
     methods: {
         handleMouseMove(event) {
-            // Get mouse position relative to the card
             const rect = event.currentTarget.getBoundingClientRect();
-            this.mouseX = event.clientX - rect.left;
-            this.mouseY = event.clientY - rect.top;
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Relaxed dampening (0.4) allows more movement while keeping it centered
+            const dampening = 0.4;
+            
+            this.targetX = centerX + (x - centerX) * dampening;
+            this.targetY = centerY + (y - centerY) * dampening;
+
+            // Initialize position on first interaction to prevent jumping
+            if (this.mouseX === 0 && this.mouseY === 0) {
+                this.mouseX = this.targetX;
+                this.mouseY = this.targetY;
+            }
+        },
+        animate() {
+            // Smooth lerp: current = current + (target - current) * factor
+            // 0.1 gives a nice weighty feel
+            const factor = 0.1;
+            
+            this.mouseX += (this.targetX - this.mouseX) * factor;
+            this.mouseY += (this.targetY - this.mouseY) * factor;
+            
+            this.rafId = requestAnimationFrame(this.animate);
         }
     }
 }
