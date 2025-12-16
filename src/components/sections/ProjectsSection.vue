@@ -1,11 +1,5 @@
 <template>
-    <Section :title="$t('projects.title')">
-        <div class="flex justify-end">
-            <div class="flex flex-row gap-2 max-w-[40%]">
-                <p>{{ $t('projects.label') }}</p>
-                <p>{{ $t('projects.description') }}</p>
-            </div>
-        </div>
+    <Section :title="$t('projects.title')" :description="$t('projects.description')" :subtitle="$t('projects.subtitle')">
         <div class="flex flex-col relative" @mouseleave="hoveredIndex = null">
             <!-- Shared Moving Border -->
             <div
