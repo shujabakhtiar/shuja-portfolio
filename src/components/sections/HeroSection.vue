@@ -6,7 +6,7 @@
  >
     <div class="w-full h-full flex flex-col items-center justify-center px-5">
       <div class="mb-12 w-full justify-start">
-        <div class="w-[50%]">
+        <div class="w-full lg:w-[50%]">
             <h1>
             <span 
                 v-for="(char, index) in $t('hero.role').split('')" 
@@ -24,9 +24,9 @@
         </h1>
         </div>
       </div>
-      <div class="flex justify-between w-full items-center">
-    
-        <div class="xl:h-[100px] xl:w-[100px] 2xl:w-[125px] 2xl:h-[125px] flex items-center justify-center relative">
+      <div class="absolute left-0 bottom-[60px] right-0 flex 
+                items-end lg:items-start justify-between px-[30px] lg:px-[60px]">
+        <div class="h-[80px] w-[80px] xl:h-[100px] xl:w-[100px] 2xl:w-[125px] 2xl:h-[125px] flex items-center justify-center relative">
             <div class="animate-[spin_10s_linear_infinite]">
                 <svg height="100" width="100">
                     <path id="ellipse-id-r2-" style="fill: none;" d="M0 50a50 50 0 1 0 100 0a50 50 0 1 0 -100 0"></path>
@@ -45,9 +45,16 @@
             class="hero-container justify-self-end gap-4 transition-all duration-700 ease-out delay-700"
             :class="showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'"
         >
-          <p>{{ $t('hero.links.linkedin') }}</p>
-          <p>{{ $t('hero.links.github') }}</p>
-          <p>{{ $t('hero.links.twitter') }}</p>
+          <div class="block lg:hidden">
+            <div class="flex gap-4">
+                <img src="/icons/linkedin.svg" alt="LinkedIn" class="w-6 h-6" />
+                <img src="/icons/github.svg" alt="GitHub" class="w-6 h-6" />
+            </div>
+          </div>
+          <div class="hidden lg:flex gap-4">
+              <p>{{ $t('hero.links.linkedin') }}</p>
+              <p>{{ $t('hero.links.github') }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -80,7 +87,8 @@ export default {
   }
   h1 {
     text-transform: uppercase;
-    font-size: 8rem;
+    font-size: clamp(3rem, 11vw, 8rem);
+    line-height: 0.9;
     font-weight: 1000;
     letter-spacing: -0.02em;
     color: #000;
