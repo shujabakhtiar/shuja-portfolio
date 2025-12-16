@@ -25,11 +25,11 @@ export default {
     components: {
         TopNavBar,
         HeroSection,
-        // AboutSection,
-        // ExperienceSection,
-        // ProjectsSection,
-        // ArsenalSection,
-        // ContactSection,
+        AboutSection,
+        ExperienceSection,
+        ProjectsSection,
+        ArsenalSection,
+        ContactSection,
     },
 }
 </script>
