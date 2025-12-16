@@ -6,22 +6,39 @@
  >
     <div class="w-full h-full flex flex-col items-center justify-center px-5">
       <div class="mb-12 w-full justify-start">
-        <div class="w-full lg:w-[50%]">
+        <div class="w-full lg:w-[70%]">
             <h1 class="text-hero-title font-hero uppercase text-black [text-shadow:2px_2px_0_#000]">
-            <span 
-                v-for="(char, index) in $t('hero.role').split('')" 
-                :key="index"
-                class="inline-block overflow-hidden align-bottom"
-            >
-                <span 
-                    class="inline-block transition-transform duration-500 ease-out"
-                    :class="showContent ? 'translate-y-0' : 'translate-y-full'"
-                    :style="{ transitionDelay: `${index * 30}ms` }"
-                >
-                    {{ char === ' ' ? '&nbsp;' : char }}
-                </span>
-            </span>
-        </h1>
+                <template v-for="(word, wIndex) in splitRole" :key="wIndex">
+                    <span class="inline-block whitespace-nowrap">
+                        <span 
+                            v-for="(charObj, cIndex) in word.chars" 
+                            :key="cIndex" 
+                            class="inline-block overflow-hidden align-bottom"
+                        >
+                            <span 
+                                class="inline-block transition-transform duration-500 ease-out"
+                                :class="showContent ? 'translate-y-0' : 'translate-y-full'"
+                                :style="{ transitionDelay: `${charObj.delay}ms` }"
+                            >
+                                {{ charObj.char }}
+                            </span>
+                        </span>
+                    </span>
+                    <!-- Space between words -->
+                    <span 
+                        v-if="wIndex < splitRole.length - 1" 
+                        class="inline-block overflow-hidden align-bottom"
+                    >
+                        <span 
+                            class="inline-block transition-transform duration-500 ease-out"
+                            :class="showContent ? 'translate-y-0' : 'translate-y-full'"
+                            :style="{ transitionDelay: `${word.spaceDelay}ms` }"
+                        >
+                            &nbsp;
+                        </span>
+                    </span>
+                </template>
+            </h1>
         </div>
       </div>
       <div class="absolute left-0 bottom-[60px] right-0 flex 
@@ -63,6 +80,24 @@
 <script>
 export default {
     name: "HeroSection",
+    computed: {
+        splitRole() {
+            const text = this.$t('hero.role');
+            const words = text.split(' ');
+            let charIndex = 0;
+            return words.map((word) => {
+                const chars = word.split('').map(char => ({
+                    char,
+                    delay: charIndex++ * 30
+                }));
+                const spaceDelay = charIndex++ * 30;
+                return {
+                    chars,
+                    spaceDelay
+                };
+            });
+        }
+    },
     data() {
         return {
             isMounted: false,

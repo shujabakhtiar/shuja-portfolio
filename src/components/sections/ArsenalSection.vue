@@ -5,6 +5,7 @@
             <div class="flex-1 flex flex-col justify-center lg:pt-12 select-none">
                 <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold leading-[0.85] tracking-tighter text-white uppercase">
                     <div class="block">Full-Stack</div>
+                    <div class="block">Enterprise</div>
                     <div class="block whitespace-nowrap">AI Solutions/</div>
                 </h1>
             </div>

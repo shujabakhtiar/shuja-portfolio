@@ -7,11 +7,12 @@
             </div>
             
             <div 
-                class="fixed inset-0 z-[999] transition-transform duration-500 ease-in-out bg-black/40 backdrop-blur-sm overflow-y-auto"
+                class="fixed inset-0 z-[999] transition-transform duration-500 ease-in-out bg-black/40 backdrop-blur-md overflow-y-auto"
                 :class="isOpen ? 'translate-x-0' : 'translate-x-full'"
             >
-                <div class="min-h-screen w-full flex flex-col items-center justify-center gap-8">
-                    <a 
+                <div class="min-h-screen w-full flex flex-col items-end justify-center gap-8">
+                   <div class="lg:w-[40%] md:w-[60%] sm:w-[70%] p-6 w-full flex flex-col items-start justify-center gap-8">
+                     <a 
                         v-for="option in navOptions" 
                         :key="option.label"
                         :href="option.link"
@@ -31,6 +32,7 @@
                              <a href="#" class="hover:underline text-white">Github</a>
                          </div>
                     </div>
+                   </div>
                 </div>
             </div>
         </div>

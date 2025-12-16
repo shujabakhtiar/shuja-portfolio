@@ -14,7 +14,7 @@
                 enter-to-class="opacity-100 translate-y-0 translate-x-0">
                 <div
                     v-show="!isHovered"
-                    class="font-bold text-7xl text-gray-500 col-start-1 row-start-1">
+                    class="font-bold text-7xl z-10 text-gray-500 col-start-1 row-start-1">
                     {{ title }}
                 </div>
             </Transition>
@@ -28,7 +28,7 @@
                 leave-to-class="opacity-0 translate-y-8 -translate-x-4">
                 <div
                     v-show="isHovered"
-                    class="font-bold text-8xl text-white col-start-1 row-start-1">
+                    class="font-bold text-8xl z-10 text-white col-start-1 row-start-1">
                     {{ title }}
                 </div>
             </Transition>
@@ -44,7 +44,7 @@
             leave-to-class="opacity-0 scale-50">
             <div 
                 v-show="isHovered"
-                class="cursor-follower w-[400px] aspect-video absolute pointer-events-none rounded-lg shadow-2xl"
+                class="cursor-follower w-[400px] z-0 aspect-video absolute pointer-events-none rounded-lg shadow-2xl"
                 :class="imageColor"
                 :style="{
                     left: `${mouseX}px`,
@@ -63,7 +63,7 @@
                 leave-from-class="opacity-100 translate-x-0"
                 leave-to-class="opacity-0 translate-x-10"
             >
-                <div v-show="isHovered" class="text-neutral-400 text-lg">
+                <div v-show="isHovered" class="text-neutral-400 z-10 text-lg">
                     {{ description }}
                 </div>
             </Transition>
