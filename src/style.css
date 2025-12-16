@@ -9,13 +9,13 @@
 
   /* Backgrounds */
   --bg-section: #0C0F0A;
-  --bg-surface: #240010;
+  --bg-surface: #ffffff;
   --bg-card: #2e0015;
 
   /* Text */
   --text-primary: #ffffff;
   --text-secondary: #c9aeb6;
-  --text-muted: #8a6f77;
+  --text-muted: #7e766c;
 
   /* Borders */
   --border-subtle: #b6b6b6;
@@ -23,7 +23,7 @@
 
   color-scheme: dark;
   color: var(--text-primary);
-  background-color: #ffffff;
+  background-color: var(--bg-surface);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

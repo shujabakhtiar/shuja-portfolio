@@ -5,9 +5,9 @@
       <div class="text-section-h2 font-section leading-none">{{ title }}</div>
       <div class="grid-gap flex grid-cols-12 sm:justify-end lg:grid">
         <div class="col-span-7 col-start-1 flex flex-col gap-9 sm:col-start-6 sm:flex-row">
-          <p class="text-section-h4 font-body-strong text-muted">{{ subtitle }}</p>
-          <div class="w-full max-w-[35ch] text-balance font-medium leading-base">
-          <p class="text-text-sm font-body text-muted leading-relaxed">{{ description }}</p>
+          <p class="text-[16px] font-body-strong text-muted">{{ subtitle }}</p>
+          <div class="w-full max-w-[50ch] text-balance font-medium leading-base">
+          <p class="text-xl font-body leading-relaxed">{{ description }}</p>
           </div>
         </div>
       </div>

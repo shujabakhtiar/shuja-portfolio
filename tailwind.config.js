@@ -20,10 +20,12 @@ export default {
         'section-h2': ['clamp(3.5rem, 8vw, 6rem)', { lineHeight: '1' }],
         'section-h3': ['clamp(2.5rem, 5vw, 4rem)', { lineHeight: '1' }],
         'section-h4': ['clamp(1.25rem, 2vw, 1.5rem)', { lineHeight: '1.2' }],
-
+       
         // BODY TEXT
         'text-xl': ['clamp(1.1rem, 2vw, 1.25rem)', { lineHeight: '1.75' }],
-        'text-lg': ['clamp(1rem, 1.5vw, 1.125rem)', { lineHeight: '1.75' }],
+        'text-base-large':['clamp(1rem,0.8571rem + 0.7143vi,1.5rem)',{lineHeight: '1.75'}],
+        'text-base':['clamp(1rem,0.9286rem + 0.3571vi,1.25rem)',{lineHeight: '1.75'}],
+        'text-lg':['clamp(1rem,0.9286rem + 0.3571vi,1.25rem)',{lineHeight: '1.75'}],
         'text-md': ['1rem', { lineHeight: '1.5' }],
         'text-sm': ['0.875rem', { lineHeight: '1.25' }],
       },

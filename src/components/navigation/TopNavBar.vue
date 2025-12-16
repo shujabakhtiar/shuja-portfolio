@@ -7,28 +7,51 @@
             {{ $t('hero.name') }}
         </div>
         <ul class="flex flex-row  gap-2 items-center">
-            <li>{{ $t('nav.home') }}</li>
-            <li>{{ $t('nav.projects') }}</li>
-            <li>{{ $t('nav.experience') }}</li>
-            <li>{{ $t('nav.skills') }}</li>
-            <li>{{ $t('nav.contact') }}</li>
+            <li v-for="option in navOptions" :key="option">
+                {{ option.label }}
+            </li>
             <li class="!p-0 hover:!bg-transparent">
                 <LanguageSwitcher />
             </li>
         </ul>
+        <HamburgerMenu :navOptions="navOptions" />
     </nav>
 </template>
 <script>
 import LanguageSwitcher from "@/components/common/LanguageSwitcher.vue";
+import HamburgerMenu from "@/components/navigation/HamburgerMenu.vue";
 
 export default {
     name: "TopNavBar",
     components: {
-        LanguageSwitcher
+        LanguageSwitcher,
+        HamburgerMenu
     },
     data() {
         return {
             isMounted: false,
+            navOptions: [
+                {
+                    label: "Home",
+                    link: "/home",
+                },
+                {
+                    label: "Projects",
+                    link: "/home",
+                },
+                {
+                    label: "Experience",
+                    link: "/home",
+                },
+                {
+                    label: "Skills",
+                    link: "/home",
+                },
+                {
+                    label: "Contact",
+                    link: "/home",
+                },
+            ]
         };
     },
     mounted() {
