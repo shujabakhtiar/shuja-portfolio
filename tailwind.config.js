@@ -4,8 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        display: ["Satoshi", "sans-serif"],
+        sans: ["Archivo", "sans-serif"],
+        display: ["Archivo", "sans-serif"],
+        hero: ["Archivo", "sans-serif"], 
       },
       fontSize: {
         // HERO

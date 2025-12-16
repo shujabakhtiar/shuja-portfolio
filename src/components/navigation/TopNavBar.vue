@@ -4,7 +4,7 @@
         :class="isMounted ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'"
     >
         <div 
-            class="xl:text-[32px] 2xl:text-[40px] font-[600] text-heading italic text-black transition-all duration-500 ease-out"
+            class="xl:text-[32px] 2xl:text-[40px] font-[600] text-heading text-black transition-all duration-500 ease-out"
             :class="isScrolled ? '-translate-y-20 opacity-0' : 'translate-y-0 opacity-100'"
         >
             {{ $t('hero.name') }}

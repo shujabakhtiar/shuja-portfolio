@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  font-family: "Inter", sans-serif;
+  font-family: "Archivo", sans-serif;
+  font-variation-settings: 'wdth' 115; /* Expanded look */
   line-height: 1.5;
   font-weight: 400;
 
