@@ -1,7 +1,8 @@
 <template>
     <Teleport to="body">
         <div>
-            <div class="fixed top-4 right-4 z-[1000]">
+            <div class="fixed top-4 right-4 z-[1000] transition-all duration-500 ease-out"
+                 :class="showButton || isOpen ? 'translate-y-0 opacity-100' : '-translate-y-20 opacity-0 pointer-events-none'">
                 <HamburgerButton :active="isOpen" @toggle="toggleMenu" />
             </div>
             
@@ -18,7 +19,7 @@
                         @click="toggleMenu(false)"
                     >
                         {{ option.label }}
-                        <span class="absolute left-0 bottom-0 w-0 h-[4px] bg-black transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute left-0 bottom-0 w-0 h-[4px] bg-white transition-all duration-300 group-hover:w-full"></span>
                     </a>
                     
                     <div class="mt-12 text-sm font-mono text-gray-500 flex flex-col items-center gap-2 text-center">
@@ -26,8 +27,8 @@
                          <a href="mailto:contact@shujabakhtiar.com" class="text-white hover:underline mb-4">hello@shuzadev.com</a>
                          
                          <div class="flex gap-4 uppercase text-xs font-bold tracking-widest mt-4">
-                             <a href="#" class="hover:underline">LinkedIn</a>
-                             <a href="#" class="hover:underline">Github</a>
+                             <a href="#" class="hover:underline text-white">LinkedIn</a>
+                             <a href="#" class="hover:underline text-white">Github</a>
                          </div>
                     </div>
                 </div>
@@ -48,6 +49,10 @@ export default {
         navOptions: {
             type: Array,
             required: true,
+        },
+        showButton: {
+            type: Boolean,
+            default: true,
         },
     },
     data() {
