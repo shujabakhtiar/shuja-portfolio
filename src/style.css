@@ -13,7 +13,7 @@
   --bg-card: #2e0015;
 
   /* Text */
-  --text-primary: #f5e9ed;
+  --text-primary: #ffffff;
   --text-secondary: #c9aeb6;
   --text-muted: #8a6f77;
 
@@ -23,7 +23,7 @@
 
   color-scheme: dark;
   color: var(--text-primary);
-  background-color: #e8e8e2;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
