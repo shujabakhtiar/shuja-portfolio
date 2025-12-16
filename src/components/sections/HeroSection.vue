@@ -7,7 +7,7 @@
     <div class="w-full h-full flex flex-col items-center justify-center px-5">
       <div class="mb-12 w-full justify-start">
         <div class="w-full lg:w-[50%]">
-            <h1>
+            <h1 class="text-hero-title font-hero uppercase text-black [text-shadow:2px_2px_0_#000]">
             <span 
                 v-for="(char, index) in $t('hero.role').split('')" 
                 :key="index"
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div 
-            class="hero-container justify-self-end gap-4 transition-all duration-700 ease-out delay-700"
+            class="flex items-center justify-center text-black justify-self-end gap-4 transition-all duration-700 ease-out delay-700"
             :class="showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'"
         >
           <div class="block lg:hidden">
@@ -52,8 +52,8 @@
             </div>
           </div>
           <div class="hidden lg:flex gap-4">
-              <p>{{ $t('hero.links.linkedin') }}</p>
-              <p>{{ $t('hero.links.github') }}</p>
+              <p class="font-body-strong tracking-tight-xl text-black">{{ $t('hero.links.linkedin') }}</p>
+              <p class="font-body-strong tracking-tight-xl text-black">{{ $t('hero.links.github') }}</p>
           </div>
         </div>
       </div>
@@ -84,27 +84,5 @@ export default {
 <style scoped>
   .hero-theme {
     background-color: #e8e8e2;
-  }
-  h1 {
-    text-transform: uppercase;
-    font-size: clamp(3rem, 11vw, 8rem);
-    line-height: 0.9;
-    font-weight: 1000;
-    letter-spacing: -0.02em;
-    color: #000;
-    text-shadow: 2px 2px 0 #000;
-  }
-
-  p {
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    color: #000;
-  }
-
-  .hero-container {
-    color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 </style>

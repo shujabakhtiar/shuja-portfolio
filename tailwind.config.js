@@ -9,19 +9,16 @@ export default {
       },
       fontSize: {
         // HERO
-        'hero-h1': ['clamp(3rem, 11vw, 8rem)', { lineHeight: '0.9', letterSpacing: '-0.02em', fontWeight: '1000' }],
+        // Renaming to hero-title to force refresh. Standard clamp syntax.
+        'hero-title': ['clamp(3rem, 11vw, 8rem)', { lineHeight: '0.9', letterSpacing: '-0.02em' }],
         
         // NAVBAR
-        // Scales from 24px on mobile to 40px on extra large screens
         'nav-logo': ['clamp(1.5rem, 3vw, 2.5rem)', { lineHeight: '1.2' }], 
         'nav-item': ['clamp(0.875rem, 2vw, 1rem)', { lineHeight: '1.2' }],
 
         // SECTIONS
-        // H2: Scales from 56px (3.5rem) to 96px (6rem)
         'section-h2': ['clamp(3.5rem, 8vw, 6rem)', { lineHeight: '1' }],
-        // H3: Scales from 40px (2.5rem) to 64px (4rem)
         'section-h3': ['clamp(2.5rem, 5vw, 4rem)', { lineHeight: '1' }],
-        // H4: Scales from 20px (1.25rem) to 24px (1.5rem)
         'section-h4': ['clamp(1.25rem, 2vw, 1.5rem)', { lineHeight: '1.2' }],
 
         // BODY TEXT
@@ -31,7 +28,7 @@ export default {
         'text-sm': ['0.875rem', { lineHeight: '1.25' }],
       },
       fontWeight: {
-        'hero': '1000',
+        'hero': '900', // Adjusted from 1000 to 900 for standard font support
         'section': '700',
         'nav': '600',
         'body': '400',
