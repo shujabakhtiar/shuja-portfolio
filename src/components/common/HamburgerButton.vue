@@ -1,6 +1,6 @@
 <template>
   <button
-    class="relative w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/50 hover:bg-gray-300/80 transition-colors duration-500 ease-out backdrop-blur-sm"
+    class="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-gray-200/50 hover:bg-gray-300/80 transition-colors duration-500 ease-out backdrop-blur-sm"
     aria-label="Toggle menu"
     @click="toggle"
   >
