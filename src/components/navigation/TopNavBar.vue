@@ -3,7 +3,7 @@
         class="w-screen fixed top-0 left-0 z-50 h-16 p-4 flex items-center justify-between transition-all duration-700 ease-out delay-[2000ms]"
         :class="isMounted ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'"
     >
-        <div class="xl:text-[32px] 2xl:text-[40px] font-[600] text-heading text-black">
+        <div class="xl:text-[32px] 2xl:text-[40px] font-[600] text-heading italic text-black">
             {{ $t('hero.name') }}
         </div>
         <ul class="flex flex-row  gap-2 items-center">
