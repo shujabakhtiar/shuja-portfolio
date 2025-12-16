@@ -1,7 +1,7 @@
 <template>
     <Teleport to="body">
         <div>
-            <div class="fixed top-4 right-4 z-[1000] transition-all duration-500 ease-out"
+            <div class="fixed top-2 md:top-4 right-4 z-[1000] transition-all duration-500 ease-out"
                  :class="showButton || isOpen ? 'translate-y-0 opacity-100' : '-translate-y-20 opacity-0 pointer-events-none'">
                 <HamburgerButton :active="isOpen" @toggle="toggleMenu" />
             </div>
@@ -16,11 +16,11 @@
                         v-for="option in navOptions" 
                         :key="option.label"
                         :href="option.link"
-                        class="text-6xl font-black uppercase tracking-tighter cursor-pointer relative group text-white transition-all duration-300 hover:text-white/70 text-center"
+                        class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter cursor-pointer relative group text-white transition-all duration-300 hover:text-white/70 text-center"
                         @click="toggleMenu(false)"
                     >
                         {{ option.label }}
-                        <span class="absolute left-0 bottom-0 w-0 h-[4px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute left-0 bottom-0 w-0 h-[2px] sm:h-[3px] md:h-[4px] bg-white transition-all duration-300 group-hover:w-full"></span>
                     </a>
                     
                     <div class="mt-12 text-sm font-mono text-gray-500 flex flex-col items-center gap-2 text-center">

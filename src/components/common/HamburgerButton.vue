@@ -44,7 +44,7 @@ export default {
   position: absolute;
   width: 24px;
   height: 2px;
-  background-color: var(--text-primary, #000);
+  background-color: #000;
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 

@@ -10,7 +10,7 @@
             {{ $t('hero.name') }}
         </div>
         <ul 
-            class="flex flex-row gap-2 items-center transition-all duration-500 ease-out"
+            class="hidden lg:flex flex-row gap-2 items-center transition-all duration-500 ease-out"
             :class="isScrolled ? '-translate-y-20 opacity-0' : 'translate-y-0 opacity-100'"
         >
             <li v-for="option in navOptions" :key="option">
@@ -20,7 +20,7 @@
                 <LanguageSwitcher />
             </li>
         </ul>
-        <HamburgerMenu :navOptions="navOptions" :showButton="isScrolled" />
+        <HamburgerMenu :navOptions="navOptions" :showButton="isScrolled || isMobile" />
     </nav>
 </template>
 <script>
@@ -37,6 +37,7 @@ export default {
         return {
             isMounted: false,
             isScrolled: false,
+            isMobile: false,
             navOptions: [
                 {
                     label: "Home",
@@ -65,16 +66,20 @@ export default {
         setTimeout(() => {
             this.isMounted = true;
         }, 100);
+        this.checkMobile();
         window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('resize', this.checkMobile);
     },
     beforeUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.checkMobile);
     },
     methods: {
         handleScroll() {
-            // Check if we've scrolled past the hero section (viewport height)
-            // Adding a small buffer (e.g., 100px) or using exactly window.innerHeight
             this.isScrolled = window.scrollY > (window.innerHeight - 100);
+        },
+        checkMobile() {
+            this.isMobile = window.innerWidth < 1024;
         }
     }
 }

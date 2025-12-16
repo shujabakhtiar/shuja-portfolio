@@ -3,7 +3,7 @@
         <div class="w-full h-full flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 lg:gap-8 mt-4 lg:mt-0 pb-20">
             <!-- Left Side: Hero Text -->
             <div class="flex-1 flex flex-col justify-center lg:pt-12 select-none">
-                <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold leading-[0.85] tracking-tighter text-white uppercase">
+                <h1 class="text-section-h2 font-section leading-none">
                     <div class="block">Full-Stack</div>
                     <div class="block">Enterprise</div>
                     <div class="block whitespace-nowrap">AI Solutions/</div>
