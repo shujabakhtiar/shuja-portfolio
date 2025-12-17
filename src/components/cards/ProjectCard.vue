@@ -1,10 +1,11 @@
 <template>
     <div
-        class="relative flex flex-row justify-between items-center cursor-pointer py-8 h-48"
+        class="relative flex flex-col lg:flex-row justify-between items-center cursor-pointer py-8 h-96 lg:h-48"
         @mouseenter="isHovered = true"
         @mouseleave="isHovered = false"
         @mousemove="handleMouseMove">
         <div class="grid items-center pl-4">
+            <!-- Title -->
             <Transition
                 leave-active-class="transition duration-300 ease-in"
                 leave-from-class="opacity-100"
@@ -19,6 +20,7 @@
                 </div>
             </Transition>
 
+            <!-- Hovered Title -->
             <Transition
                 enter-active-class="transition duration-500 ease-out"
                 enter-from-class="opacity-0 translate-y-8 -translate-x-4"
@@ -54,7 +56,8 @@
             ></div>
         </Transition>
 
-        <div class="flex flex-col gap-2 text-right justify-start">
+        <!-- Details -->
+        <div class="flex flex-col z-10 gap-2 text-right justify-start">
             <Transition
                 enter-active-class="transition-all duration-500 ease-out delay-100"
                 enter-from-class="opacity-0 translate-x-10"
@@ -76,7 +79,7 @@
                 leave-from-class="opacity-100 translate-x-0"
                 leave-to-class="opacity-0 translate-x-10"
             >
-                <div v-show="isHovered" class="flex flex-row gap-2">
+                <div v-show="isHovered" class="flex flex-row z-10 gap-2">
                     <Tag v-for="tag in tags" :key="tag">{{ tag }}</Tag>
                 </div>
             </Transition>
