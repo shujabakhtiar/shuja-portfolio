@@ -67,6 +67,8 @@ export default {
         activeIndex: 0,
         bodyRefs: [],
         observer: null,
+        lastScrollY: 0,
+        isScrollingDown: true,
         experienceList: [
            {
             id: 1,
@@ -127,15 +129,23 @@ export default {
     },
     mounted() {
         this.setupObserver();
+        window.addEventListener('scroll', this.handleScroll);
+        this.lastScrollY = window.scrollY;
     },
     beforeUnmount() {
         if (this.observer) {
             this.observer.disconnect();
         }
+        window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
         setBodyRef(el, index) {
             if (el) this.bodyRefs[index] = el;
+        },
+        handleScroll() {
+            const currentScrollY = window.scrollY;
+            this.isScrollingDown = currentScrollY > this.lastScrollY;
+            this.lastScrollY = currentScrollY;
         },
         setupObserver() {
             const options = {
@@ -150,11 +160,20 @@ export default {
             this.observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
+                        let index = -1;
                         if (entry.target === this.$refs.endMarker) {
-                            this.activeIndex = this.experienceList.length;
+                            index = this.experienceList.length;
                         } else {
-                            const index = this.bodyRefs.findIndex(ref => ref === entry.target);
-                            if (index !== -1) {
+                            index = this.bodyRefs.findIndex(ref => ref === entry.target);
+                        }
+
+                        if (index !== -1) {
+                            // Only update activeIndex if it aligns with scroll direction
+                            // Shrinking (increasing activeIndex) should only happen when scrolling DOWN
+                            // Growing (decreasing activeIndex) should only happen when scrolling UP
+                            if (this.isScrollingDown && index > this.activeIndex) {
+                                this.activeIndex = index;
+                            } else if (!this.isScrollingDown && index < this.activeIndex) {
                                 this.activeIndex = index;
                             }
                         }

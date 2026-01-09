@@ -5,7 +5,7 @@
             <div
                 class="absolute w-full h-96 lg:h-48 pointer-events-none transition-all duration-300 ease-out z-10"
                 :class="hoveredIndex !== null ? 'opacity-100' : 'opacity-0'"
-                :style="{ top: `${hoveredIndex * 24}rem` }"
+                :style="{ top: `${hoveredIndex * 12}rem` }"
             >
                 <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gray-500"></div>
                 <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gray-500"></div>
