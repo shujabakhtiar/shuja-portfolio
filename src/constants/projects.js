@@ -1,23 +1,16 @@
 export const projects = [
     {
-        title: "Lumora",
-        description: "A digital workspace designed for modularity and speed. Built with efficiency in mind.",
+        title: "Delytics",
+        description: "A platform for delivery analytics and insights.",
         tags: ["Vue js", "Node js", "MongoDB"],
-        liveSite: "https://lumora.com",
+        liveSite: "https://delytics.com",
         imageColor: "bg-blue-500",
     },
     {
-        title: "Alexdota",
-        description: "A gaming analytics dashboard providing real-time statistics and match history.",
+        title: "Sandy said so",
+        description: "A Card game app to play with friends, using personal experiences.",
         tags: ["React js", "Node js", "MongoDB"],
-        liveSite: "https://alexdota.com",
+        liveSite: "https://sandy-said-so.com",
         imageColor: "bg-green-500",
-    },
-    {
-        title: "AI Chatbot",
-        description: "Next-generation conversational AI assistant with context-aware responses.",
-        tags: ["React js", "Node js", "MongoDB"],
-        liveSite: "https://ai-chatbot.com",
-        imageColor: "bg-yellow-500",
     },
 ];

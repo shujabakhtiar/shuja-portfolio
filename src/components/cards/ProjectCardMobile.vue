@@ -3,6 +3,15 @@
         class="project-card-mobile flex flex-col gap-4 p-6 transition-all duration-500 rounded-lg overflow-hidden relative"
         :class="isExpanded ? 'bg-neutral-900/80 backdrop-blur-sm' : 'bg-transparent'"
     >
+        <!-- Close Button -->
+        <button 
+            v-if="isExpanded"
+            @click.stop="$emit('close')"
+            class="absolute top-4 right-4 p-1 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all duration-300 z-40"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+
         <!-- Header Info -->
         <div class="flex justify-between items-center w-full relative z-30">
             <h3 
@@ -11,15 +20,6 @@
             >
                 {{ title }}
             </h3>
-
-            <!-- Close Button -->
-            <button 
-                v-if="isExpanded"
-                @click.stop="$emit('close')"
-                class="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all duration-300"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
         </div>
 
         <!-- Content Area (Image & Details) -->

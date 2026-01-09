@@ -1,7 +1,7 @@
 export const experienceList = [
     {
         id: 1,
-        role: "Mid Software Engineer",
+        role: "Frontend Developer",
         company: "Awsales - Nova Lima, Brazil (Hybrid)",
         duration: "Jul 2025 - Present",
         logo: "https://ui-avatars.com/api/?name=Aw&background=0D8ABC&color=fff",
@@ -18,7 +18,7 @@ export const experienceList = [
     },
     {
         id: 2,
-        role: "Software Engineer",
+        role: "UI Engineer",
         company: "Abrasel - Belo Horizonte, Brazil (On-site)",
         duration: "Apr 2024 - Jul 2025",
         logo: "https://ui-avatars.com/api/?name=Ab&background=FF5722&color=fff",
@@ -35,7 +35,7 @@ export const experienceList = [
     },
     {
         id: 3,
-        role: "Software Engineer",
+        role: "Lead frontend engineer",
         company: "Abrasel - Belo Horizonte, Brazil (On-site)",
         duration: "Apr 2024 - Jul 2025",
         logo: "https://ui-avatars.com/api/?name=Ab&background=FF5722&color=fff",
