@@ -1,65 +1,72 @@
 <template>
-   <Section :title="$t('experience.title')" :subtitle="$t('experience.label')" :description="$t('experience.description')">
-      <div class="relative flex flex-col gap-0 items-center">
-        <!-- Central Line Background -->
-        <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-border-strong opacity-30"></div>
+    <Section :title="$t('experience.title')" :subtitle="$t('experience.label')" :description="$t('experience.description')">
+       <!-- Desktop Version -->
+       <div v-if="!isMobile" class="relative flex flex-col gap-0 items-center">
+         <!-- Central Line Background -->
+         <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-border-strong opacity-30"></div>
 
-        <template v-for="(exp, index) in experienceList" :key="exp.id">
-            <!-- Sticky Header -->
-            <div 
-                class="sticky w-full"
-                :style="{
-                    top: `${index * 64}px`,
-                    zIndex: 20 + index
-                }"
-            >
-                <ExperienceHeader
-                    :role="exp.role"
-                    :company="exp.company"
-                    :duration="exp.duration"
-                    :logo="exp.logo"
-                    :is-left="index % 2 === 0"
-                    :is-compact="index < activeIndex"
-                />
-            </div>
+         <template v-for="(exp, index) in experienceList" :key="exp.id">
+             <!-- Sticky Header -->
+             <div 
+                 class="sticky w-full"
+                 :style="{
+                     top: `${index * 64}px`,
+                     zIndex: 20 + index
+                 }"
+             >
+                 <ExperienceHeader
+                     :role="exp.role"
+                     :company="exp.company"
+                     :duration="exp.duration"
+                     :logo="exp.logo"
+                     :is-left="index % 2 === 0"
+                     :is-compact="index < activeIndex"
+                 />
+             </div>
 
-            <!-- Scrollable Body -->
-            <div 
-                :ref="(el) => setBodyRef(el, index)"
-                class="w-full relative z-10"
-                :style="{
-                    background: 'linear-gradient(90deg, var(--bg-section) calc(50% - 1px), transparent calc(50% - 1px), transparent calc(50% + 1px), var(--bg-section) calc(50% + 1px))'
-                }"
-            >
-                <ExperienceCard
-                    :role="exp.role"
-                    :company="exp.company"
-                    :duration="exp.duration"
-                    :description="exp.description"
-                    :skillTags="exp.skillTags"
-                    :logo="exp.logo"
-                    :is-left="index % 2 === 0"
-                    :is-last="index === experienceList.length - 1"
-                    :card-index="index"
-                />
-            </div>
-        </template>
-        
-        <!-- End Marker to trigger last card shrink -->
-        <div ref="endMarker" class="h-1 w-full relative z-0 -mt-32"></div>
-      </div>
-   </Section>
+             <!-- Scrollable Body -->
+             <div 
+                 :ref="(el) => setBodyRef(el, index)"
+                 class="w-full relative z-10"
+                 :style="{
+                     background: 'linear-gradient(90deg, var(--bg-section) calc(50% - 1px), transparent calc(50% - 1px), transparent calc(50% + 1px), var(--bg-section) calc(50% + 1px))'
+                 }"
+             >
+                 <ExperienceCard
+                     :role="exp.role"
+                     :company="exp.company"
+                     :duration="exp.duration"
+                     :description="exp.description"
+                     :skillTags="exp.skillTags"
+                     :logo="exp.logo"
+                     :is-left="index % 2 === 0"
+                     :is-last="index === experienceList.length - 1"
+                     :card-index="index"
+                 />
+             </div>
+         </template>
+         
+         <!-- End Marker to trigger last card shrink -->
+         <div ref="endMarker" class="h-1 w-full relative z-0 -mt-32"></div>
+       </div>
+
+       <!-- Mobile Version -->
+       <ExperienceSectionMobile v-else />
+    </Section>
 </template>
 <script>
 import ExperienceCard from "@/components/cards/ExperienceCard.vue";
 import ExperienceHeader from "@/components/cards/ExperienceHeader.vue";
+import ExperienceSectionMobile from "@/components/sections/ExperienceSectionMobile.vue";
 import Section from "@/components/common/Section.vue";
+import { experienceList } from "@/constants/experience";
 
 export default {
     name: "ExperienceSection",
     components: {
         ExperienceCard,
         ExperienceHeader,
+        ExperienceSectionMobile,
         Section,
     },
     data() {
@@ -69,70 +76,24 @@ export default {
         observer: null,
         lastScrollY: 0,
         isScrollingDown: true,
-        experienceList: [
-           {
-            id: 1,
-            role: "Mid Software Engineer",
-            company: "Awsales - Nova Lima, Brazil (Hybrid)",
-            duration: "Jul 2025 - Present",
-            logo: "https://ui-avatars.com/api/?name=Aw&background=0D8ABC&color=fff", // Placeholder
-            description: [
-              "Develop and maintain an AI-powered marketing platform used by top Brazilian influencers to manage campaigns.",
-              "Build and optimize features using Next.js, React, and TypeScript, focusing on performance and scalability.",
-              "Develop and maintain an AI-powered marketing platform used by top Brazilian influencers to manage campaigns.",
-              "Build and optimize features using Next.js, React, and TypeScript, focusing on performance and scalability.",
-              "Work on frontend performance improvements using SSR, code splitting, and optimized rendering.",
-              "Build and optimize features using Next.js, React, and TypeScript, focusing on performance and scalability.",
-              "Work on frontend performance improvements using SSR, code splitting, and optimized rendering."
-            ],
-            skillTags: ["NextJS", "TypeScript", "React", "Jest", "Docker", "PostgreSQL"]
-           },
-           {
-            id: 2,
-            role: "Software Engineer",
-            company: "Abrasel - Belo Horizonte, Brazil (On-site)",
-            duration: "Apr 2024 - Jul 2025",
-            logo: "https://ui-avatars.com/api/?name=Ab&background=FF5722&color=fff", // Placeholder
-            description: [
-              "Develop and maintain applications used by over 45,000 users, using Next.js, Node.js, and TypeScript.",
-              "Use AWS services such as Lambda, S3, EC2, and SQS to create scalable and efficient solutions.",
-              "Implement CI/CD pipelines with GitHub Actions, AWS Cloud, and GitHub Webhooks.",
-              "Work on frontend performance improvements using SSR, code splitting, and optimized rendering.",
-              "Build and optimize features using Next.js, React, and TypeScript, focusing on performance and scalability.",
-              "Work on frontend performance improvements using SSR, code splitting, and optimized rendering.",
-              "Build and optimize features using Next.js, React, and TypeScript, focusing on performance and scalability."
-            ],
-            skillTags: ["NextJS", "Node.js", "TypeScript", "AWS", "CI/CD"]
-           },
-           {
-            id: 3,
-            role: "Software Engineer",
-            company: "Abrasel - Belo Horizonte, Brazil (On-site)",
-            duration: "Apr 2024 - Jul 2025",
-            logo: "https://ui-avatars.com/api/?name=Ab&background=FF5722&color=fff", // Placeholder
-            description: [
-              "Develop and maintain applications used by over 45,000 users, using Next.js, Node.js, and TypeScript.",
-              "Use AWS services such as Lambda, S3, EC2, and SQS to create scalable and efficient solutions.",
-              "Implement CI/CD pipelines with GitHub Actions, AWS Cloud, and GitHub Webhooks.",
-              "Work on frontend performance improvements using SSR, code splitting, and optimized rendering.",
-              "Build and optimize features using Next.js, React, and TypeScript, focusing on performance and scalability.",
-              "Work on frontend performance improvements using SSR, code splitting, and optimized rendering.",
-              "Build and optimize features using Next.js, React, and TypeScript, focusing on performance and scalability."
-            ],
-            skillTags: ["NextJS", "Node.js", "TypeScript", "AWS", "CI/CD"]
-           }
-        ]
+        isMobile: false,
+        experienceList
       }
     },
     beforeUpdate() {
         this.bodyRefs = [];
     },
     mounted() {
-        this.setupObserver();
-        window.addEventListener('scroll', this.handleScroll);
-        this.lastScrollY = window.scrollY;
+        this.checkMobile();
+        window.addEventListener('resize', this.checkMobile);
+        if (!this.isMobile) {
+            this.setupObserver();
+            window.addEventListener('scroll', this.handleScroll);
+            this.lastScrollY = window.scrollY;
+        }
     },
     beforeUnmount() {
+        window.removeEventListener('resize', this.checkMobile);
         if (this.observer) {
             this.observer.disconnect();
         }
@@ -141,6 +102,9 @@ export default {
     methods: {
         setBodyRef(el, index) {
             if (el) this.bodyRefs[index] = el;
+        },
+        checkMobile() {
+            this.isMobile = window.innerWidth <= 768;
         },
         handleScroll() {
             const currentScrollY = window.scrollY;
