@@ -43,7 +43,7 @@ export default {
     data() {
         return {
             projects,
-            selectedIndex: 0,
+            selectedIndex: null,
             cardRefs: [],
             resizeObserver: null,
             borderStyle: {
