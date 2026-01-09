@@ -46,23 +46,26 @@
             return {
                 categories: [
                     {
-                        title: "Languages & Tools",
+                        title: "Web App Development",
                         items: [
-                            "Python", "SQL", "C++", "Java", "Typescript", 
-                            "JavaScript", "Git", "Postman", "Docker", "Firebase"
+                            "React", "Vue JS", "Next JS", "Nuxt JS", "HTML 5", "CSS", "Tailwind CSS", "Particle.Js", "Node.js", 
+                            "Rest API", "Express.js", "Fastify", "Prisma", "TypeORM", "Laravel"
                         ]
                     },
                     {
-                        title: "Frameworks & Libraries",
+                        title: "Programming Languages",
                         items: [
-                            "React", "Node.js", "Express.js", "Flask", "Bootstrap", 
-                            "jQuery", "TailwindCSS", "Framer Motion", "GSAP"
+                            "JavaScript", "TypeScript", "Java", "Python", "PHP", 
+                            "HTML", "CSS", "MySQL", "PostgreSQL", "MongoDB"
                         ]
                     },
                     {
-                        title: "Core CS Concepts",
+                        title: "Software Engineering & Delivery",
                         items: [
-                            "DSA", "DBMS", "OOP", "Operating Systems", "System Design"
+                            "Agile & Scrum", "System Design", "Scalable Architecture", 
+                            "API Design", "Microservices", "Design Patterns", "AI Integration", 
+                            "CI/CD Pipelines", "Docker", "AWS", "Performance Optimization", 
+                            "Security", "Auth", "Code Reviews", "Documentation"
                         ]
                     }
                 ]
