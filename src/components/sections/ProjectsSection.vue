@@ -1,6 +1,7 @@
 <template>
     <Section :title="$t('projects.title')" :description="$t('projects.description')" :subtitle="$t('projects.subtitle')">
-        <div class="flex flex-col relative" @mouseleave="hoveredIndex = null">
+        <!-- Desktop Version -->
+        <div v-if="!isMobile" class="flex flex-col relative" @mouseleave="hoveredIndex = null">
             <!-- Shared Moving Border -->
             <div
                 class="absolute w-full h-96 lg:h-48 pointer-events-none transition-all duration-300 ease-out z-10"
@@ -24,44 +25,43 @@
                 @mouseenter="hoveredIndex = index"
             />
         </div>
+
+        <!-- Mobile Version -->
+        <ProjectsSectionMobile v-else />
     </Section>
 </template>
+
 <script>
-    import Section from "@/components/common/Section.vue";
-    import ProjectCard from "@/components/cards/ProjectCard.vue";
+import Section from "@/components/common/Section.vue";
+import ProjectCard from "@/components/cards/ProjectCard.vue";
+import ProjectsSectionMobile from "@/components/sections/ProjectsSectionMobile.vue";
+import { projects } from "@/constants/projects";
+
 export default {
     name: "ProjectsSection",
     components: {
         Section,    
         ProjectCard,
+        ProjectsSectionMobile,
     },
     data() {
         return {
             hoveredIndex: null,
-            projects: [
-                {
-                    title: "Lumora",
-                    description: "",
-                    tags: ["Vue js", "Node js", "MongoDB"],
-                    liveSite: "https://lumora.com",
-                    imageColor: "bg-blue-500",
-                },
-                {
-                    title: "Alexdota",
-                    description: "",
-                    tags: ["React js", "Node js", "MongoDB"],
-                    liveSite: "https://alexdota.com",
-                    imageColor: "bg-green-500",
-                },
-                {
-                    title: "AI Chatbot",
-                    description: "",
-                    tags: ["React js", "Node js", "MongoDB"],
-                    liveSite: "https://ai-chatbot.com",
-                    imageColor: "bg-yellow-500",
-                },
-            ]
+            isMobile: false,
+            projects
         };
     },
+    mounted() {
+        this.checkMobile();
+        window.addEventListener('resize', this.checkMobile);
+    },
+    beforeUnmount() {
+        window.removeEventListener('resize', this.checkMobile);
+    },
+    methods: {
+        checkMobile() {
+            this.isMobile = window.innerWidth <= 768;
+        }
+    }
 }
 </script>
