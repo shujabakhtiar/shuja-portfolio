@@ -57,7 +57,7 @@
         </Transition>
 
         <!-- Details -->
-        <div class="flex flex-col z-10 gap-2 text-right justify-start">
+        <div class="flex flex-col z-10 gap-2 text-left items-start justify-start pr-4">
             <Transition
                 enter-active-class="transition-all duration-500 ease-out delay-100"
                 enter-from-class="opacity-0 translate-x-10"
@@ -66,7 +66,7 @@
                 leave-from-class="opacity-100 translate-x-0"
                 leave-to-class="opacity-0 translate-x-10"
             >
-                <div v-show="isHovered" class="text-neutral-400 z-10 text-lg">
+                <div v-show="isHovered" class="text-neutral-400 z-10 text-lg max-w-[450px] break-words">
                     {{ description }}
                 </div>
             </Transition>
