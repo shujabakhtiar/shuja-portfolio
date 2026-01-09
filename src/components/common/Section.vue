@@ -38,6 +38,10 @@ export default {
         description: {
             type: String,
             default: ""
+        },
+        disableSnap: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -54,7 +58,7 @@ export default {
         this.observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 // Use isIntersecting with rootMargin for robust detection of tall sections
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && !this.disableSnap) {
                     // Only snap if entering from the bottom AND scrolling down
                     if (entry.boundingClientRect.top > 0 && this.isScrollingDown) {
                         this.smoothScrollTo(entry.target);
