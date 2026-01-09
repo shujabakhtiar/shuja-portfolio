@@ -1,5 +1,5 @@
 <template>
-    <Section title=" " subtitle=" " description=" "  :border-radius-on-bottom="true">
+    <Section title="" subtitle="" description=""  :border-radius-on-bottom="true">
         <div class="w-full h-full flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 lg:gap-8 mt-4 lg:mt-0 pb-20">
             <!-- Left Side: Hero Text -->
             <div class="hidden lg:flex flex-1 flex-col justify-center lg:pt-12 select-none">
