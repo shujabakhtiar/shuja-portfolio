@@ -18,7 +18,7 @@
     <div v-if="project" class="max-w-4xl mx-auto space-y-20 animate-fade-in">
       <!-- Header -->
       <header class="space-y-8">
-        <router-link to="/" class="group flex items-center gap-2 text-zinc-500 hover:text-white transition-colors duration-300 mb-12">
+        <router-link to="/#projects" class="group flex items-center gap-2 text-zinc-500 hover:text-white transition-colors duration-300 mb-12">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-1 transition-transform">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
@@ -270,8 +270,7 @@
           </router-link>
           
           <router-link 
-            v-else
-            to="/" 
+            to="/#projects" 
             class="inline-block px-12 py-4 border border-zinc-700 text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 rounded-full text-sm"
           >
             Return to projects
@@ -283,7 +282,7 @@
     <div v-else class="min-h-screen flex items-center justify-center">
       <div class="text-center space-y-4">
         <h2 class="text-2xl font-bold opacity-50">Project insight loading...</h2>
-        <router-link to="/" class="text-[#E2C7CF] hover:underline uppercase text-xs tracking-widest font-bold">Return to projects</router-link>
+        <router-link to="/#projects" class="text-[#E2C7CF] hover:underline uppercase text-xs tracking-widest font-bold">Return to projects</router-link>
       </div>
     </div>
   </div>
