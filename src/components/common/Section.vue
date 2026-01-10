@@ -92,14 +92,14 @@ export default {
             const targetPosition = element.getBoundingClientRect().top + window.scrollY;
             const startPosition = window.scrollY;
             const distance = targetPosition - startPosition;
-            const duration = 1000; // 1000ms for a natural, premium feel
+            const duration = 1000;
             let start = null;
+
+            window.isNavigating = true;
 
             const step = (timestamp) => {
                 if (!start) start = timestamp;
                 const progress = timestamp - start;
-                // Ease Out Quart: 1 - (1 - t)^4
-                // Starts fast, slows down very gently
                 const ease = (t) => 1 - Math.pow(1 - t, 4);
                 
                 const currentProgress = Math.min(progress / duration, 1);
@@ -109,6 +109,8 @@ export default {
 
                 if (progress < duration) {
                     window.requestAnimationFrame(step);
+                } else {
+                    window.isNavigating = false;
                 }
             };
 

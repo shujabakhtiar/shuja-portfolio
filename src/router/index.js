@@ -25,6 +25,10 @@ const router = createRouter({
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
+      window.isNavigating = true;
+      setTimeout(() => {
+        window.isNavigating = false;
+      }, 2000);
       return {
         el: to.hash,
         behavior: 'smooth',
