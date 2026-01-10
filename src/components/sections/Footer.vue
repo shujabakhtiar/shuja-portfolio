@@ -18,8 +18,48 @@
                 <div class="w-full border-t border-black/10 py-6">
                     <h3 class="text-xs font-bold uppercase tracking-[0.2em] mb-10 opacity-60">Socials</h3>
                     <ul class="flex flex-col gap-4">
-                        <li v-for="social in socials" :key="social.name" class="text-[#4A4A4A] hover:text-black transition-all duration-300 cursor-pointer text-xl font-medium">
-                            <a :href="social.link" :target="social.link.startsWith('mailto') ? '' : '_blank'">{{ social.name }}</a>
+                        <li v-for="social in socials" :key="social.name" class="flex items-center gap-3 text-[#4A4A4A] hover:text-black transition-all duration-300 group/social">
+                            <a 
+                                :href="social.link" 
+                                :target="social.link.startsWith('mailto') ? '' : '_blank'"
+                                class="text-xl font-medium"
+                            >
+                                {{ social.name }}
+                            </a>
+                            
+                            <!-- Copy Button for Email -->
+                            <div v-if="social.link.startsWith('mailto')" class="relative">
+                                <button 
+                                    @click="copyEmail(social.name)" 
+                                    class="p-2 rounded-md hover:bg-black/5 transition-colors"
+                                    aria-label="Copy email"
+                                >
+                                    <svg v-if="!isCopied" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-40 group-hover/social:opacity-100 transition-opacity">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                    <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+
+                                    <!-- Tooltip -->
+                                    <Transition
+                                        enter-active-class="transition duration-200 ease-out"
+                                        enter-from-class="opacity-0 -translate-y-2"
+                                        enter-to-class="opacity-100 -translate-y-0"
+                                        leave-active-class="transition duration-200 ease-in"
+                                        leave-from-class="opacity-100 -translate-y-0"
+                                        leave-to-class="opacity-0 -translate-y-2"
+                                    >
+                                        <span 
+                                            v-if="isCopied" 
+                                            class="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-black text-white text-[10px] font-black tracking-widest rounded-full shadow-xl whitespace-nowrap"
+                                        >
+                                            COPIED
+                                        </span>
+                                    </Transition>
+                                </button>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -60,6 +100,7 @@ export default {
     name: "Footer",
     data() {
         return {
+            isCopied: false,
             menuItems: [
                 { label: "Home", link: "#home" },
                 { label: "Experience", link: "#experience" },
@@ -77,6 +118,17 @@ export default {
     methods: {
         scrollToTop() {
             scrollToTop();
+        },
+        async copyEmail(email) {
+            try {
+                await navigator.clipboard.writeText(email);
+                this.isCopied = true;
+                setTimeout(() => {
+                    this.isCopied = false;
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy email: ', err);
+            }
         },
         scrollToSection(link) {
             scrollToSection(link);
