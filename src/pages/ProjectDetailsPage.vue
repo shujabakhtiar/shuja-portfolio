@@ -1,6 +1,20 @@
 <template>
   <div class="min-h-screen bg-[#0C0F0A] text-white px-6 py-12 lg:px-24 lg:py-24 font-body relative">
-    <HamburgerMenu :navOptions="projectNavOptions" :showButton="true" />
+    <HamburgerMenu :navOptions="mainNavOptions" :showButton="true" />
+    
+    <!-- Desktop Section Navigation -->
+    <nav class="hidden lg:flex fixed right-12 top-1/2 -translate-y-1/2 flex-col items-end gap-4 z-40">
+      <div class="flex flex-col items-end gap-3 pr-4 border-r border-zinc-900">
+        <a 
+          v-for="section in sectionNavOptions" 
+          :key="section.label" 
+          @click.prevent="handleSectionClick(section.link)"
+          class="text-[10px] text-zinc-600 hover:text-[#E2C7CF] transition-all duration-300 font-mono tracking-widest uppercase cursor-pointer hover:translate-x-[-4px]"
+        >
+          {{ section.label }}
+        </a>
+      </div>
+    </nav>
     <div v-if="project" class="max-w-4xl mx-auto space-y-20 animate-fade-in">
       <!-- Header -->
       <header class="space-y-8">
@@ -281,6 +295,7 @@ import { useRoute } from 'vue-router'
 import { projectDetails } from '@/constants/projectDetails'
 import { projects } from '@/constants/projects'
 import HamburgerMenu from '@/components/navigation/HamburgerMenu.vue'
+import { scrollToSection } from '@/utils/scroll'
 
 const route = useRoute()
 const project = computed(() => {
@@ -351,16 +366,27 @@ const nextProjectSlug = computed(() => {
   return null
 })
 
-const projectNavOptions = [
-  { label: "Problem", link: "#problem" },
+const mainNavOptions = [
+  { label: "Home", link: "/#home" },
+  { label: "Experience", link: "/#experience" },
+  { label: "Projects", link: "/#works" },
+  { label: "Skills", link: "/#services" },
+  { label: "Contact", link: "/#contact" }
+]
+
+const sectionNavOptions = [
+  { label: "Intro", link: "#problem" },
   { label: "Approach", link: "#approach" },
   { label: "Ownership", link: "#ownership" },
-  { label: "Architecture", link: "#architecture" },
+  { label: "Systems", link: "#architecture" },
   { label: "Gallery", link: "#gallery" },
   { label: "Features", link: "#features" },
-  { label: "Live Demo", link: "#demo" },
-  { label: "Back Home", link: "/" }
+  { label: "Live Demo", link: "#demo" }
 ]
+
+const handleSectionClick = (link) => {
+  scrollToSection(link)
+}
 </script>
 
 <style scoped>
