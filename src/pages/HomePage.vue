@@ -7,7 +7,7 @@
             <ExperienceSection/>
             <ProjectsSection/>
             <ArsenalSection/>
-            <ContactSection/>
+            <Footer/>
         </div>
     </div>
 </template>
@@ -18,7 +18,7 @@ import AboutSection from "@/components/sections/AboutSection.vue";
 import ExperienceSection from "@/components/sections/ExperienceSection.vue";
 import ProjectsSection from "@/components/sections/ProjectsSection.vue";
 import ArsenalSection from "@/components/sections/ArsenalSection.vue";
-import ContactSection from "@/components/sections/ContactSection.vue";
+import Footer from "@/components/sections/Footer.vue";
 
 export default {
     name: "HomePage",
@@ -29,7 +29,7 @@ export default {
         ExperienceSection,
         ProjectsSection,
         ArsenalSection,
-        ContactSection,
+        Footer,
     },
 }
 </script>
