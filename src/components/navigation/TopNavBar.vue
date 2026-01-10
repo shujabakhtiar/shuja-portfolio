@@ -41,23 +41,23 @@ export default {
             navOptions: [
                 {
                     label: "Home",
-                    link: "/home",
+                    link: "#home",
                 },
                 {
                     label: "Projects",
-                    link: "/home",
+                    link: "#works",
                 },
                 {
                     label: "Experience",
-                    link: "/home",
+                    link: "#experience",
                 },
                 {
                     label: "Skills",
-                    link: "/home",
+                    link: "#services",
                 },
                 {
                     label: "Contact",
-                    link: "/home",
+                    link: "#contact",
                 },
             ]
         };

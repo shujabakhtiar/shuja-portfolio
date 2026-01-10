@@ -2,11 +2,11 @@
     <div class="flex flex-col h-screen">
         <div class="w-screen">
             <TopNavBar/>
-            <HeroSection/>
-            <AboutSection/>
-            <ExperienceSection/>
-            <ProjectsSection/>
-            <ArsenalSection/>
+            <HeroSection id="home"/>
+            <AboutSection id="about"/>
+            <ExperienceSection id="experience"/>
+            <ProjectsSection id="works"/>
+            <ArsenalSection id="services"/>
             <Footer/>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <Section :title="$t('about.title')" :border-radius-on-top="true" :subtitle="$t('about.services')" :description="$t('about.description')">
+  <Section :id="id" :title="$t('about.title')" :border-radius-on-top="true" :subtitle="$t('about.services')" :description="$t('about.description')">
       <div v-if="false" class="grid grid-cols-[40%_60%] gap-12" v-for="skillSet in $tm('about.skillSet')">
         <div class="text-6xl font-bold">
           ({{ String(skillSet.id).padStart(2, '0') }})
@@ -21,6 +21,12 @@ export default {
     components: {
       SkillSetCard,
       Section,
+    },
+    props: {
+        id: {
+            type: String,
+            default: ""
+        }
     },
 }
 </script>

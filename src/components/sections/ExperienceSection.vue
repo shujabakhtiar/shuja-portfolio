@@ -1,5 +1,5 @@
 <template>
-    <Section :title="$t('experience.title')" :subtitle="$t('experience.label')" :description="$t('experience.description')">
+    <Section :id="id" :title="$t('experience.title')" :subtitle="$t('experience.label')" :description="$t('experience.description')">
        <!-- Desktop Version -->
        <div v-if="!isMobile" class="relative flex flex-col gap-0 items-center">
          <!-- Central Line Background -->
@@ -68,6 +68,12 @@ export default {
         ExperienceHeader,
         ExperienceSectionMobile,
         Section,
+    },
+    props: {
+        id: {
+            type: String,
+            default: ""
+        }
     },
     data() {
       return {

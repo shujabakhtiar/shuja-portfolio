@@ -1,13 +1,13 @@
 <template>
-    <footer class="w-full bg-[#EBEBE9] text-[#2D2D2D] py-24 px-10 lg:px-20 relative">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-16 md:gap-8">
+    <footer id="contact" class="w-full bg-[#EBEBE9] text-[#2D2D2D] py-24 px-10 lg:px-20 relative">
+        <div class="max-w-7xl mx-auto flex flex-col-reverse md:flex-row justify-between gap-16 md:gap-8">
             <!-- Menu Column -->
             <div class="flex-1">
                 <div class="w-full border-t border-black/10 py-6">
                     <h3 class="text-xs font-bold uppercase tracking-[0.2em] mb-10 opacity-60">Menu</h3>
                     <ul class="flex flex-col gap-4">
-                        <li v-for="item in menuItems" :key="item" class="text-[#4A4A4A] hover:text-black transition-all duration-300 cursor-pointer text-xl font-medium">
-                            {{ item }}
+                        <li v-for="item in menuItems" :key="item.label" class="text-[#4A4A4A] hover:text-black transition-all duration-300 cursor-pointer text-xl font-medium">
+                            <a :href="item.link">{{ item.label }}</a>
                         </li>
                     </ul>
                 </div>
@@ -19,7 +19,7 @@
                     <h3 class="text-xs font-bold uppercase tracking-[0.2em] mb-10 opacity-60">Socials</h3>
                     <ul class="flex flex-col gap-4">
                         <li v-for="social in socials" :key="social.name" class="text-[#4A4A4A] hover:text-black transition-all duration-300 cursor-pointer text-xl font-medium">
-                            <a :href="social.link" target="_blank">{{ social.name }}</a>
+                            <a :href="social.link" :target="social.link.startsWith('mailto') ? '' : '_blank'">{{ social.name }}</a>
                         </li>
                     </ul>
                 </div>
@@ -58,10 +58,16 @@ export default {
     name: "Footer",
     data() {
         return {
-            menuItems: ["Home", "Services", "Works", "About", "Contact"],
+            menuItems: [
+                { label: "Home", link: "#home" },
+                { label: "Projects", link: "#works" },
+                { label: "Experience", link: "#experience" },
+                { label: "Skills", link: "#services" },
+                { label: "Contact", link: "#contact" }
+            ],
             socials: [
-                { name: "Linkedin", link: "#" },
-                { name: "Github", link: "#" },
+                { name: "Linkedin", link: "https://www.linkedin.com/in/shujabakhtiar/" },
+                { name: "Github", link: "https://github.com/shujabakhtiar" },
                 { name: "shujabakhtiar98@gmail.com", link: "mailto:shujabakhtiar98@gmail.com" }
             ]
         };

@@ -23,13 +23,13 @@
                         <span class="absolute left-0 bottom-0 w-0 h-[2px] sm:h-[3px] md:h-[4px] bg-white transition-all duration-300 group-hover:w-full"></span>
                     </a>
                     
-                    <div class="mt-12 text-sm font-mono text-gray-500 flex flex-col items-center gap-2 text-center">
-                         <p>EMAIL ADDRESS</p>
-                         <a href="mailto:contact@shujabakhtiar.com" class="text-white hover:underline mb-4">hello@shuzadev.com</a>
+                    <div class="mt-12 text-sm font-mono text-gray-400 flex flex-col items-start gap-2">
+                         <p class="text-xs opacity-60">EMAIL ADDRESS</p>
+                         <a href="mailto:shujabakhtiar98@gmail.com" class="text-white hover:underline mb-4">shujabakhtiar98@gmail.com</a>
                          
                          <div class="flex gap-4 uppercase text-xs font-bold tracking-widest mt-4">
-                             <a href="#" class="hover:underline text-white">LinkedIn</a>
-                             <a href="#" class="hover:underline text-white">Github</a>
+                             <a href="https://www.linkedin.com/in/shujabakhtiar/" target="_blank" class="hover:underline text-white">LinkedIn</a>
+                             <a href="https://github.com/shujabakhtiar" target="_blank" class="hover:underline text-white">Github</a>
                          </div>
                     </div>
                    </div>

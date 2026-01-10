@@ -1,5 +1,5 @@
 <template>
-    <div class="w-screen min-h-screen section text-white about-section"
+    <div :id="id" class="w-screen min-h-screen section text-white about-section"
     :class="borderRadiusOnTop ? 'rounded-t-3xl' : '', borderRadiusOnBottom ? 'rounded-b-3xl' : ''">
     <div class="flex flex-col py-12 px-5 lg:py-16 lg:px-10 gap-12 lg:gap-16">
       <div v-if="title && title.trim().length > 0" class="text-section-h2 font-section leading-none">{{ title }}</div>
@@ -42,6 +42,10 @@ export default {
         disableSnap: {
             type: Boolean,
             default: false
+        },
+        id: {
+            type: String,
+            default: ""
         }
     },
     data() {

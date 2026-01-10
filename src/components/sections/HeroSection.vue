@@ -1,5 +1,6 @@
 <template>
  <div 
+    :id="id"
     class="w-screen h-screen hero-theme overflow-hidden transition-all duration-700 ease-out"
     :class="isMounted ? 'translate-y-0' : 'translate-y-full'"
     :style="{ borderRadius: isMounted ? '0' : '50% 50% 0 0 / 100% 100% 0 0' }"
@@ -80,6 +81,12 @@
 <script>
 export default {
     name: "HeroSection",
+    props: {
+        id: {
+            type: String,
+            default: ""
+        }
+    },
     computed: {
         splitRole() {
             const text = this.$t('hero.role');
