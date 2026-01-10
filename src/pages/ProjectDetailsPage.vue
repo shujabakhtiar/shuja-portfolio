@@ -89,6 +89,65 @@
         </div>
       </section>
 
+      <!-- Gallery -->
+      <section id="gallery" class="space-y-8 border-t border-zinc-900 pt-16">
+        <div class="flex justify-between items-end">
+          <div class="flex flex-col gap-4">
+            <h2 class="text-3xl font-bold tracking-tight">Gallery</h2>
+            <p class="uppercase tracking-widest text-xs font-bold text-zinc-500">Visualizing the interface & flow</p>
+          </div>
+          <div class="flex gap-2">
+            <button 
+              @click="prevSlide" 
+              class="p-3 rounded-full border border-zinc-800 hover:border-[#E2C7CF] transition-colors group"
+              :disabled="project.gallery.length <= 1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:text-[#E2C7CF]"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <button 
+              @click="nextSlide" 
+              class="p-3 rounded-full border border-zinc-800 hover:border-[#E2C7CF] transition-colors group"
+              :disabled="project.gallery.length <= 1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:text-[#E2C7CF]"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+        </div>
+        
+        <div class="relative overflow-hidden group/carousel">
+          <div 
+            class="flex transition-transform duration-700 ease-in-out" 
+            :style="{ transform: `translateX(-${currentGalleryIndex * 100}%)` }"
+          >
+            <div v-for="(item, index) in project.gallery" :key="index" class="w-full flex-shrink-0 px-1">
+              <div class="overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-800 shadow-2xl aspect-video relative">
+                <img 
+                  :src="item.url" 
+                  :alt="item.caption"
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                  <p class="text-white font-mono text-sm">
+                    // {{ item.caption }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Indicators -->
+          <div class="flex justify-center gap-2 mt-6">
+            <button 
+              v-for="(_, index) in project.gallery" 
+              :key="index"
+              @click="currentGalleryIndex = index"
+              class="w-8 h-1 transition-all duration-300 rounded-full"
+              :class="currentGalleryIndex === index ? 'bg-[#E2C7CF]' : 'bg-zinc-800'"
+            ></button>
+          </div>
+        </div>
+      </section>
+
       <!-- Features -->
       <section id="features" class="space-y-12 border-t border-zinc-900 pt-16">
         <h2 class="text-3xl font-bold tracking-tight">Key Features</h2>
@@ -133,20 +192,35 @@
             </span>
           </div>
         </div>
-        <router-link 
-          v-if="nextProjectSlug"
-          :to="'/project/' + nextProjectSlug" 
-          class="inline-block px-12 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-[#E2C7CF] transition-colors duration-300 rounded-full text-sm"
-        >
-          Next Project
-        </router-link>
-        <router-link 
-          v-else
-          to="/" 
-          class="inline-block px-12 py-4 border border-zinc-700 text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 rounded-full text-sm"
-        >
-          Return home
-        </router-link>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+          <router-link 
+            v-if="prevProjectSlug"
+            :to="'/project/' + prevProjectSlug" 
+            class="group flex items-center gap-4 px-8 py-4 border border-zinc-800 rounded-full text-zinc-400 hover:text-white hover:border-zinc-500 transition-all duration-300"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-1 transition-transform">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span class="font-bold uppercase tracking-widest text-xs">Previous Project</span>
+          </router-link>
+
+          <router-link 
+            v-if="nextProjectSlug"
+            :to="'/project/' + nextProjectSlug" 
+            class="px-12 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-[#E2C7CF] transition-colors duration-300 rounded-full text-sm"
+          >
+            Next Project
+          </router-link>
+          
+          <router-link 
+            v-else
+            to="/" 
+            class="inline-block px-12 py-4 border border-zinc-700 text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 rounded-full text-sm"
+          >
+            Return home
+          </router-link>
+        </div>
       </footer>
     </div>
     
@@ -160,7 +234,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { projectDetails } from '@/constants/projectDetails'
 import { projects } from '@/constants/projects'
@@ -168,6 +242,31 @@ import HamburgerMenu from '@/components/navigation/HamburgerMenu.vue'
 
 const route = useRoute()
 const project = computed(() => projectDetails[route.params.slug])
+
+const currentGalleryIndex = ref(0)
+const nextSlide = () => {
+  if (currentGalleryIndex.value < (project.value.gallery?.length || 0) - 1) {
+    currentGalleryIndex.value++
+  } else {
+    currentGalleryIndex.value = 0
+  }
+}
+const prevSlide = () => {
+  if (currentGalleryIndex.value > 0) {
+    currentGalleryIndex.value--
+  } else {
+    currentGalleryIndex.value = (project.value.gallery?.length || 0) - 1
+  }
+}
+
+const prevProjectSlug = computed(() => {
+  const currentSlug = route.params.slug
+  const currentIndex = projects.findIndex(p => p.slug === currentSlug)
+  if (currentIndex > 0) {
+    return projects[currentIndex - 1].slug
+  }
+  return null
+})
 
 const nextProjectSlug = computed(() => {
   const currentSlug = route.params.slug
@@ -183,6 +282,7 @@ const projectNavOptions = [
   { label: "Approach", link: "#approach" },
   { label: "Ownership", link: "#ownership" },
   { label: "Architecture", link: "#architecture" },
+  { label: "Gallery", link: "#gallery" },
   { label: "Features", link: "#features" },
   { label: "Back Home", link: "/" }
 ]

@@ -52,6 +52,11 @@ export const projectDetails = {
             lessons: "Gained deep experience in managing real-time data at scale and the importance of observability in distributed systems.",
             improvements: "If rebuilding today, I would explore using TimescaleDB for more efficient time-series querying."
         },
+        gallery: [
+            { url: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200", caption: "Real-time logistics monitoring dashboard with live vehicle tracking." },
+            { url: "https://images.unsplash.com/photo-1590601401321-b847171d1ee4?auto=format&fit=crop&q=80&w=1200", caption: "Detailed route analytics and efficiency reporting interface." },
+            { url: "https://images.unsplash.com/photo-1512418490979-92798cccf340?auto=format&fit=crop&q=80&w=1200", caption: "Mobile-responsive driver views for on-the-go telemetry monitoring." }
+        ],
         next: ["Integration with third-party logistics APIs", "Predictive maintenance alerts", "Mobile driver application"]
     },
     "sandy-said-so": {
@@ -107,6 +112,11 @@ export const projectDetails = {
             lessons: "Learned the intricacies of WebSocket room management and the power of AI in enhancing social entertainment.",
             improvements: "I would implement a more robust offline-state recovery for players with extremely poor connections."
         },
+        gallery: [
+            { url: "https://images.unsplash.com/photo-1610819013498-8fad1138865c?auto=format&fit=crop&q=80&w=1200", caption: "Interactive card flip mechanics and real-time social gameplay." },
+            { url: "https://images.unsplash.com/photo-1626775238053-4315516eba73?auto=format&fit=crop&q=80&w=1200", caption: "AI-powered task generation interface tailored to player groups." },
+            { url: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1200", caption: "Thematic dark-mode UI with motion-rich transitions." }
+        ],
         next: ["Expansion packs for specific group types", "Integrated video chat", "Global leaderboard for 'Chaotic' playstyles"]
     }
 }
