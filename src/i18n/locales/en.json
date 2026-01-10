@@ -19,7 +19,7 @@
   "about": {
     "title": "Bit About me/",
     "services": "(Services)",
-    "description": "A Developer with a knack for creating awesome user experiences. Armed with a master's in Cloud Computing from Newcastle University, I thrive in both building responsive web apps using React.js/Vue.js and navigating the cloud with AWS and Azure. Transforming my creativity and knowledge into captivating and efficient digital solutions is my passion. I am excited to continue this journey of digital excellence in this ever-evolving digital landscape.",
+    "description": "I’m a software engineer with a master’s degree in Cloud Computing and experience as a front-end-focused full-stack developer.<br><br>I work across the stack, building scalable web applications with <span class=\"highlight\">Vue.js</span>, <span class=\"highlight\">React.js</span>, and <span class=\"highlight\">Next.js</span>, backed by <span class=\"highlight\">Node.js</span> or <span class=\"highlight\">Laravel</span>. I like owning features end-to-end, integrating <span class=\"highlight\">AI-powered tools</span> into real products, and keeping code clean, performant, and easy to scale. I enjoy collaborating with designers and other engineers to turn ideas into polished experiences.",
     "skillSet": [
       {
         "id": 1,
@@ -46,7 +46,7 @@
   "experience": {
     "title": "Experience",
     "label": "(Experience)",
-    "description": "My professional journey and the companies I've had the privilege to work with.",
+    "description": "What I’ve worked on over the years.",
     "list": [
       {
         "id": 1,
@@ -74,7 +74,7 @@
   "projects": {
     "title": "Projects",
     "label": "(Projects)",
-    "description": "My professional journey and the companies I've had the privilege to work with.",
+    "description": "Things I’ve built from idea to launch.",
     "list": [
       {
         "id": 1,

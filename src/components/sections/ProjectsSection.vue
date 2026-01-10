@@ -1,5 +1,5 @@
 <template>
-    <Section :id="id" :title="$t('projects.title')" :description="$t('projects.description')" :subtitle="$t('projects.subtitle')">
+    <Section :id="id" :title="$t('projects.title')" :description="$t('projects.description')" :subtitle="$t('projects.label')">
         <!-- Desktop Version -->
         <div v-if="!isMobile" class="flex flex-col relative" @mouseleave="hoveredIndex = null">
             <!-- Shared Moving Border -->
