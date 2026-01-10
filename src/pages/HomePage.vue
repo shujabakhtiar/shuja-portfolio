@@ -5,7 +5,7 @@
             <HeroSection id="home"/>
             <AboutSection id="about"/>
             <ExperienceSection id="experience"/>
-            <ProjectsSection id="works"/>
+            <ProjectsSection id="projects"/>
             <ArsenalSection id="services"/>
             <Footer id="contact"/>
         </div>

@@ -102,7 +102,7 @@ export default {
             menuItems: [
                 { label: "Home", link: "#home" },
                 { label: "Experience", link: "#experience" },
-                { label: "Projects", link: "#works" },
+                { label: "Projects", link: "#projects" },
                 { label: "Skills", link: "#services" },
                 { label: "Contact", link: "#contact" }
             ],

@@ -50,7 +50,7 @@ export default {
                 },
                 {
                     label: "Projects",
-                    link: "#works",
+                    link: "#projects",
                 },
                 {
                     label: "Skills",
