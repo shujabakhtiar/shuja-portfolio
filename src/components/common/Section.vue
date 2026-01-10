@@ -2,7 +2,7 @@
     <div :id="id" class="w-full min-h-screen section text-white about-section"
     :class="borderRadiusOnTop ? 'rounded-t-3xl' : '', borderRadiusOnBottom ? 'rounded-b-3xl' : ''">
     <div class="flex flex-col py-12 px-5 lg:py-16 lg:px-10 gap-12 lg:gap-16">
-      <div v-if="title && title.trim().length > 0" class="text-section-h2 font-section leading-none">{{ title }}</div>
+      <div v-if="title && title.trim().length > 0" class="text-section-h2 font-section leading-none break-words hyphens-auto" v-html="title"></div>
       <div v-if="(subtitle && subtitle.trim().length > 0) || (description && description.trim().length > 0)" class="grid-gap flex grid-cols-12 sm:justify-end lg:grid">
         <div class="col-span-7 col-start-1 flex flex-col gap-9 sm:col-start-6 sm:flex-row">
           <p class="text-[16px] font-body-strong text-muted">{{ subtitle }}</p>
