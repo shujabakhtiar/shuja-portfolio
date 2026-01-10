@@ -13,12 +13,12 @@
             <!-- Right Side: Skills Grid -->
             <div class="flex-1 w-full max-w-4xl flex flex-col gap-16 pt-8 lg:pt-0">
                 <div class="flex justify-start lg:justify-start">
-                    <h2 class="text-6xl md:text-7xl font-bold text-white tracking-tighter">Skills</h2>
+                    <h2 class="text-4xl md:text-7xl font-bold text-white tracking-tighter">Skills</h2>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-12">
                     <div v-for="(category, index) in categories" :key="index" class="flex flex-col gap-6">
-                        <h3 class="text-lg font-bold text-white tracking-wide leading-tight min-h-[3rem] flex items-end pb-2 border-b border-white/10">
+                        <h3 class="text-base font-bold text-white tracking-wide leading-tight min-h-[3rem] flex items-end pb-2 border-b border-white/10">
                             {{ category.title }}
                         </h3>
                         <ul class="flex flex-col gap-3">

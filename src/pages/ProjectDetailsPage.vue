@@ -28,7 +28,7 @@
         
         <div class="space-y-4">
           <div class="flex items-center gap-4">
-            <h1 class="text-6xl lg:text-8xl font-black uppercase tracking-tighter">{{ project.title }}</h1>
+            <h1 class="text-4xl lg:text-8xl font-black uppercase tracking-tighter">{{ project.title }}</h1>
             <span class="px-3 py-1 rounded-full border border-zinc-700 text-xs font-mono uppercase tracking-widest text-zinc-400">
               {{ project.status }}
             </span>
@@ -223,7 +223,7 @@
       <!-- Call to Action / Visit -->
       <section id="demo" class="mt-20 p-16 rounded-3xl bg-zinc-900 border border-zinc-800 text-center space-y-8 animate-pulse-slow">
         <div class="space-y-4">
-          <h2 class="text-4xl lg:text-6xl font-black uppercase tracking-tighter">Experience it live</h2>
+          <h2 class="text-3xl lg:text-6xl font-black uppercase tracking-tighter">Experience it live</h2>
           <p class="text-zinc-400 text-lg max-w-xl mx-auto">
             Get a hands-on feel for the performance and user experience I've built into {{ project.title }}.
           </p>

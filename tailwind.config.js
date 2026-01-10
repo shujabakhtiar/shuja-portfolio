@@ -11,16 +11,16 @@ export default {
       fontSize: {
         // HERO
         // Renaming to hero-title to force refresh. Standard clamp syntax.
-        'hero-title': ['clamp(3rem, 11vw, 8rem)', { lineHeight: '0.9', letterSpacing: '-0.02em' }],
+        'hero-title': ['clamp(2.5rem, 11vw, 8rem)', { lineHeight: '0.9', letterSpacing: '-0.02em' }],
         
         // NAVBAR
         'nav-logo': ['clamp(1.5rem, 3vw, 2.5rem)', { lineHeight: '1.2' }], 
         'nav-item': ['clamp(0.875rem, 2vw, 1rem)', { lineHeight: '1.2' }],
 
         // SECTIONS
-        'section-h2': ['clamp(3.5rem, 8vw, 6rem)', { lineHeight: '1' }],
-        'section-h3': ['clamp(2.5rem, 5vw, 4rem)', { lineHeight: '1' }],
-        'section-h4': ['clamp(1.25rem, 2vw, 1.5rem)', { lineHeight: '1.2' }],
+        'section-h2': ['clamp(2.5rem, 8vw, 6rem)', { lineHeight: '1' }],
+        'section-h3': ['clamp(1.75rem, 5vw, 4rem)', { lineHeight: '1' }],
+        'section-h4': ['clamp(1.1rem, 2vw, 1.5rem)', { lineHeight: '1.2' }],
        
         // BODY TEXT
         'text-xl': ['clamp(1.1rem, 2vw, 1.25rem)', { lineHeight: '1.75' }],

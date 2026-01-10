@@ -27,7 +27,7 @@
                                 {{ social.name }}
                             </a>
                             
-                            <!-- Copy Button for Email -->
+                            <!-- Copy Button for Email
                             <div v-if="social.link.startsWith('mailto')" class="relative">
                                 <button 
                                     @click="copyEmail(social.name)" 
@@ -41,8 +41,6 @@
                                     <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600">
                                         <polyline points="20 6 9 17 4 12"></polyline>
                                     </svg>
-
-                                    <!-- Tooltip -->
                                     <Transition
                                         enter-active-class="transition duration-200 ease-out"
                                         enter-from-class="opacity-0 -translate-y-2"
@@ -59,7 +57,7 @@
                                         </span>
                                     </Transition>
                                 </button>
-                            </div>
+                            </div>-->
                         </li>
                     </ul>
                 </div>
