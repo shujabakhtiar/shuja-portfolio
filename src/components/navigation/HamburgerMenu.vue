@@ -17,7 +17,7 @@
                         :key="option.label"
                         :href="option.link"
                         class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter cursor-pointer relative group text-white transition-all duration-300 hover:text-white/70 text-center"
-                        @click="handleNavClick(option.link)"
+                        @click.prevent="handleNavClick(option.link)"
                     >
                         {{ option.label }}
                         <span class="absolute left-0 bottom-0 w-0 h-[2px] sm:h-[3px] md:h-[4px] bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -84,6 +84,7 @@ export default {
             const element = document.getElementById(id);
             if (!element) return;
 
+            window.isNavigating = true;
             const targetPosition = element.getBoundingClientRect().top + window.scrollY;
             const startPosition = window.scrollY;
             const distance = targetPosition - startPosition;
@@ -101,6 +102,8 @@ export default {
 
                 if (progress < duration) {
                     window.requestAnimationFrame(step);
+                } else {
+                    window.isNavigating = false;
                 }
             };
 

@@ -86,6 +86,7 @@ export default {
             const element = document.getElementById(id);
             if (!element) return;
 
+            window.isNavigating = true;
             const targetPosition = element.getBoundingClientRect().top + window.scrollY;
             const startPosition = window.scrollY;
             const distance = targetPosition - startPosition;
@@ -103,6 +104,8 @@ export default {
 
                 if (progress < duration) {
                     window.requestAnimationFrame(step);
+                } else {
+                    window.isNavigating = false;
                 }
             };
 
