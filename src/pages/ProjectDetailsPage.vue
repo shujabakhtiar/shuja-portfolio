@@ -50,11 +50,11 @@
       </header>
 
       <!-- Tech Stack -->
-      <section class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-zinc-900">
-        <div v-for="(items, category) in project.techStack" :key="category" class="space-y-3">
+      <section class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 py-12 border-y border-zinc-900">
+        <div v-for="(items, category) in project.techStack" :key="category" class="space-y-4">
           <h3 class="text-xs font-bold uppercase tracking-widest text-[#E2C7CF]">{{ category }}</h3>
-          <ul class="space-y-1">
-            <li v-for="item in items" :key="item" class="text-zinc-400 font-mono text-sm">{{ item }}</li>
+          <ul class="flex flex-wrap gap-x-4 gap-y-2 md:block md:space-y-1">
+            <li v-for="item in items" :key="item" class="text-zinc-400 font-mono text-sm whitespace-nowrap">{{ item }}</li>
           </ul>
         </div>
       </section>

@@ -16,14 +16,14 @@
                     <h2 class="text-4xl md:text-7xl font-bold text-white tracking-tighter">Skills</h2>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-y-12 gap-x-8">
                     <div v-for="(category, index) in categories" :key="index" class="flex flex-col gap-6">
-                        <h3 class="text-base font-bold text-white tracking-wide leading-tight min-h-[3rem] flex items-end pb-2 border-b border-white/10">
+                        <h3 class="text-base font-bold text-white tracking-wide leading-tight min-h-[3rem] flex items-end pb-2 border-b border-white/10 uppercase opacity-80">
                             {{ category.title }}
                         </h3>
-                        <ul class="flex flex-col gap-3">
+                        <ul class="flex flex-wrap gap-x-6 gap-y-4 md:flex-col md:gap-3">
                             <li v-for="item in category.items" :key="item" 
-                                class="text-gray-400 hover:text-white transition-colors duration-300 font-mono text-base md:text-lg">
+                                class="text-zinc-400 hover:text-white transition-colors duration-300 font-mono text-base md:text-lg whitespace-nowrap">
                                 {{ item }}
                             </li>
                         </ul>
