@@ -1,7 +1,7 @@
 <template>
  <div 
     :id="id"
-    class="w-screen h-screen hero-theme overflow-hidden transition-all duration-700 ease-out"
+    class="w-full h-screen hero-theme overflow-hidden transition-all duration-700 ease-out"
     :class="isMounted ? 'translate-y-0' : 'translate-y-full'"
     :style="{ borderRadius: isMounted ? '0' : '50% 50% 0 0 / 100% 100% 0 0' }"
  >
@@ -10,7 +10,7 @@
         <div class="w-full lg:w-[70%]">
             <h1 class="text-hero-title font-hero uppercase text-black [text-shadow:2px_2px_0_#000]">
                 <template v-for="(word, wIndex) in splitRole" :key="wIndex">
-                    <span class="inline-block whitespace-nowrap">
+                    <span class="inline-block whitespace-normal lg:whitespace-nowrap">
                         <span 
                             v-for="(charObj, cIndex) in word.chars" 
                             :key="cIndex" 

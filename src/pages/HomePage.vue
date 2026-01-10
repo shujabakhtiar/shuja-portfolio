@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col h-screen">
-        <div class="w-screen">
+        <div class="w-full">
             <TopNavBar/>
             <HeroSection id="home"/>
             <AboutSection id="about"/>
