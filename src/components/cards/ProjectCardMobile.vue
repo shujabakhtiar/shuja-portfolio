@@ -52,15 +52,22 @@
                 <Tag v-for="tag in tags" :key="tag" class="text-xs">{{ tag }}</Tag>
             </div>
 
-            <!-- Link -->
-            <a 
-                v-if="isExpanded"
-                :href="liveSite" 
-                target="_blank"
-                class="text-accent underline underline-offset-8 mt-2 text-sm font-medium"
-            >
-                Visit Live Project
-            </a>
+            <!-- Links -->
+            <div v-if="isExpanded" class="flex flex-col items-center gap-4 mt-2">
+                <a 
+                    :href="liveSite" 
+                    target="_blank"
+                    class="text-accent underline underline-offset-8 text-sm font-medium"
+                >
+                    Visit Live Project
+                </a>
+                <router-link 
+                    :to="'/project/' + slug"
+                    class="px-8 py-3 rounded-full bg-white text-black text-xs font-bold uppercase tracking-widest"
+                >
+                    Read More
+                </router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -79,6 +86,7 @@ export default {
         tags: Array,
         liveSite: String,
         imageColor: String,
+        slug: String,
         isExpanded: Boolean
     },
     computed: {

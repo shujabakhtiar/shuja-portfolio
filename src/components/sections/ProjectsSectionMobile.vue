@@ -24,6 +24,7 @@
                 :tags="project.tags"
                 :liveSite="project.liveSite"
                 :imageColor="project.imageColor"
+                :slug="project.slug"
                 :is-expanded="selectedIndex === index"
                 @close="handleClose(index)"
             />

@@ -1,9 +1,8 @@
 <template>
   <main class="bg-white">
-    <HomePage />
+    <router-view />
   </main>
 </template>
 
 <script setup>
-import HomePage from "@/pages/HomePage.vue";
 </script>

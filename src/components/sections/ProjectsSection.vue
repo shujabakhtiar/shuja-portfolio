@@ -22,6 +22,7 @@
                 :tags="project.tags"
                 :liveSite="project.liveSite"
                 :imageColor="project.imageColor"
+                :slug="project.slug"
                 @mouseenter="hoveredIndex = index"
             />
         </div>
