@@ -7,7 +7,7 @@
             <ExperienceSection id="experience"/>
             <ProjectsSection id="works"/>
             <ArsenalSection id="services"/>
-            <Footer/>
+            <Footer id="contact"/>
         </div>
     </div>
 </template>

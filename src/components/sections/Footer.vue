@@ -6,8 +6,8 @@
                 <div class="w-full border-t border-black/10 py-6">
                     <h3 class="text-xs font-bold uppercase tracking-[0.2em] mb-10 opacity-60">Menu</h3>
                     <ul class="flex flex-col gap-4">
-                        <li v-for="item in menuItems" :key="item.label" class="text-[#4A4A4A] hover:text-black transition-all duration-300 cursor-pointer text-xl font-medium">
-                            <a :href="item.link">{{ item.label }}</a>
+                        <li v-for="item in menuItems" :key="item.label" class="text-[#4A4A4A] hover:text-black transition-all duration-300 cursor-pointer text-xl font-medium" @click.prevent="scrollToSection(item.link)">
+                            <a :href="item.link" @click.prevent>{{ item.label }}</a>
                         </li>
                     </ul>
                 </div>
@@ -60,8 +60,8 @@ export default {
         return {
             menuItems: [
                 { label: "Home", link: "#home" },
-                { label: "Projects", link: "#works" },
                 { label: "Experience", link: "#experience" },
+                { label: "Projects", link: "#works" },
                 { label: "Skills", link: "#services" },
                 { label: "Contact", link: "#contact" }
             ],
@@ -78,6 +78,35 @@ export default {
                 top: 0,
                 behavior: 'smooth'
             });
+        },
+        scrollToSection(link) {
+            const id = link.startsWith('#') ? link.substring(1) : null;
+            if (!id) return;
+            
+            const element = document.getElementById(id);
+            if (!element) return;
+
+            const targetPosition = element.getBoundingClientRect().top + window.scrollY;
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            const duration = 1000;
+            let start = null;
+
+            const step = (timestamp) => {
+                if (!start) start = timestamp;
+                const progress = timestamp - start;
+                const ease = (t) => 1 - Math.pow(1 - t, 4);
+                const currentProgress = Math.min(progress / duration, 1);
+                const easedProgress = ease(currentProgress);
+
+                window.scrollTo(0, startPosition + distance * easedProgress);
+
+                if (progress < duration) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+
+            window.requestAnimationFrame(step);
         }
     }
 };

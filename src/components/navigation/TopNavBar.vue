@@ -13,7 +13,7 @@
             class="hidden lg:flex flex-row gap-2 items-center transition-all duration-500 ease-out"
             :class="isScrolled ? '-translate-y-20 opacity-0' : 'translate-y-0 opacity-100'"
         >
-            <li v-for="option in navOptions" :key="option">
+            <li v-for="option in navOptions" :key="option.label" @click="scrollToSection(option.link)">
                 {{ option.label }}
             </li>
             <li class="!p-0 hover:!bg-transparent">
@@ -44,12 +44,12 @@ export default {
                     link: "#home",
                 },
                 {
-                    label: "Projects",
-                    link: "#works",
-                },
-                {
                     label: "Experience",
                     link: "#experience",
+                },
+                {
+                    label: "Projects",
+                    link: "#works",
                 },
                 {
                     label: "Skills",
@@ -80,6 +80,35 @@ export default {
         },
         checkMobile() {
             this.isMobile = window.innerWidth < 1024;
+        },
+        scrollToSection(link) {
+            const id = link.startsWith('#') ? link.substring(1) : null;
+            if (!id) return;
+            
+            const element = document.getElementById(id);
+            if (!element) return;
+
+            const targetPosition = element.getBoundingClientRect().top + window.scrollY;
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            const duration = 1000;
+            let start = null;
+
+            const step = (timestamp) => {
+                if (!start) start = timestamp;
+                const progress = timestamp - start;
+                const ease = (t) => 1 - Math.pow(1 - t, 4);
+                const currentProgress = Math.min(progress / duration, 1);
+                const easedProgress = ease(currentProgress);
+
+                window.scrollTo(0, startPosition + distance * easedProgress);
+
+                if (progress < duration) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+
+            window.requestAnimationFrame(step);
         }
     }
 }
