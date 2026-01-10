@@ -73,10 +73,16 @@ export default {
         },
         handleNavClick(link) {
             this.toggleMenu(false);
-            // Delay slightly to allow menu transition or just start scrolling
-            setTimeout(() => {
-                this.scrollToSection(link);
-            }, 300);
+            
+            if (link.startsWith('#')) {
+                // Internal section jump
+                setTimeout(() => {
+                    this.scrollToSection(link);
+                }, 300);
+            } else {
+                // External/Route navigation
+                this.$router.push(link);
+            }
         },
         scrollToSection(link) {
             scrollToSection(link);

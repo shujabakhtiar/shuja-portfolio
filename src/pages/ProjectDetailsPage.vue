@@ -1,5 +1,6 @@
 <template>
-  <div class="min-h-screen bg-[#0C0F0A] text-white px-6 py-12 lg:px-24 lg:py-24 font-body">
+  <div class="min-h-screen bg-[#0C0F0A] text-white px-6 py-12 lg:px-24 lg:py-24 font-body relative">
+    <HamburgerMenu :navOptions="projectNavOptions" :showButton="true" />
     <div v-if="project" class="max-w-4xl mx-auto space-y-20 animate-fade-in">
       <!-- Header -->
       <header class="space-y-8">
@@ -35,7 +36,7 @@
       </section>
 
       <!-- Problem & Motivation -->
-      <section class="space-y-8">
+      <section id="problem" class="space-y-8">
         <h2 class="text-3xl font-bold tracking-tight">Problem & Motivation</h2>
         <div class="grid md:grid-cols-2 gap-12 text-zinc-400 leading-relaxed text-lg">
           <p>{{ project.problem.issue }}</p>
@@ -49,7 +50,7 @@
       </section>
 
       <!-- Approach -->
-      <section class="space-y-8 border-t border-zinc-900 pt-16">
+      <section id="approach" class="space-y-8 border-t border-zinc-900 pt-16">
         <h2 class="text-3xl font-bold tracking-tight">Solution & Approach</h2>
         <div class="grid md:grid-cols-3 gap-12 text-zinc-400">
           <div class="space-y-4">
@@ -68,13 +69,13 @@
       </section>
 
       <!-- Ownership -->
-      <section class="bg-zinc-900/30 p-12 rounded-2xl border border-zinc-800/50 space-y-6">
+      <section id="ownership" class="bg-zinc-900/30 p-12 rounded-2xl border border-zinc-800/50 space-y-6">
         <h2 class="text-2xl font-bold tracking-tight">My Role & Ownership</h2>
         <p class="text-zinc-400 text-lg leading-relaxed">{{ project.ownership }}</p>
       </section>
 
       <!-- Architecture -->
-      <section class="space-y-8">
+      <section id="architecture" class="space-y-8">
         <h2 class="text-3xl font-bold tracking-tight">Architecture & System Design</h2>
         <div class="space-y-12">
           <p class="text-zinc-400 text-lg max-w-2xl">{{ project.architecture.overview }}</p>
@@ -89,7 +90,7 @@
       </section>
 
       <!-- Features -->
-      <section class="space-y-12 border-t border-zinc-900 pt-16">
+      <section id="features" class="space-y-12 border-t border-zinc-900 pt-16">
         <h2 class="text-3xl font-bold tracking-tight">Key Features</h2>
         <div class="grid md:grid-cols-2 gap-8">
           <div v-for="feature in project.features" :key="feature.title" class="p-8 border border-zinc-900 hover:border-[#E2C7CF]/30 transition-colors duration-500 rounded-xl space-y-4 group">
@@ -105,7 +106,7 @@
       <!-- Performance & Learnings -->
       <div class="grid md:grid-cols-2 gap-16 pt-16 border-t border-zinc-900">
         <section class="space-y-8">
-          <h2 class="text-2xl font-bold tracking-tight uppercase tracking-widest text-[#E2C7CF] text-sm">Optimization & Scale</h2>
+          <h2 class="font-bold uppercase tracking-widest text-[#E2C7CF] text-xs">Optimization & Scale</h2>
           <div class="space-y-6 text-zinc-400">
             <p>{{ project.performance.optimizations }}</p>
             <p>{{ project.performance.scalability }}</p>
@@ -113,7 +114,7 @@
           </div>
         </section>
         <section class="space-y-8">
-          <h2 class="text-2xl font-bold tracking-tight uppercase tracking-widest text-[#E2C7CF] text-sm">Challenges & Lessons</h2>
+          <h3 class="font-bold uppercase tracking-widest text-[#E2C7CF] text-xs">Challenges & Lessons</h3>
           <div class="space-y-6 text-zinc-400">
             <p>{{ project.learnings.challenges }}</p>
             <p>{{ project.learnings.lessons }}</p>
@@ -132,9 +133,19 @@
             </span>
           </div>
         </div>
-        
-        <router-link to="/" class="inline-block px-12 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-[#E2C7CF] transition-colors duration-300 rounded-full text-sm">
+        <router-link 
+          v-if="nextProjectSlug"
+          :to="'/project/' + nextProjectSlug" 
+          class="inline-block px-12 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-[#E2C7CF] transition-colors duration-300 rounded-full text-sm"
+        >
           Next Project
+        </router-link>
+        <router-link 
+          v-else
+          to="/" 
+          class="inline-block px-12 py-4 border border-zinc-700 text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 rounded-full text-sm"
+        >
+          Return home
         </router-link>
       </footer>
     </div>
@@ -152,9 +163,29 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { projectDetails } from '@/constants/projectDetails'
+import { projects } from '@/constants/projects'
+import HamburgerMenu from '@/components/navigation/HamburgerMenu.vue'
 
 const route = useRoute()
 const project = computed(() => projectDetails[route.params.slug])
+
+const nextProjectSlug = computed(() => {
+  const currentSlug = route.params.slug
+  const currentIndex = projects.findIndex(p => p.slug === currentSlug)
+  if (currentIndex !== -1 && currentIndex < projects.length - 1) {
+    return projects[currentIndex + 1].slug
+  }
+  return null
+})
+
+const projectNavOptions = [
+  { label: "Problem", link: "#problem" },
+  { label: "Approach", link: "#approach" },
+  { label: "Ownership", link: "#ownership" },
+  { label: "Architecture", link: "#architecture" },
+  { label: "Features", link: "#features" },
+  { label: "Back Home", link: "/" }
+]
 </script>
 
 <style scoped>
