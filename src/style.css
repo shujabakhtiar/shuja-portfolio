@@ -59,6 +59,7 @@ body {
 }
 
 .highlight {
-  color: #0D8ABC;
-  font-weight: 700;
+  color: #E2C7CF;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }

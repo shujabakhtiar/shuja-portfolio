@@ -7,7 +7,7 @@
         <div class="col-span-7 col-start-1 flex flex-col gap-9 sm:col-start-6 sm:flex-row">
           <p class="text-[16px] font-body-strong text-muted">{{ subtitle }}</p>
           <div class="w-full max-w-[50ch] text-balance font-medium leading-base">
-            <p class="text-xl font-body leading-relaxed" v-html="description"></p>
+            <p class="text-xl font-body leading-relaxed text-zinc-400" v-html="description"></p>
           </div>
         </div>
       </div>
