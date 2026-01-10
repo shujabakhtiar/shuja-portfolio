@@ -23,7 +23,7 @@
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
-          Back to Work
+          Projects
         </router-link>
         
         <div class="space-y-4">
@@ -274,7 +274,7 @@
             to="/" 
             class="inline-block px-12 py-4 border border-zinc-700 text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 rounded-full text-sm"
           >
-            Return home
+            Return to projects
           </router-link>
         </div>
       </footer>
@@ -283,7 +283,7 @@
     <div v-else class="min-h-screen flex items-center justify-center">
       <div class="text-center space-y-4">
         <h2 class="text-2xl font-bold opacity-50">Project insight loading...</h2>
-        <router-link to="/" class="text-[#E2C7CF] hover:underline uppercase text-xs tracking-widest font-bold">Return Home</router-link>
+        <router-link to="/" class="text-[#E2C7CF] hover:underline uppercase text-xs tracking-widest font-bold">Return to projects</router-link>
       </div>
     </div>
   </div>
