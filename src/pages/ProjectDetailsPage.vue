@@ -22,6 +22,16 @@
           <p class="text-xl lg:text-2xl text-zinc-400 font-medium leading-relaxed max-w-2xl">
             {{ project.summary }}
           </p>
+          <div class="pt-4 flex items-center gap-6">
+            <a 
+              :href="project.liveSite" 
+              target="_blank"
+              class="flex items-center gap-2 px-6 py-3 bg-[#E2C7CF] text-black font-bold rounded-full hover:scale-105 transition-transform duration-300"
+            >
+              <span class="text-sm uppercase tracking-widest">Visit Live Site</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
         </div>
       </header>
 
@@ -114,17 +124,31 @@
           </div>
         </div>
         
-        <div class="relative overflow-hidden group/carousel">
+        <div 
+          ref="carouselRef"
+          class="relative overflow-hidden group/carousel cursor-grab active:cursor-grabbing touch-pan-y"
+          @mousedown="onDragStart"
+          @mousemove="onDragMove"
+          @mouseup="onDragEnd"
+          @mouseleave="onDragEnd"
+          @touchstart="onDragStart"
+          @touchmove="onDragMove"
+          @touchend="onDragEnd"
+        >
           <div 
-            class="flex transition-transform duration-700 ease-in-out" 
-            :style="{ transform: `translateX(-${currentGalleryIndex * 100}%)` }"
+            class="flex transition-transform duration-700 ease-in-out select-none" 
+            :style="{ 
+              transform: `translateX(calc(-${currentGalleryIndex * 100}% + ${dragOffset}px))`,
+              transition: isDragging ? 'none' : 'transform 0.7s ease-in-out'
+            }"
           >
-            <div v-for="(item, index) in project.gallery" :key="index" class="w-full flex-shrink-0 px-1">
+            <div v-for="(item, index) in project.gallery" :key="index" class="w-full flex-shrink-0 px-1 pointer-events-none">
               <div class="overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-800 shadow-2xl aspect-video relative">
                 <img 
                   :src="item.url" 
                   :alt="item.caption"
                   class="w-full h-full object-cover"
+                  draggable="false"
                 />
                 <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
                   <p class="text-white font-mono text-sm">
@@ -181,6 +205,24 @@
           </div>
         </section>
       </div>
+
+      <!-- Call to Action / Visit -->
+      <section id="demo" class="mt-20 p-16 rounded-3xl bg-zinc-900 border border-zinc-800 text-center space-y-8 animate-pulse-slow">
+        <div class="space-y-4">
+          <h2 class="text-4xl lg:text-6xl font-black uppercase tracking-tighter">Experience it live</h2>
+          <p class="text-zinc-400 text-lg max-w-xl mx-auto">
+            Get a hands-on feel for the performance and user experience I've built into {{ project.title }}.
+          </p>
+        </div>
+        <a 
+          :href="project.liveSite" 
+          target="_blank"
+          class="inline-flex items-center gap-4 px-12 py-6 bg-white text-black font-black uppercase tracking-[0.2em] rounded-full hover:bg-[#E2C7CF] transition-all duration-500 transform hover:scale-95"
+        >
+          Explore Demo
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+      </section>
 
       <!-- Footer -->
       <footer class="pt-24 pb-12 text-center space-y-12">
@@ -241,9 +283,41 @@ import { projects } from '@/constants/projects'
 import HamburgerMenu from '@/components/navigation/HamburgerMenu.vue'
 
 const route = useRoute()
-const project = computed(() => projectDetails[route.params.slug])
+const project = computed(() => {
+  const baseInfo = projects.find(p => p.slug === route.params.slug)
+  const detailedInfo = projectDetails[route.params.slug]
+  return baseInfo && detailedInfo ? { ...baseInfo, ...detailedInfo } : null
+})
 
 const currentGalleryIndex = ref(0)
+const isDragging = ref(false)
+const startX = ref(0)
+const dragOffset = ref(0)
+const carouselRef = ref(null)
+
+const onDragStart = (e) => {
+  isDragging.value = true
+  startX.value = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX
+}
+
+const onDragMove = (e) => {
+  if (!isDragging.value) return
+  const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX
+  dragOffset.value = currentX - startX.value
+}
+
+const onDragEnd = () => {
+  if (!isDragging.value) return
+  isDragging.value = false
+  const threshold = 50 // Threshold for swipe
+  if (dragOffset.value < -threshold) {
+    nextSlide()
+  } else if (dragOffset.value > threshold) {
+    prevSlide()
+  }
+  dragOffset.value = 0
+}
+
 const nextSlide = () => {
   if (currentGalleryIndex.value < (project.value.gallery?.length || 0) - 1) {
     currentGalleryIndex.value++
@@ -284,6 +358,7 @@ const projectNavOptions = [
   { label: "Architecture", link: "#architecture" },
   { label: "Gallery", link: "#gallery" },
   { label: "Features", link: "#features" },
+  { label: "Live Demo", link: "#demo" },
   { label: "Back Home", link: "/" }
 ]
 </script>
@@ -300,5 +375,14 @@ const projectNavOptions = [
 
 h1, h2, h3 {
   font-family: "Archivo", sans-serif;
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 4s infinite ease-in-out;
+}
+
+@keyframes pulseSlow {
+  0%, 100% { border-color: rgba(39, 39, 42, 1); }
+  50% { border-color: rgba(226, 199, 207, 0.3); }
 }
 </style>
