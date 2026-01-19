@@ -12,7 +12,7 @@ export const projects = [
         title: "Sandy said so",
         description: "A Card game app to play with friends, using personal experiences.",
         tags: ["React js", "Node js", "MongoDB"],
-        liveSite: "https://sandy-said-so.com",
+        liveSite: "https://sandysaidso.app",
         imageColor: "bg-green-500",
     },
 ];
