@@ -1,63 +1,63 @@
 export const projectDetails = {
-    "delytics": {
-        title: "Delytics",
-        status: "Live",
-        summary: "A high-performance platform providing real-time delivery analytics and operational insights for enterprise logistics. Designed to handle large data volumes and provide actionable metrics for fleet management.",
-        techStack: {
-            frontend: ["Vue.js 3", "Tailwind CSS", "Vite"],
-            backend: ["Node.js", "Express", "MongoDB"],
-            infra: ["AWS EC2", "Docker", "Nginx"],
-            ai: ["Proprietary Route Optimization Algorithms"]
+   "delytics": {
+        "title": "Delytics",
+        "status": "Development",
+        "summary": "A comprehensive logistics management platform for tracking tenants, regions, hubs, agents, and deliveries. Provides dashboards and analytics for operational insights.",
+        "techStack": {
+            "frontend": ["Next.js", "React", "Material UI", "Tailwind CSS"],
+            "backend": ["Next.js API Routes", "Prisma", "PostgreSQL"],
+            "infra": ["Vercel", "Supabase (Database)"],
+            "ai": []
         },
-        problem: {
-            issue: "Logistics companies struggled with fragmented data across multiple delivery partners, making it impossible to get a real-time overview of fleet efficiency.",
-            bottleneck: "Existing solutions were either too generic or too expensive for mid-sized enterprises, often lacking the specific route-level analytics needed for optimization.",
-            motivation: "I saw an opportunity to build a data-agnostic platform that could ingest telemetry from any source and provide a unified, performant dashboard."
+        "problem": {
+            "issue": "Logistics companies struggled with fragmented data across multiple delivery partners, making it impossible to get a real-time overview of fleet efficiency.",
+            "bottleneck": "Existing solutions were either too generic or too expensive for mid-sized enterprises, often lacking the specific route-level analytics needed for optimization.",
+            "motivation": "I saw an opportunity to build a data-agnostic platform that could ingest telemetry from any source and provide a unified, performant dashboard."
         },
-        approach: {
-            strategy: "Built with a micro-services architecture in mind, focusing on a robust data ingestion layer capable of handling high-frequency updates.",
-            decisions: "Chose MongoDB for its flexible schema to accommodate varied telemetry data formats. Used Vue 3's Composition API for highly reactive dashboard components.",
-            tradeoffs: "Prioritized real-time visibility over deep archival search initially to ensure maximum performance for active delivery monitoring."
+        "approach": {
+            "strategy": "Utilized Next.js App Router for a unified full-stack application, ensuring type safety and seamless data flow from database to UI.",
+            "decisions": "Chose PostgreSQL for robust relational data modeling. Used Material UI and Tailwind CSS for a rapid, responsive, and consistent design system.",
+            "tradeoffs": "Prioritized a monolithic architecture initially to maximize development velocity and simplify deployment over complex microservices."
         },
-        ownership: "I built Delytics from the ground up as a solo engineer. This included defining the product roadmap, designing the system architecture, implementing the full stack, and managing the initial deployments.",
-        architecture: {
-            overview: "A distributed system comprising a real-time ingestion engine, a centralized database, and a reactive frontend dashboard.",
-            flow: "Telemetry data flow from delivery vehicles -> Ingestion API -> Real-time processing -> MongoDB storage -> WebSocket broadcast to Frontend.",
-            rationale: "Selected a event-driven architecture to minimize latency between vehicle movement and dashboard updates."
+        "ownership": "I built Delytics from the ground up. This included defining the data schema, implementing the full stack with Next.js and Prisma, and designing the dashboard UI.",
+        "architecture": {
+            "overview": "A monolithic Next.js application leveraging Server Components for performance and API routes for data mutations.",
+            "flow": "User Interaction -> Next.js API Route -> Prisma Client -> PostgreSQL Database.",
+            "rationale": "Selected to minimize latency and ensure end-to-end type safety across the application."
         },
-        features: [
+        "features": [
             {
-                title: "Live Fleet Mapping",
-                why: "Enables dispatchers to see every vehicle in real-time.",
-                detail: "Implemented using Mapbox GL JS with custom WebGL layers for rendering 1000+ moving markers smoothly."
+                "title": "Dashboard Analytics",
+                "why": "Customizable widget-based dashboards displaying real-time aggregated data for tenants and regions.",
+                "detail": "Provides immediate visibility into key operational metrics.",
             },
             {
-                title: "Route Efficiency Analytics",
-                why: "Identifies underperforming routes to save fuel and time.",
-                detail: "Calculated server-side using geographic intersections between actual telemetry and planned routes."
+                "title": "Delivery Management",
+                "why": "Ensures accountability and tracks SLA adherence.",
+                "detail": "Comprehensive tracking of deliveries with status monitoring, agent assignment, and historical logs."
             },
             {
-                title: "Automated Reporting",
-                why: "Reduces manual data entry for logistics managers.",
-                detail: "A periodic worker service that generates PDF summaries using Puppeteer for accurate visual reproduction of charts."
+                "title": "Automated Exports",
+                "why": "Facilitates offline analysis and reporting.",
+                "detail": "System for generating and downloading detailed reports based on custom filters and time ranges."
             }
         ],
-        performance: {
-            optimizations: "Implemented virtual scrolling for large data tables and optimized MongoDB indexes for time-series telemetry data.",
-            scalability: "Designed the ingestion layer to be stateless, allowing it to scale horizontally behind an AWS ALB.",
-            cost: "Used AWS Lambda for low-frequency background tasks to keep fixed infrastructure costs minimal."
+        "performance": {
+            "optimizations": "Implemented server-side rendering (SSR) and efficient database indexing to handle complex queries.",
+            "scalability": "Designed with stateless API routes to allow seamless horizontal scaling on serverless infrastructure.",
+            "cost": "Leveraged Vercel and Supabase for a cost-effective, consumption-based hosting model."
         },
-        learnings: {
-            challenges: "Handling sporadic data bursts during peak hours required implementing a reliable queuing system.",
-            lessons: "Gained deep experience in managing real-time data at scale and the importance of observability in distributed systems.",
-            improvements: "If rebuilding today, I would explore using TimescaleDB for more efficient time-series querying."
+        "learnings": {
+            "challenges": "Managing complex state and filters across different dashboard widgets and data tables.",
+            "lessons": "Gained deep experience in data modeling with Prisma and building performant server-rendered applications with Next.js.",
+            "improvements": "If rebuilding, I would explore TRPC for even tighter type integration between client and server."
         },
-        gallery: [
-            { url: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200", caption: "Real-time logistics monitoring dashboard with live vehicle tracking." },
-            { url: "https://images.unsplash.com/photo-1590601401321-b847171d1ee4?auto=format&fit=crop&q=80&w=1200", caption: "Detailed route analytics and efficiency reporting interface." },
-            { url: "https://images.unsplash.com/photo-1512418490979-92798cccf340?auto=format&fit=crop&q=80&w=1200", caption: "Mobile-responsive driver views for on-the-go telemetry monitoring." }
+        "gallery": [
+            { "url": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200", "caption": "Real-time logistics monitoring dashboard." },
+            { "url": "https://images.unsplash.com/photo-1590601401321-b847171d1ee4?auto=format&fit=crop&q=80&w=1200", "caption": "Detailed delivery analytics and reporting interface." },
+            { "url": "https://images.unsplash.com/photo-1512418490979-92798cccf340?auto=format&fit=crop&q=80&w=1200", "caption": "Mobile-responsive driver views." }
         ],
-        next: ["Integration with third-party logistics APIs", "Predictive maintenance alerts", "Mobile driver application"]
+        "next": ["Integration with third-party logistics APIs", "Predictive maintenance alerts", "Mobile driver application"]
     },
     "sandy-said-so": {
         title: "Sandy said so",
