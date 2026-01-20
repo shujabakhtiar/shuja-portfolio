@@ -6,13 +6,13 @@ export const experienceList = [
         duration: "Mar 2023 - Present",
         logo: "https://ui-avatars.com/api/?name=OU&background=0D8ABC&color=fff",
         description: [
-            "Architected and launched the Apex design system for the company’s internal CRM, standardizing UI components, improving user experience, and reducing network interactions by 30%.",
-            "Designed and implemented a company-wide scaffolding system that automated project setup—including templates, stores, loading/error handling, and chipset logic—reducing project build time by 1+ week.",
-            "Pioneered AI-driven ticket summarization by consolidating varying numbers of notes (5–50) into concise summaries, improving agent efficiency and SLA targets.",
-            "Developed and deployed a delivery management system with real-time order tracking, barcode scanning, and automated label generation, fully integrated with DPD shipment APIs.",
-            "Migrated legacy features to modern Vue.js architecture, leveraging the Apex design system to improve UI consistency and performance."
+            "Built and shipped the Apex design system for our internal CRM so teams could move faster with consistent UI, better UX, and about 30% fewer network calls.",
+            "Put together a plug-and-play project scaffolding setup that handled templates, state, loading/errors, and core logic out of the box, cutting new project setup time by over a week.",
+            "Drove an AI-powered ticket summarization feature that turns messy support notes (anywhere from 5 to 50) into clean, readable summaries so agents could resolve issues faster.",
+            "Built a complete delivery management system from scratch with live order tracking, barcode scanning, and auto-generated labels, fully hooked into DPD’s APIs.",
+            "Cleaned up and modernized legacy features by moving them to a scalable Vue.js setup, using the Apex design system to keep everything fast and consistent."
         ],
-        skillTags: ["Vue.js", "AI/LLM", "Design Systems", "REST API", "CRM", "Unit Testing"]
+        skillTags: ["Vue.js", "Design Systems", "REST API", "CRM", "Unit Testing"]
     },
     {
         id: 2,
