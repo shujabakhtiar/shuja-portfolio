@@ -46,14 +46,15 @@
             leave-to-class="opacity-0 scale-50">
             <div 
                 v-show="isHovered"
-                class="cursor-follower w-[400px] z-0 aspect-video absolute pointer-events-none rounded-lg shadow-2xl"
-                :class="imageColor"
+                class="cursor-follower w-[400px] z-0 aspect-video absolute pointer-events-none rounded-lg shadow-2xl overflow-hidden"
                 :style="{
                     left: `${mouseX}px`,
                     top: `${mouseY}px`,
-                    transform: 'translate(-50%, -50%)'
+                    transform: 'translate(-50%, -50%)',
                 }"
-            ></div>
+            >
+                <img :src="image" :alt="title" class="w-full h-full object-cover" />
+            </div>
         </Transition>
 
         <!-- Details -->
@@ -140,6 +141,10 @@ export default {
             required: true,
         },
         imageColor: {
+            type: String,
+            required: true,
+        },
+        image: {
             type: String,
             required: true,
         },

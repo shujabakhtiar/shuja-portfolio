@@ -30,10 +30,9 @@
             <!-- Image Center (16:9) -->
             <div 
                 class="w-full aspect-video rounded-xl shadow-2xl transition-all duration-700 transform flex items-center justify-center overflow-hidden"
-                :class="[imageColor, isExpanded ? 'scale-100 opacity-100' : 'scale-75 opacity-0']"
+                :class="[isExpanded ? 'scale-100 opacity-100' : 'scale-75 opacity-0']"
             >
-                <!-- Placeholder for Image content -->
-                <div class="text-white/20 font-bold text-6xl uppercase tracking-widest">{{ title[0] }}</div>
+                <img :src="image" :alt="title" class="w-full h-full object-cover" />
             </div>
 
             <!-- Description -->
@@ -86,6 +85,7 @@ export default {
         tags: Array,
         liveSite: String,
         imageColor: String,
+        image: String,
         slug: String,
         isExpanded: Boolean
     },

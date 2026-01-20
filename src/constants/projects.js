@@ -1,3 +1,6 @@
+import delyticsImage from '@/assets/projectGallery/delytics-l.png'
+import sandyImage from '@/assets/projectGallery/sandysaidso.png'
+
 export const projects = [
     {
         slug: "delytics",
@@ -6,13 +9,15 @@ export const projects = [
         tags: ["Vue js", "Node js", "MongoDB"],
         liveSite: "https://delytics.com",
         imageColor: "bg-blue-500",
+        image: delyticsImage,
     },
     {
         slug: "sandy-said-so",
-        title: "Sandy said so",
+        title: "Sandy",
         description: "A Card game app to play with friends, using personal experiences.",
         tags: ["React js", "Node js", "MongoDB"],
         liveSite: "https://sandysaidso.app",
         imageColor: "bg-green-500",
+        image: sandyImage,
     },
 ];
