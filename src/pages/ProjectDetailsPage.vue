@@ -118,78 +118,7 @@
         </div>
       </section>
 
-      <!-- Gallery -->
-      <section id="gallery" class="space-y-8 border-t border-zinc-900 pt-16">
-        <div class="flex justify-between items-end">
-          <div class="flex flex-col gap-4">
-            <h2 class="text-3xl font-bold tracking-tight">Gallery</h2>
-            <p class="uppercase tracking-widest text-xs font-bold text-zinc-500">Visualizing the interface & flow</p>
-          </div>
-          <div class="flex gap-2">
-            <button 
-              @click="prevSlide" 
-              class="p-3 rounded-full border border-zinc-800 hover:border-[#E2C7CF] transition-colors group"
-              :disabled="project.gallery.length <= 1"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:text-[#E2C7CF]"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-            </button>
-            <button 
-              @click="nextSlide" 
-              class="p-3 rounded-full border border-zinc-800 hover:border-[#E2C7CF] transition-colors group"
-              :disabled="project.gallery.length <= 1"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:text-[#E2C7CF]"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </button>
-          </div>
-        </div>
-        
-        <div 
-          ref="carouselRef"
-          class="relative overflow-hidden group/carousel cursor-grab active:cursor-grabbing touch-pan-y"
-          @mousedown="onDragStart"
-          @mousemove="onDragMove"
-          @mouseup="onDragEnd"
-          @mouseleave="onDragEnd"
-          @touchstart="onDragStart"
-          @touchmove="onDragMove"
-          @touchend="onDragEnd"
-        >
-          <div 
-            class="flex transition-transform duration-700 ease-in-out select-none" 
-            :style="{ 
-              transform: `translateX(calc(-${currentGalleryIndex * 100}% + ${dragOffset}px))`,
-              transition: isDragging ? 'none' : 'transform 0.7s ease-in-out'
-            }"
-          >
-            <div v-for="(item, index) in project.gallery" :key="index" class="w-full flex-shrink-0 px-1 pointer-events-none">
-              <div class="overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-800 shadow-2xl aspect-video relative">
-                <img 
-                  :src="item.url" 
-                  :alt="item.caption"
-                  class="w-full h-full object-cover"
-                  draggable="false"
-                />
-                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                  <p class="text-white font-mono text-sm">
-                    // {{ item.caption }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Indicators -->
-          <div class="flex justify-center gap-2 mt-6">
-            <button 
-              v-for="(_, index) in project.gallery" 
-              :key="index"
-              @click="currentGalleryIndex = index"
-              class="w-8 h-1 transition-all duration-300 rounded-full"
-              :class="currentGalleryIndex === index ? 'bg-[#E2C7CF]' : 'bg-zinc-800'"
-            ></button>
-          </div>
-        </div>
-      </section>
+
 
       <!-- Features -->
       <section id="features" class="space-y-12 border-t border-zinc-900 pt-16">
@@ -309,49 +238,7 @@ const project = computed(() => {
   return baseInfo && detailedInfo ? { ...baseInfo, ...detailedInfo } : null
 })
 
-const currentGalleryIndex = ref(0)
-const isDragging = ref(false)
-const startX = ref(0)
-const dragOffset = ref(0)
-const carouselRef = ref(null)
 
-const onDragStart = (e) => {
-  isDragging.value = true
-  startX.value = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX
-}
-
-const onDragMove = (e) => {
-  if (!isDragging.value) return
-  const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX
-  dragOffset.value = currentX - startX.value
-}
-
-const onDragEnd = () => {
-  if (!isDragging.value) return
-  isDragging.value = false
-  const threshold = 50 // Threshold for swipe
-  if (dragOffset.value < -threshold) {
-    nextSlide()
-  } else if (dragOffset.value > threshold) {
-    prevSlide()
-  }
-  dragOffset.value = 0
-}
-
-const nextSlide = () => {
-  if (currentGalleryIndex.value < (project.value.gallery?.length || 0) - 1) {
-    currentGalleryIndex.value++
-  } else {
-    currentGalleryIndex.value = 0
-  }
-}
-const prevSlide = () => {
-  if (currentGalleryIndex.value > 0) {
-    currentGalleryIndex.value--
-  } else {
-    currentGalleryIndex.value = (project.value.gallery?.length || 0) - 1
-  }
-}
 
 const prevProjectSlug = computed(() => {
   const currentSlug = route.params.slug
@@ -385,7 +272,6 @@ const sectionNavOptions = [
   { label: "Approach", link: "#approach" },
   { label: "Ownership", link: "#ownership" },
   { label: "Systems", link: "#architecture" },
-  { label: "Gallery", link: "#gallery" },
   { label: "Features", link: "#features" },
   { label: "Live Demo", link: "#demo" }
 ]
