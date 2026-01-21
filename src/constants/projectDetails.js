@@ -29,7 +29,7 @@ export const projectDetails = {
             {
                 "title": "Dashboard Analytics",
                 "why": "Customizable widget-based dashboards displaying real-time aggregated data for tenants and regions.",
-                "detail": "Provides immediate visibility into key operational metrics."
+                "detail": "Provides immediate visibility into key operational metrics.",
             },
             {
                 "title": "Delivery Management",
@@ -56,6 +56,26 @@ export const projectDetails = {
             { "url": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200", "caption": "Real-time logistics monitoring dashboard." },
             { "url": "https://images.unsplash.com/photo-1590601401321-b847171d1ee4?auto=format&fit=crop&q=80&w=1200", "caption": "Detailed delivery analytics and reporting interface." },
             { "url": "https://images.unsplash.com/photo-1512418490979-92798cccf340?auto=format&fit=crop&q=80&w=1200", "caption": "Mobile-responsive driver views." }
+        ],
+        "highlights": [
+            {
+                "title": "Real-Time Fleet Tracking",
+                "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200",
+                "points": [
+                    "Live geolocation updates of all active deliveries on an interactive map.",
+                    "Instant status changes reflected across all dashboard widgets without page reloads.",
+                    "Color-coded markers indicating delivery status (Pending, In-Transit, Delivered, Delayed)."
+                ]
+            },
+            {
+                "title": "Automated Route Optimization",
+                "image": "https://images.unsplash.com/photo-1590601401321-b847171d1ee4?auto=format&fit=crop&q=80&w=1200",
+                "points": [
+                    "Intelligent grouping of deliveries based on proximity and traffic conditions.",
+                    "Reduction in fuel costs and delivery times by up to 15%.",
+                    "One-click assignment of optimized routes to available drivers."
+                ]
+            }
         ],
         "next": ["Integration with third-party logistics APIs", "Predictive maintenance alerts", "Mobile driver application"]
     },
@@ -116,6 +136,26 @@ export const projectDetails = {
             { "url": "https://images.unsplash.com/photo-1626775238053-4315516eba73?auto=format&fit=crop&q=80&w=1200", "caption": "AI-powered task generation interface." },
             { "url": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1200", "caption": "Thematic UI." },
             { "url": "https://images.unsplash.com/photo-1610819013498-8fad1138865c?auto=format&fit=crop&q=80&w=1200", "caption": "Interactive social gameplay." }
+        ],
+        "highlights": [
+            {
+                "title": "AI-Powered \"Sandy\" Persona",
+                "image": "https://images.unsplash.com/photo-1626775238053-4315516eba73?auto=format&fit=crop&q=80&w=1200",
+                "points": [
+                    "Dynamically generates unique dares and questions based on the current group vibe.",
+                    "Uses Google Gemini API to create context-aware content that feels personal and spontaneous.",
+                    "Adapts the 'spiciness' level of challenges based on user preferences."
+                ]
+            },
+            {
+                "title": "Seamless Cross-Device Play",
+                "image": "https://images.unsplash.com/photo-1610819013498-8fad1138865c?auto=format&fit=crop&q=80&w=1200",
+                "points": [
+                    "Mobile-first design ensures a smooth experience on any smartphone.",
+                    "Real-time state synchronization allows all players to see the same card at the same time.",
+                    "No app download required – play instantly via the browser."
+                ]
+            }
         ],
         "next": ["Expansion packs", "Integrated video chat"]
     }

@@ -73,6 +73,11 @@
         </div>
       </section>
 
+      <!-- Highlights -->
+      <div id="highlights">
+        <ProjectHighlights :project="project" />
+      </div>
+
       <!-- Approach -->
       <section id="approach" class="space-y-8 border-t border-zinc-900 pt-16">
         <h2 class="text-3xl font-bold tracking-tight">Solution & Approach</h2>
@@ -294,6 +299,7 @@ import { useRoute } from 'vue-router'
 import { projectDetails } from '@/constants/projectDetails'
 import { projects } from '@/constants/projects'
 import HamburgerMenu from '@/components/navigation/HamburgerMenu.vue'
+import ProjectHighlights from '@/components/sections/ProjectHighlights.vue'
 import { scrollToSection } from '@/utils/scroll'
 
 const route = useRoute()
@@ -375,6 +381,7 @@ const mainNavOptions = [
 
 const sectionNavOptions = [
   { label: "Intro", link: "#problem" },
+  { label: "Highlights", link: "#highlights" },
   { label: "Approach", link: "#approach" },
   { label: "Ownership", link: "#ownership" },
   { label: "Systems", link: "#architecture" },
