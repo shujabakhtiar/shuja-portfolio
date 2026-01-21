@@ -103,10 +103,10 @@
               </div>
 
               <!-- Visual & Details -->
-              <div class="col-span-12 lg:col-span-10 grid lg:grid-cols-5 gap-8 lg:gap-16 items-center h-full overflow-y-auto lg:overflow-visible">
+            <div class="col-span-12 lg:col-span-10 grid lg:grid-cols-12 gap-8 lg:gap-16 items-center h-full overflow-y-auto lg:overflow-visible">
                 
                 <!-- Image (Larger Real Estate) -->
-                <div class="lg:col-span-3 w-full h-full max-h-[60vh] lg:max-h-none flex items-center">
+                <div class="lg:col-span-8 w-full h-full max-h-[60vh] lg:max-h-none flex items-center">
                    <div class="relative w-full h-auto max-h-full overflow-hidden rounded-2xl border border-zinc-800 shadow-2xl bg-zinc-900">
                       <img 
                         :src="activeHighlight.image" 
@@ -117,7 +117,7 @@
                 </div>
 
                  <!-- Details -->
-                <div class="lg:col-span-2 space-y-8 pb-8 lg:pb-0">
+                <div class="lg:col-span-4 space-y-8 pb-8 lg:pb-0">
                   <div class="space-y-6">
                     <div v-for="(point, idx) in activeHighlight.points" :key="idx" class="flex gap-4">
                        <div class="mt-2 w-2 h-2 rounded-full bg-[#E2C7CF] flex-shrink-0"></div>

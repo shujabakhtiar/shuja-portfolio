@@ -120,19 +120,7 @@
 
 
 
-      <!-- Features -->
-      <section id="features" class="space-y-12 border-t border-zinc-900 pt-16">
-        <h2 class="text-3xl font-bold tracking-tight">Key Features</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div v-for="feature in project.features" :key="feature.title" class="p-8 border border-zinc-900 hover:border-[#E2C7CF]/30 transition-colors duration-500 rounded-xl space-y-4 group">
-            <h3 class="text-xl font-bold group-hover:text-[#E2C7CF] transition-colors">{{ feature.title }}</h3>
-            <p class="text-zinc-400 leading-relaxed">{{ feature.why }}</p>
-            <div class="pt-4 text-xs font-mono text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity">
-              Technical: {{ feature.detail }}
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       <!-- Performance & Learnings -->
       <div class="grid md:grid-cols-2 gap-16 pt-16 border-t border-zinc-900">
@@ -272,7 +260,6 @@ const sectionNavOptions = [
   { label: "Approach", link: "#approach" },
   { label: "Ownership", link: "#ownership" },
   { label: "Systems", link: "#architecture" },
-  { label: "Features", link: "#features" },
   { label: "Live Demo", link: "#demo" }
 ]
 
