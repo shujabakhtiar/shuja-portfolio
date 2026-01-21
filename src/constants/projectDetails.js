@@ -29,7 +29,7 @@ export const projectDetails = {
             {
                 "title": "Dashboard Analytics",
                 "why": "Customizable widget-based dashboards displaying real-time aggregated data for tenants and regions.",
-                "detail": "Provides immediate visibility into key operational metrics.",
+                "detail": "Provides immediate visibility into key operational metrics."
             },
             {
                 "title": "Delivery Management",
@@ -59,64 +59,64 @@ export const projectDetails = {
         ],
         "next": ["Integration with third-party logistics APIs", "Predictive maintenance alerts", "Mobile driver application"]
     },
-    "sandy-said-so": {
-        title: "Sandy said so",
-        status: "Live",
-        summary: "An interactive, social card game platform where 'Sandy' (an imaginary host) compels players to perform tasks or answer questions based on shared personal experiences.",
-        techStack: {
-            frontend: ["React.js", "Framer Motion", "Tailwind CSS"],
-            backend: ["Node.js", "Socket.io", "MongoDB"],
-            infra: ["DigitalOcean", "Redis"],
-            ai: ["OpenAI API for custom task generation"]
+   "sandy-said-so": {
+        "title": "Sandy said so",
+        "status": "Live",
+        "summary": "An interactive, social card game platform where 'Sandy' (an imaginary host) compels players to perform tasks or answer questions based on shared personal experiences.",
+        "techStack": {
+            "frontend": ["Next.js", "React", "Tailwind CSS"],
+            "backend": ["Next.js API Routes", "Prisma", "PostgreSQL"],
+            "infra": ["Vercel", "Supabase"],
+            "ai": ["Gemini API for custom game generation", "prompt engineering"]
         },
-        problem: {
-            issue: "Standard card games often feel repetitive or lack a personal connection between players in remote settings.",
-            bottleneck: "Existing digital board games were either too complex to set up or didn't leverage the shared history of the group.",
-            motivation: "I wanted to create a game that felt 'alive' and adaptive, using AI to tailor tasks to the specific group dynamic."
+        "problem": {
+            "issue": "Standard card games often feel repetitive or lack a personal connection between players in remote settings.",
+            "bottleneck": "Existing digital board games were either too complex to set up or didn't leverage the shared history of the group.",
+            "motivation": "I wanted to create a game that felt 'alive' and adaptive, using AI to tailor tasks to the specific group dynamic."
         },
-        approach: {
-            strategy: "Developed a real-time sync engine using WebSockets to ensure every player sees the same 'Sandy' prompt simultaneously.",
-            decisions: "Used React's state management to handle complex game flows and Framer Motion for high-quality card animations.",
-            tradeoffs: "Focused on mobile-web experience first, as most players use their phones while playing in a group."
+        "approach": {
+            "strategy": "Leveraged Supabase for authentication and database management to rapid prototype the social experience.",
+            "decisions": "Used Next.js for a unified full-stack application and Tailwind CSS for rapid UI development.",
+            "tradeoffs": "Focused on mobile-web experience first."
         },
-        ownership: "Full end-to-end ownership. I conducted the initial game design research, built the real-time engine, and deployed the application for public use.",
-        architecture: {
-            overview: "Real-time client-server architecture powered by WebSockets for instant state synchronization.",
-            flow: "Player action -> Socket.io message -> Server logic updates room state -> Broadcast to all room members.",
-            rationale: "WebSocket was chosen over Polling to provide the 'party game' responsiveness required for a smooth social experience."
+        "ownership": "Full end-to-end ownership. Conducted initial game design research and built the application.",
+        "architecture": {
+            "overview": "Next.js application with Supabase for authentication and database interactions.",
+            "flow": "Client -> Next.js API Routes / Server Actions -> Prisma/Supabase -> Database.",
+            "rationale": "Leveraged Next.js serverless capabilities for scalability and ease of deployment."
         },
-        features: [
+        "features": [
             {
-                title: "Real-time Synchronization",
-                why: "Ensures the party stays together on the same turn.",
-                detail: "Built on Socket.io with custom room management and automatic reconnection logic."
+                "title": "AI Task Generator",
+                "why": "Prevents the game from ever feeling repetitive.",
+                "detail": "Integrates Google Gemini API with structured prompting to generate context-aware dares and questions."
             },
             {
-                title: "AI Task Generator",
-                why: "Prevents the game from ever feeling repetitive.",
-                detail: "Integrates OpenAI with structured prompting to generate context-aware dares and questions."
+                "title": "Supabase Authentication",
+                "why": "Secure and scalable user management.",
+                "detail": "Implemented using Supabase Auth integration."
             },
             {
-                title: "Animated Card UI",
-                why: "Makes the digital game feel tactile and premium.",
-                detail: "Leveraged Framer Motion for layout transitions and 60fps card flip animations."
+                "title": "Responsive UI",
+                "why": "Ensures playability on mobile devices.",
+                "detail": "Built with Tailwind CSS for a mobile-first responsive design."
             }
         ],
-        performance: {
-            optimizations: "Used Redis for temporary session and room storage to achieve sub-50ms state updates.",
-            scalability: "Implemented a sticky-session load balance strategy to handle thousands of concurrent game rooms.",
-            cost: "Optimized AI token usage by caching results for common game categories."
+        "performance": {
+            "optimizations": "",
+            "scalability": "Serverless architecture on Vercel allows for automatic scaling.",
+            "cost": ""
         },
-        learnings: {
-            challenges: "Synchronizing state across low-latency mobile networks in real-time was a significant hurdle.",
-            lessons: "Learned the intricacies of WebSocket room management and the power of AI in enhancing social entertainment.",
-            improvements: "I would implement a more robust offline-state recovery for players with extremely poor connections."
+        "learnings": {
+            "challenges": "",
+            "lessons": "Learned the intricacies of integrating generative AI into a social game context.",
+            "improvements": ""
         },
-        gallery: [
-            { url: "https://images.unsplash.com/photo-1610819013498-8fad1138865c?auto=format&fit=crop&q=80&w=1200", caption: "Interactive card flip mechanics and real-time social gameplay." },
-            { url: "https://images.unsplash.com/photo-1626775238053-4315516eba73?auto=format&fit=crop&q=80&w=1200", caption: "AI-powered task generation interface tailored to player groups." },
-            { url: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1200", caption: "Thematic dark-mode UI with motion-rich transitions." }
+        "gallery": [
+            { "url": "https://images.unsplash.com/photo-1626775238053-4315516eba73?auto=format&fit=crop&q=80&w=1200", "caption": "AI-powered task generation interface." },
+            { "url": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1200", "caption": "Thematic UI." },
+            { "url": "https://images.unsplash.com/photo-1610819013498-8fad1138865c?auto=format&fit=crop&q=80&w=1200", "caption": "Interactive social gameplay." }
         ],
-        next: ["Expansion packs for specific group types", "Integrated video chat", "Global leaderboard for 'Chaotic' playstyles"]
+        "next": ["Expansion packs", "Integrated video chat"]
     }
 }
