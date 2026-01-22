@@ -2,6 +2,8 @@ import dashboardVideo from '@/assets/highlights/delytics/dashboard.mov'
 import paginationVideo from '@/assets/highlights/delytics/pagination.mov'
 import sandyAiVideo from '@/assets/highlights/sandy/aiCreation.mov'
 import sandyGameVideo from '@/assets/highlights/sandy/gameEngine.mov'
+import overviewVideo from '@/assets/highlights/delytics/overview.mov'
+import sandyLandingVideo from '@/assets/highlights/sandy/sandyLanding.mov'
 
 export const projectDetails = {
     "delytics": {
@@ -64,22 +66,34 @@ export const projectDetails = {
         ],
         "highlights": [
             {
-                "title": "Real-Time Fleet Tracking",
+                "title": "Customizable Dashboard with Dynamic Widgets",
                 "image": dashboardVideo,
                 "points": [
-                    "Live geolocation updates of all active deliveries on an interactive map.",
-                    "Instant status changes reflected across all dashboard widgets without page reloads.",
-                    "Color-coded markers indicating delivery status (Pending, In-Transit, Delivered, Delayed)."
-                ]
+                   "Dynamic widget system allowing new types without affecting existing dashboards.",
+  "Customizable dashboards to add, configure, and rearrange widgets.",
+  "Scalable data model separating dashboards from widget instances.",
+ ]
             },
             {
-                "title": "Automated Route Optimization",
+                "title": "Role-Based Delivery Dashboard with Dynamic Filtering",
                 "image": paginationVideo,
                 "points": [
-                    "Intelligent grouping of deliveries based on proximity and traffic conditions.",
-                    "Reduction in fuel costs and delivery times by up to 15%.",
-                    "One-click assignment of optimized routes to available drivers."
-                ]
+                 "Hierarchical delivery data across company, tenant, hub, and agent levels.",
+                 "Role-based access showing only relevant data per user.",
+                 "Paginated backend responses with meaningful filters and removable chips.",
+                 "Frontend tables with filter application, chip removal, and loading/error states.",
+ ]
+            },
+            {
+                "title": "Overview",
+                "image": overviewVideo,
+                "points": [
+                 "Light and dark mode support for improved usability.",
+                 "Secure authentication with session-based access control.",
+                 "Clean, responsive dashboard UI with modern design.",
+                 "Interactive charts and line graphs for data insights.",
+                 "Sidebar, navbar, and tables for structured navigation and data handling."
+ ]
             }
         ],
         "next": ["Integration with third-party logistics APIs", "Predictive maintenance alerts", "Mobile driver application"]
@@ -147,18 +161,29 @@ export const projectDetails = {
                 "title": "AI-Powered \"Sandy\" Persona",
                 "image": sandyAiVideo,
                 "points": [
-                    "Dynamically generates unique dares and questions based on the current group vibe.",
-                    "Uses Google Gemini API to create context-aware content that feels personal and spontaneous.",
-                    "Adapts the 'spiciness' level of challenges based on user preferences."
+                     "End-to-end AI flow from game mode selection to context-driven content generation.",
+                     "Well-structured prompt engineering to ensure consistent, high-quality AI outputs, and maintain Sandy's personality.",
+                     "Product-focused AI integration prioritizing user input clarity and output relevance.",
                 ]
             },
             {
-                "title": "Seamless Cross-Device Play",
+                "title": "AI-Powered Social Card Game Engine",
                 "image": sandyGameVideo,
                 "points": [
-                    "Mobile-first design ensures a smooth experience on any smartphone.",
-                    "Real-time state synchronization allows all players to see the same card at the same time.",
-                    "No app download required – play instantly via the browser."
+                 "AI-generated cards are persisted in the database for repeat access and continuity.",
+                 "Built-in game engine enabling real-time gameplay during social gatherings.",
+                 "Interactive card reveal flow designed to mimic real-life card game experiences.",
+                 "State-driven game logic supporting smooth progression and user interaction.",
+                 "Designed for shared, social play rather than passive content consumption."
+ ]
+            },
+            {
+                "title": "Brand Building",
+                "image": sandyLandingVideo,
+                "points": [
+                    "Aesthetic to market it to Gen Z crowd.",
+                    "Consistently preserves Sandy’s persona across all AI outputs, including text, notifications, and game cards.",
+                    "Great LCP and performance metric optimisations."
                 ]
             }
         ],
