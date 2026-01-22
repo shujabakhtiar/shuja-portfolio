@@ -29,8 +29,9 @@
         >
             <!-- Image Center (16:9) -->
             <div 
-                class="w-full aspect-video rounded-xl shadow-2xl transition-all duration-700 transform flex items-center justify-center overflow-hidden"
+                class="w-full aspect-video rounded-xl shadow-2xl transition-all duration-700 transform flex items-center justify-center overflow-hidden cursor-pointer"
                 :class="[isExpanded ? 'scale-100 opacity-100' : 'scale-75 opacity-0']"
+                @click="navigateToProject"
             >
                 <video
                     v-if="image && (image.endsWith('.mov') || image.endsWith('.mp4'))"
@@ -105,6 +106,11 @@ export default {
                 opacity: this.isExpanded ? '1' : '0',
                 marginTop: this.isExpanded ? '1.5rem' : '0px'
             };
+        }
+    },
+    methods: {
+        navigateToProject() {
+            this.$router.push('/project/' + this.slug);
         }
     }
 }

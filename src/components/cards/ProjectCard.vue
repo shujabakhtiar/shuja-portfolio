@@ -3,7 +3,8 @@
         class="relative flex flex-col lg:flex-row justify-between items-center cursor-pointer py-8 h-96 lg:h-48"
         @mouseenter="isHovered = true"
         @mouseleave="isHovered = false"
-        @mousemove="handleMouseMove">
+        @mousemove="handleMouseMove"
+        @click="navigateToProject">
         <div class="grid items-center pl-4">
             <!-- Title -->
             <Transition
@@ -212,6 +213,11 @@ export default {
             this.mouseY += (this.targetY - this.mouseY) * factor;
             
             this.rafId = requestAnimationFrame(this.animate);
+        },
+        navigateToProject(e) {
+            // Prevent navigation if clicking on a link or button
+            if (e.target.closest('a') || e.target.closest('button')) return;
+            this.$router.push('/project/' + this.slug);
         }
     }
 }
