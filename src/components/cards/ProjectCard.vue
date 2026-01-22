@@ -53,7 +53,16 @@
                     transform: 'translate(-50%, -50%)',
                 }"
             >
-                <img :src="image" :alt="title" class="w-full h-full object-cover" />
+                <video
+                    v-if="image && (image.endsWith('.mov') || image.endsWith('.mp4'))"
+                    :src="image"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="w-full h-full object-cover"
+                ></video>
+                <img v-else :src="image" :alt="title" class="w-full h-full object-cover" />
             </div>
         </Transition>
 

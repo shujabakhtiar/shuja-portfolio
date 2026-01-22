@@ -32,7 +32,16 @@
                 class="w-full aspect-video rounded-xl shadow-2xl transition-all duration-700 transform flex items-center justify-center overflow-hidden"
                 :class="[isExpanded ? 'scale-100 opacity-100' : 'scale-75 opacity-0']"
             >
-                <img :src="image" :alt="title" class="w-full h-full object-cover" />
+                <video
+                    v-if="image && (image.endsWith('.mov') || image.endsWith('.mp4'))"
+                    :src="image"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="w-full h-full object-cover"
+                ></video>
+                <img v-else :src="image" :alt="title" class="w-full h-full object-cover" />
             </div>
 
             <!-- Description -->

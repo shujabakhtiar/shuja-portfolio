@@ -1,5 +1,5 @@
-import delyticsImage from '@/assets/projectGallery/delytics-l.png'
-import sandyImage from '@/assets/projectGallery/sandysaidso.png'
+import delyticsImage from '@/assets/projectGallery/delytics.mov'
+import sandyImage from '@/assets/projectGallery/sandy.mov'
 
 export const projects = [
     {
