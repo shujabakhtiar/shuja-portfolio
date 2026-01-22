@@ -1,5 +1,10 @@
+import dashboardVideo from '@/assets/highlights/delytics/dashboard.mov'
+import paginationVideo from '@/assets/highlights/delytics/pagination.mov'
+import sandyAiVideo from '@/assets/highlights/sandy/aiCreation.mov'
+import sandyGameVideo from '@/assets/highlights/sandy/gameEngine.mov'
+
 export const projectDetails = {
-   "delytics": {
+    "delytics": {
         "title": "Delytics",
         "status": "Development",
         "summary": "A comprehensive logistics management platform for tracking tenants, regions, hubs, agents, and deliveries. Provides dashboards and analytics for operational insights.",
@@ -60,7 +65,7 @@ export const projectDetails = {
         "highlights": [
             {
                 "title": "Real-Time Fleet Tracking",
-                "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200",
+                "image": dashboardVideo,
                 "points": [
                     "Live geolocation updates of all active deliveries on an interactive map.",
                     "Instant status changes reflected across all dashboard widgets without page reloads.",
@@ -69,7 +74,7 @@ export const projectDetails = {
             },
             {
                 "title": "Automated Route Optimization",
-                "image": "https://images.unsplash.com/photo-1590601401321-b847171d1ee4?auto=format&fit=crop&q=80&w=1200",
+                "image": paginationVideo,
                 "points": [
                     "Intelligent grouping of deliveries based on proximity and traffic conditions.",
                     "Reduction in fuel costs and delivery times by up to 15%.",
@@ -140,7 +145,7 @@ export const projectDetails = {
         "highlights": [
             {
                 "title": "AI-Powered \"Sandy\" Persona",
-                "image": "https://images.unsplash.com/photo-1626775238053-4315516eba73?auto=format&fit=crop&q=80&w=1200",
+                "image": sandyAiVideo,
                 "points": [
                     "Dynamically generates unique dares and questions based on the current group vibe.",
                     "Uses Google Gemini API to create context-aware content that feels personal and spontaneous.",
@@ -149,7 +154,7 @@ export const projectDetails = {
             },
             {
                 "title": "Seamless Cross-Device Play",
-                "image": "https://images.unsplash.com/photo-1610819013498-8fad1138865c?auto=format&fit=crop&q=80&w=1200",
+                "image": sandyGameVideo,
                 "points": [
                     "Mobile-first design ensures a smooth experience on any smartphone.",
                     "Real-time state synchronization allows all players to see the same card at the same time.",

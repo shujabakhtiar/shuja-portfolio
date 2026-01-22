@@ -7,12 +7,22 @@
 
     <!-- Single Highlight Preview -->
     <div v-if="project.highlights.length > 0" class="grid lg:grid-cols-5 gap-12 items-center">
-      <!-- Left Side: Visual (Image/GIF) -->
+      <!-- Left Side: Visual (Image/Video) -->
       <div 
         @click="openModal(0)"
         class="relative overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-800 shadow-2xl aspect-video group lg:col-span-3 cursor-zoom-in"
       >
+        <video
+          v-if="isVideo(project.highlights[0].image)"
+          :src="project.highlights[0].image"
+          autoplay
+          loop
+          muted
+          playsinline
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        ></video>
         <img 
+          v-else
           :src="project.highlights[0].image" 
           :alt="project.highlights[0].title"
           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -108,7 +118,17 @@
                 <!-- Image (Larger Real Estate) -->
                 <div class="lg:col-span-8 w-full h-full max-h-[60vh] lg:max-h-none flex items-center">
                    <div class="relative w-full h-auto max-h-full overflow-hidden rounded-2xl border border-zinc-800 shadow-2xl bg-zinc-900">
+                      <video
+                        v-if="isVideo(activeHighlight.image)"
+                        :src="activeHighlight.image"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        class="w-full h-full object-contain bg-zinc-950"
+                      ></video>
                       <img 
+                        v-else
                         :src="activeHighlight.image" 
                         :alt="activeHighlight.title"
                         class="w-full h-full object-contain bg-zinc-950"
@@ -191,6 +211,11 @@ const openModal = (index) => {
 const closeModal = () => {
   activeIndex.value = null
   document.body.style.overflow = '' // Restore scrolling
+}
+
+const isVideo = (url) => {
+  if (!url) return false
+  return typeof url === 'string' && (url.toLowerCase().endsWith('.mov') || url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm'))
 }
 
 const nextHighlight = () => {
