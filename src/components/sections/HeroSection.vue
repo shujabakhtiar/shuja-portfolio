@@ -70,8 +70,8 @@
             </div>
           </div>
           <div class="hidden lg:flex gap-4">
-              <p class="font-body-strong tracking-tight-xl text-black">{{ $t('hero.links.linkedin') }}</p>
-              <p class="font-body-strong tracking-tight-xl text-black">{{ $t('hero.links.github') }}</p>
+            <a class="font-body-strong tracking-tight-xl text-black" href="https://linkedin.com/in/shujabakhtiar" target="_blank">LinkedIn</a>
+            <a class="font-body-strong tracking-tight-xl text-black" href="https://github.com/shujabakhtiar" target="_blank">GitHub</a>
           </div>
         </div>
       </div>
